@@ -1,0 +1,610 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>tverdoepravo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,600;1,700;1,800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link type = "text/css" href = "{% static 'main_page/css/styles.css' %}" rel = "stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <!--Top Bar Start-->
+        <div class="top-bar">
+            <div class="container-fluid">
+                <div class="row align-middle">
+                    <div class="col-sm-3">
+                        <div class="top-bar-img">
+                            <a href="http://127.0.0.1:8000/main_page/" ><img class="img-fluid" src="{% static 'main_page/img/tplogo.png' %}" alt="tplogo"></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 phone-and-email">
+                        <div class="phone align-middle">
+                            <a href="tel:+79210126216" class="align-middle">
+                                <div class="img">
+                                    <img src="{% static 'main_page/img/smartphone.png' %}" alt="smartphone">
+                                </div>
+                                <div class="text">
+                                    <p>ТЕЛЕФОН</p>
+                                </div>
+                                <div class="link">
+                                    <p>+7(902)772-14-72</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 phone-and-email mail">
+                        <div class="email">
+                            <a href="mailto:tverdoepravo@mail.ru">
+                                <div class="img">
+                                    <img src="{% static 'main_page/img/mail.png' %}" alt="mail">
+                                </div>
+                                <div class="text">
+                                    <p>EMAIL</p>
+                                </div>
+                                <div class="link">
+                                    <p>tverdoepravo@mail.ru</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 align-self-center socials1">
+                        <div class="socials">
+                            <a href="https://wa.me/79210126216"><img src="{% static 'main_page/img/whatsapp.png' %}" alt="whatsapp"></a>
+                            <a href="https://t.me//79210126216"><img src="{% static 'main_page/img/telegram1.png' %}" alt="telegram"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top Bar End -->
+
+        <!--Nav Bar Start-->
+        <div class="nav-bar">
+            <div class="container-fluid text-light">
+                <ul class="navbar-nav justify-content-center">
+                    <li class="nav-item">
+                        <a href="#about-us">О НАС</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#lawyer-services">НАШИ УСЛУГИ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#pricing">СТОИМОСТЬ УСЛУГ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contacts">КОНТАКТЫ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--Nav Bar End-->
+
+        <!--Description With BG Lady Start-->
+        <div class="LadyJustice">
+            <div class="container-fluid lady1">
+                <!--<img class="img-fluid float-end" src="{% static 'main_page/img/tpLadyJustice2.jpg' %}" alt="tpLadyJustice">-->
+                <div class="LadyJustice-text">
+                    <div class="row">
+                        <h1 class="display-2">ОТ КОНСУЛЬТАЦИИ ДО РЕШЕНИЯ: ВАШ ПУТЬ К ПРАВОСУДИЮ</h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 LadyJustice-border">
+                            <p>Юридическая помощь физическим и юридическим лицам в гражданских и арбитражных спорах</p>
+                            <div class="buttons">
+                                <a href="tel:+79210126216" class="btn btn-success">ПОЗВОНИТЬ</a>
+                                <!-- Button to Open the Modal -->
+                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"> ЗАПИСАТЬСЯ НА КОНСУЛЬТАЦИЮ </button>
+                                
+                                <!-- The Modal -->
+                                <div class="modal" id="myModal">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                        <h4 class="modal-title">Modal Heading</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                        Modal body..
+                                        </div>
+                                
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Description with Lady Justice End-->
+
+        <!--About Us Start-->
+        <div class="about-us" id="about-us">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 text-end section-header">
+                        <h2>О НАС</h2>
+                    </div>
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-3 article">
+                        <h6>НАША ЦЕЛЬ</h6>
+                        <p>Мы нацелены на предоставление качественных юридических услуг, основываясь на принципах честности, профессионализма и уважения к каждому клиенту. Наша основная задача - защищать ваши интересы и обеспечивать надежную правовую поддержку при любых обстоятельствах.</p>
+                    </div>
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-3 article">
+                        <h6>НАШИ СПЕЦИАЛИСТЫ</h6>
+                        <p>В нашей команде работают квалифицированные юристы с обширным опытом работы и знаний в различных областях права. Мы предлагаем индивидуальные решения, которые применимы к вашей конкретной ситуации.</p>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                    </div>
+                    <div class="col-lg-3 article">
+                        <h6>КЛИЕТООРИЕНТИРОВАННОСТЬ</h6>
+                        <p>Мы понимаем, что каждая ситуация уникальна, поэтому уделяем внимание каждому клиенту и разрабатываем персонализированные стратегии для достижения необходимых результатов. Ваши интересы - наш главный приоритет, и мы стремимся к формированию долгосрочных партнерских отношений.</p>
+                    </div>
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-3 article">
+                        <h6>НЕПРЕРЫВНОЕ СОВЕРШЕНСТВОВАНИЕ</h6>
+                        <p>Мы внимательно следим за изменениями в законодательстве и анализируем судебную практику, чтобы предлагать оптимальные и эффективные решения ваших ситуаций. Наша команда постоянно повышает свою квалификацию и проходит обучения, чтобы гарантировать вам профессиональный подход.</p>
+                    </div>
+                    <div class="col-lg-1">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lawyer-services" id="lawyer-services">
+            <div class="container lawyer-table">
+                <div class="row">
+                    <div class="section-header">
+                        <h2>ЮРИДИЧЕСКИЕ УСЛУГИ, <br />КОТОРЫЕ МЫ ПРЕДОСТАВЛЯЕМ</h2>
+                    </div>
+                    <div class="half-header">
+                        <h2>ДЛЯ ФИЗИЧЕСКИХ ЛИЦ</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 service" id="flooding">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><a href="#"><br>Затопление квартиры</a></span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="compensation-for-damage">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Возмещение ущерба</span>
+                        <p>
+                    </div>
+                    <div class="col-lg-3 service" id="family-disputes">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Семейные споры</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="drafting-of-claims-and-complaints">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><a href="#"><br>Составление исков, жалоб</a></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 service" id="pre-trial-settlement">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><a href="#"><br>Досудебное<br> урегулирование</a></span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="labor-disputes">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><a href="#"><br>Трудовые споры</a></span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="inheritance-of-property">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Наследование имущества</span> 
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="migration-disputes">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Миграционные споры</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-3 service" id="cancellation-of-a-court-order">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><a href="#"><br>Отмена судебного приказа</a></span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="refusal-to-interact-with-creditors">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><a href="#"><br>Отказ от взаимодействия<br> с кредиторами</a></span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3"></div>
+                </div>
+                <div class="row text-center">
+                    <div class="half-header">
+                        <h2>ДЛЯ ЮРИДИЧЕСКИХ ЛИЦ</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 service" id="corporate-disputes">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Корпоративные споры</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="compensation-for-damages">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Возмещение убытков</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="drafting-of-claims">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Составление исков</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="registration-of-enterprises">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Регистрация предприятий</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 service" id="property-disputes">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Имущественные споры</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="pre-trial-settlement2">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Досудебное<br> урегулирование</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="customs-disputes">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Таможенные споры</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="trademarks">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><a href="#"><br>Товарные знаки</a></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="half-header">
+                        <h2>БУХГАЛТЕРИЯ ДЛЯ ЮРИДИЧЕСКИХ ЛИЦ</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 service" id="making-changes-to-the-unified-state-register-of-legal-entities">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Внесение изменений<br> в егрип</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="individual-entrepreneur-on-simplified-tax-system-6%-PSN">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Ип на усн 6% псн</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="accounting-services-for-housing-associations-gardening-partnerships-and-ont-(dnp)">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Бухобслуживание<br> тсж, снт, онт (днп)</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="submission-of-reports">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Сдача отчетности</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 service" id="individual-entrepreneur-on-simplified-tax-system-15%">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Ип на усн 15%</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="LLC-on-UTII-simplified-tax-system-6%-patent-tax-system-simplified-tax-system-15%-and-OSN">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span>ООО на енвд,<br> усн 6% псн,<br> усн 15% и осн</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="registration-of-individual-entrepreneur-LLC">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Регистрация ип, ооо</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 service" id="liquidation-of-individual-entrepreneurs-LLC">
+                        <p>
+                            <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
+                            <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
+                            <span><br>Ликвидация ип, ооо</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="work-stages">
+            <div class="container-fluid text-light">
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-6 text">
+                        <div class="row section-header">
+                            <p>ЭТАПЫ РАБОТЫ</p>
+                        </div>
+                        <div class="row">
+                            <div class="stage">
+                                <img class="img-fluid" src="{% static 'main_page/img/check-lg.svg' %}" alt="stage">
+                                <p>Консультация и оценка ситуации</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="stage">
+                                <img class="img-fluid" src="{% static 'main_page/img/check-lg.svg' %}" alt="stage">
+                                <p>Заключение договора</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="stage">
+                                <img class="img-fluid" src="{% static 'main_page/img/check-lg.svg' %}" alt="stage">
+                                <p>Решение вопроса</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="{% static 'main_page/img/phone.png' %}" alt="phone">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pricing" id="pricing">
+            <div class="container">
+                <div class="row text-center section-header">
+                    <p>СТОИМОСТЬ НАШИХ УСЛУГ</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="article">
+                            <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone">
+                            <div class="article-header">
+                                <h3>КОНСУЛЬТАЦИЯ<br> ФИЗИЧЕСКИХ<br> ЛИЦ</h3>
+                                <div class="line"></div>
+                                <div class="price">Бесплатно</div>
+                            </div>
+                            <p>Развернутые консультации по любым правовым вопросам для физических лиц</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="article">
+                            <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone">
+                            <div class="article-header">
+                                <h3>КОНСУЛЬТАЦИЯ<br> ЮРИДИЧЕСКИХ<br> ЛИЦ<br> (ПИСЬМЕННАЯ)</h3>
+                                <div class="line text-center"></div>
+                                <div class="price">от 1500 руб.</div>
+                            </div>
+                            <p>Развернутые консультации по любым правовым вопросам для юридических лиц.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="article">
+                            <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone">
+                            <div class="article-header">
+                                <h3>СОСТАВЛЕНИЕ<br> ПРАВОВЫХ<br> ДОКУМЕНТОВ</h3>
+                                <div class="line"></div>
+                                <div class="price">от 2000 руб.</div>
+                            </div>
+                            <p>Составление правовых документов для физических и юридических лиц (заявления, претензии, ходатайства, исковые заявления и др.)</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="article">
+                            <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone">
+                            <div class="article-header">
+                                <h3>ПРЕДСТАВИТЕЛЬСТВО<br> В СУДЕ</h3>
+                                <div class="line" id="two"></div>
+                                <div class="price">от 20000 руб.</div>
+                            </div>
+                            <p>Представление ваших интересов или вашей компании в судах на всех стадиях процесса</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="blue-line">
+            <div class="container-fluid text-light">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <p></p>
+                    </div>
+                    <div class="col-lg-2 text-center">
+                        <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone"> 
+                        <p>Правовая защита<br> 24/7</p>
+                    </div>
+                    <div class="col-lg-2 text-center">
+                        <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone">
+                        <p>Полное юридическое<br> сопровождение</p>
+                    </div>
+                    <div class="col-lg-2 text-center">
+                        <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone">
+                        <p>Квалифицированная<br> юридическая помощь</p>
+                    </div>
+                    <div class="col-lg-2 text-center">
+                        <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone">
+                        <p>Долгосрочное<br> сотрудничество</p>
+                    </div>
+                    <div class="col-lg-2">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contacts" id="contacts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 text-center">
+                        <div class="article-header">
+                            <h3>Получите бесплатную<br> консультацию</h3>
+                        </div>
+                        <p><span id="bold">Заполните форму,</span> чтобы получить бесплатную консультацию</p>
+                        <div class="row">
+                            <div class="col-lg-6 right-border">
+                                <a href="#"><img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone"></a>
+                                <div class="text">
+                                    <a href="#">телефон</a>
+                                </div>
+                                <div class="link">
+                                    <a href="#">+7(902)772-14-72</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <a href="#"><img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone"></a>
+                                <div class="text">
+                                    <a href="#">EMAIL</a>
+                                </div>
+                                <div class="link">
+                                    <a href="#">tverdoepravo@mail.ru</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <div class="feedback">
+                            <h3>Обратная связь</h3>
+                            <div class="form">
+                                <form action="/main_page/" method="post">{% csrf_token %}
+                                    {{ form.non_field_errors }}
+                                    <div>
+                                      {{ form.name.errors }}
+                                      {{ form.name }}
+                                    </div>
+                                    <div>
+                                      {{ form.phone.errors }}
+                                      {{ form.phone }}
+                                    </div>
+                                    <div>
+                                      {{ form.comment.errors }}
+                                      {{ form.comment }}
+                                    </div>
+                                    <input type="submit" value="Отправить"/>
+                                </form>
+                                <div class="warning">
+                                    <p><input type="checkbox">Нажимая кнопку «Получить консультацию», я даю свое согласие на обработку моих<br> персональных данных, в соответствии с Федеральным законом от 27.07.2006 года<br> №152-ФЗ «О персональных данных», на условиях и для целей, определенных в<br> Согласии на обработку персональных данных</p>
+                                </div>
+                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"> ЗАПИСАТЬСЯ НА КОНСУЛЬТАЦИЮ </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer" id="footer">
+            <div class="container-fluid">
+                <div class="row text-light">
+                    <div class="col-lg-2">
+
+                    </div>
+                    <div class="col-lg-2 rights">
+                        <p>© 2022-2024 "Твердое право"<br>
+                        Метелица Артём Александрович<br>
+                        Адрес: Латышских Стрелков, д. 17, к. 1<br>
+                        ИНН: 100399120058</p>
+                    </div>
+                    <div class="col-lg-2">
+                        
+                    </div>
+                    <div class="col-lg-2">
+                        
+                    </div>
+                    <div class="col-lg-2 socials">
+                        <a href="https://wa.me/79210126216"><img src="{% static 'main_page/img/whatsapp.png' %}" alt="whatsapp"></a>
+                        <a href="https://t.me//79210126216"><img src="{% static 'main_page/img/telegram1.png' %}" alt="telegram"></a>
+                    </div>
+                    <div class="col-lg-2">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

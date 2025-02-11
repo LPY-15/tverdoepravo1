@@ -1,0 +1,527 @@
+body {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container-fluid {
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+
+.top-bar .top-bar-img img{
+    height: 100px;
+    float: inline-end;
+}
+
+.top-bar {
+    color: #202F83;
+    font-family: "Open Sans", serif;
+}
+
+.top-bar .phone-and-email img {
+    width: 20px;
+    margin-left: 10px;
+}
+
+.top-bar .phone-and-email .text {
+    color: #202F83;
+    margin-left: 10px;
+}
+
+.top-bar .email {
+    border-left: solid;
+    border-left-width: 1px;
+    margin-top: 10px;
+}
+
+.top-bar .phone {
+    margin-top: 10px;
+}
+
+.top-bar .phone-and-email a {
+    text-decoration: none;
+}
+
+.top-bar .phone-and-email .link {
+    color: #202F83;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    position: relative;
+    letter-spacing: 0.5px;
+    margin-left: 10px;
+}
+
+.top-bar .phone-and-email .link:hover {
+    color: #000000;
+    text-decoration:underline;
+}
+
+.top-bar .email {
+    border-left: solid;
+    border-left-width: 1px;
+    border-right: solid;
+    border-right-width: 1px;
+    border-right-color: #eeeeee;
+}
+
+.top-bar .socials a img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+.nav-bar {
+    background-color: #242e81;
+    padding: 20px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.navbar-nav{
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.nav-bar a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: "helvetica";
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 10px;
+}
+
+.LadyJustice .lady1 {
+    background-image: url('../img/tpLadyJustice2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+}
+
+.LadyJustice-text {
+    color: aliceblue;
+    font-weight: 100;
+}
+
+.LadyJustice-text h1 {
+    font-size: 50px;
+    line-height: 55px;
+    font-weight: 400;
+    text-align: left;
+    font-family: "Open Sans", serif;
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+.LadyJustice .LadyJustice-border {
+    border-top: solid;
+    border-top-width: 2px;
+}
+
+.LadyJustice-text p {
+    font-size: 36px;
+    line-height: 40px;
+    margin-top: 40px;
+    margin-left: 10px;
+    font-weight: 300;
+    font-family: "Open Sans", serif;
+    padding-top: 20px;
+}
+
+.LadyJustice .LadyJustice-text button.btn:hover {
+    color: #121518;
+    background: #aa9166;
+}
+
+.LadyJustice .LadyJustice-text .buttons {
+    text-align: end;
+}
+
+.LadyJustice .LadyJustice-text .buttons a {
+    background-color: #242e81;
+    color: #FFFFFF;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 600;
+    margin: 0px 10px 10px 0px;
+    padding: 8px 20px;
+}
+
+.LadyJustice .LadyJustice-text .buttons a:hover {
+    background-color: #37469e;
+    color: #121518;
+}
+
+.LadyJustice .LadyJustice-text .buttons button {
+    background-color: #242e81;
+    color: #FFFFFF;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 600;
+    margin: 0px 10px 10px 0px;
+    padding: 8px 20px;
+}
+
+.LadyJustice .LadyJustice-text .buttons button:hover {
+    background-color: #37469e;
+}
+
+.about-us {
+    font-family: "Open Sans", serif;
+    color: #202F83;
+}
+
+.about-us .section-header h2 {
+    font-size: 30px;
+    line-height: 30px;
+    letter-spacing: 0.5px;
+    padding: 8px;
+    font-weight: 600;
+    text-shadow: 3px 3px 6px #c6c6c6;
+}
+
+.about-us .article {
+    margin-top: 25px;   
+
+}
+
+.about-us .article h6 {
+    font-size: 15px;
+    line-height: 21px;
+    margin: 0px 0px 5px;
+    font-weight: 700;
+}
+
+.about-us .article p {
+    font-size: 14px;
+    line-height: 22.4px;
+    margin: 0px 0px 14px;
+    font-weight: 400;
+}
+
+.lawyer-services {
+    color: #202F83;
+    margin-bottom: 50px;
+    margin-top: 25px;
+}
+
+.lawyer-services .section-header h2 {
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    text-shadow: 3px 5px 6px #c6c6c6;
+    font-family: "Open Sans", serif;
+    text-align: center;
+    color: #33428E;
+}
+
+.lawyer-services .half-header h2 {
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0.5px;
+    padding: 0px 15px;
+    font-weight: 500;
+    font-family: "Helvetica", Sans-Serif;
+    margin: 25px;
+    text-align: center;
+    color: #33428E;
+}
+
+.lawyer-services .lawyer-table {
+    width: 75%;
+}
+
+.lawyer-services .service {
+    height: 125px;
+    border-radius: 25px;
+    text-align: center;
+    font-family: "Oswald", serif;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 400;
+    word-wrap: break-word;
+    position: relative;
+    display: inline-block;
+}
+
+.lawyer-services .service p .first {
+    float: left;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    opacity: 1;
+    position: relative;
+    top: 0;
+    left: 0;
+    padding-right: 25px;
+}
+
+.lawyer-services .service p .second {
+    float: left;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.lawyer-services .service:hover p .second {
+    opacity: 1;
+}
+
+.lawyer-services .service p span {
+    color: #111111;
+}
+
+.lawyer-services .service p span a {
+    color: #33428E;
+    text-decoration: none;
+}
+
+.work-stages {
+    background-color: #242e81;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-family: "Open Sans", serif;
+}
+
+.work-stages .text {
+    padding-top: 50px;
+}
+
+.work-stages .section-header {
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+    padding-left: 50px;
+    text-shadow: 3px 8px 6px #2d2d2d7b;
+    
+}
+
+.work-stages .stage img {
+    float: left;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.work-stages .stage p {
+    padding: 25px;
+    font-size: 23px;
+    line-height: 23px;
+    letter-spacing: 0.5px;
+    margin: 0px 0px 14px;
+    font-weight: 400;
+    padding-left: 100px;
+}
+
+.pricing {
+    margin-top: 15px;
+    margin-bottom: 50px;
+    color: #202F83;
+}
+
+.pricing .section-header {
+    font-family: "helvetica";
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    text-shadow: 3px 6px 6px #c6c6c6;
+}
+
+.pricing .article img {
+    float: left;
+    border-radius: 50%;
+}
+
+.pricing .article .article-header {
+    display: flex;
+    
+}
+
+.pricing .article .article-header h3 {
+    width: fit-content;
+    font-family: "Open Sans", serif;
+    font-size: 15px;
+    line-height: 21px;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    padding-left: 25px;
+    float: left;
+}
+
+.pricing .article .article-header .line {
+    float: right;
+    border-bottom: solid;
+    border-bottom-color: #202F83;
+    border-bottom-width: 1px;
+    width: 240px;
+    height: 30px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.pricing .article .article-header #two {
+    width: 190px;
+}
+
+.pricing .article .article-header .price {
+    background-color: #202F83;
+    font-family: "Open Sans", serif;
+    padding-left: 25px;
+    font-size: 13px;
+    line-height: 20.8px;
+    font-weight: 700;
+    padding: 4px 12px;
+    color: #FFFFFF;
+    border-radius: 5%;  
+    height: 30px;
+    margin-top: 15px;
+}
+
+.pricing .article p {
+    font-size: 14px;
+    line-height: 22.4px;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+    font-family: "Open Sans", serif;
+    padding-left: 125px;
+}
+
+.blue-line {
+    padding-top: 10px;
+    background-color: #242e81;
+}
+
+.blue-line img {
+    border-radius: 50%;
+}
+
+.blue-line p {
+    font-family: "Helvetica", Sans-Serif;
+    font-size: 15px;
+    line-height: 15px;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding-top: 20px;
+}
+
+.contacts {
+    padding: 20px;
+}
+
+.contacts .article-header h3 {
+    font-family: "Open Sans", serif;
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    color: #33428E; 
+    text-shadow: 3px 3px 6px #c6c6c6;
+    text-transform: uppercase;
+}
+
+.contacts p {
+    font-family: "Open Sans", serif;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+}
+
+.contacts p #bold {
+    font-weight: 700;
+}
+
+.contacts .right-border {
+    border-right: solid;
+    border-right-width: 1px;
+    border-right-color: #eeeeee;
+}
+
+.contacts .text a {
+    font-family: "Open Sans", serif;
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #3A4AA1;
+}
+
+.contacts .link a {
+    font-family: "Open Sans", serif;
+    font-size: 18px;
+    line-height: 29px;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    color: #3A4AA1;
+    text-decoration: none;
+}
+
+.contacts .link a:hover {
+    text-decoration: underline;
+}
+
+.contacts .feedback h3 {
+    font-family: "Open Sans", serif;
+    color: #0D195E;
+    font-size: 24px;
+    line-height: 33px;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+    padding-bottom: 15px;
+    border-bottom: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #eeeeee;
+}
+
+.contacts .feedback .form button {
+    background-color: #242e81;
+    color: #FFFFFF;
+}
+
+.warning {
+    display: flex;
+}
+
+.contacts .form .warning p {
+    font-family: "Open Sans", serif;
+    color: #919191;
+    font-size: 11px;
+    line-height: 11px;
+    font-weight: 400;
+}
+
+.footer {
+    background-color: #242e81;
+}
+
+.footer .rights p {
+    font-family: "Open Sans", serif;
+    color: #919191;
+    font-size: 12px;
+    line-height: 19px;
+    font-weight: 500;
+}
+
+.footer .socials img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+.form-control {
+    margin: 15px auto;
+    height: 50px;
+    background-color: #EDEFF7;
+    width: 480px;
+}
+
