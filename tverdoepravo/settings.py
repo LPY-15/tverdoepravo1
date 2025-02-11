@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-fqizj+!0!+^l4o1yjvqe=bt0p-%*#4$rnar1p^j%tim*n^pj@4
 DEBUG = True
 #DEBUG = bool(os.environ.get("DEBUG", default=0))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['lpy-15-tverdoepravo1-a864.twc1.net']
 #ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS","127.0.0.1").split(",")
 
 
