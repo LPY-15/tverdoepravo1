@@ -7,14 +7,16 @@ body {
     padding-right: 0rem;
 }
 
-.top-bar .top-bar-img img{
-    height: 100px;
-    float: center;
-}
-
 .top-bar {
     color: #202F83;
     font-family: "Open Sans", serif;
+}
+
+.top-bar .top-bar-img img{
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .top-bar .phone-and-email img {
@@ -525,3 +527,7 @@ body {
     width: 480px;
 }
 
+.row {
+    padding-right: 0px;
+    margin-right: 0px;
+  }
