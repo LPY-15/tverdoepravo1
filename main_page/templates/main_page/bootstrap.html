@@ -426,7 +426,7 @@
                             <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone">
                             <div class="article-header">
                                 <h3>КОНСУЛЬТАЦИЯ<br> ФИЗИЧЕСКИХ<br> ЛИЦ</h3>
-                                <div class="line"></div>
+                                <!--<div class="line"></div>-->
                                 <div class="price">Бесплатно</div>
                             </div>
                             <p>Развернутые консультации по любым правовым вопросам для физических лиц</p>
@@ -437,7 +437,7 @@
                             <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone">
                             <div class="article-header">
                                 <h3>КОНСУЛЬТАЦИЯ<br> ЮРИДИЧЕСКИХ<br> ЛИЦ<br> (ПИСЬМЕННАЯ)</h3>
-                                <div class="line text-center"></div>
+                                <!--<div class="line"></div>-->
                                 <div class="price">от 1500 руб.</div>
                             </div>
                             <p>Развернутые консультации по любым правовым вопросам для юридических лиц.</p>
@@ -450,7 +450,7 @@
                             <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone">
                             <div class="article-header">
                                 <h3>СОСТАВЛЕНИЕ<br> ПРАВОВЫХ<br> ДОКУМЕНТОВ</h3>
-                                <div class="line"></div>
+                                <!--<div class="line"></div>-->
                                 <div class="price">от 2000 руб.</div>
                             </div>
                             <p>Составление правовых документов для физических и юридических лиц (заявления, претензии, ходатайства, исковые заявления и др.)</p>
@@ -461,7 +461,7 @@
                             <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone">
                             <div class="article-header">
                                 <h3>ПРЕДСТАВИТЕЛЬСТВО<br> В СУДЕ</h3>
-                                <div class="line" id="two"></div>
+                                <!--<div class="line" id="two"></div>-->
                                 <div class="price"><span></span>от 20000 руб.</span></div>
                             </div>
                             <p>Представление ваших интересов или вашей компании в судах на всех стадиях процесса</p>
@@ -545,12 +545,11 @@
                                       {{ form.comment.errors }}
                                       {{ form.comment }}
                                     </div>
-                                    <input type="submit" value="Отправить"/>
+                                    <div class="warning">
+                                        <span><input type="checkbox">Нажимая кнопку «Получить консультацию», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
+                                    </div>
+                                    <input type="submit" class="submit" value="Получить консультацию"/>
                                 </form>
-                                <div class="warning">
-                                    <p><input type="checkbox">Нажимая кнопку «Получить консультацию», я даю свое согласие на обработку моих<br> персональных данных, в соответствии с Федеральным законом от 27.07.2006 года<br> №152-ФЗ «О персональных данных», на условиях и для целей, определенных в<br> Согласии на обработку персональных данных</p>
-                                </div>
-                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"> ЗАПИСАТЬСЯ НА КОНСУЛЬТАЦИЮ </button>
                             </div>
                         </div>
                     </div>
@@ -559,29 +558,18 @@
         </div>
         <div class="footer" id="footer">
             <div class="container-fluid">
-                <div class="row text-light">
-                    <div class="col-lg-2">
-
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8 rights-socials">
+                        <div class="rights">
+                            <p>© 2022-2024 "Твердое право"<br>Метелица Артём Александрович<br>Адрес: Латышских Стрелков, д. 17, к. 1<br>ИНН: 100399120058</p>
+                        </div>
+                        <div class="socials">
+                            <a href="https://wa.me/79210126216"><img src="{% static 'main_page/img/whatsapp.png' %}" alt="whatsapp"></a>
+                            <a href="https://t.me//79210126216"><img src="{% static 'main_page/img/telegram1.png' %}" alt="telegram"></a>
+                        </div>
                     </div>
-                    <div class="col-lg-2 rights">
-                        <p>© 2022-2024 "Твердое право"<br>
-                        Метелица Артём Александрович<br>
-                        Адрес: Латышских Стрелков, д. 17, к. 1<br>
-                        ИНН: 100399120058</p>
-                    </div>
-                    <div class="col-lg-2">
-                        
-                    </div>
-                    <div class="col-lg-2">
-                        
-                    </div>
-                    <div class="col-lg-2 socials">
-                        <a href="https://wa.me/79210126216"><img src="{% static 'main_page/img/whatsapp.png' %}" alt="whatsapp"></a>
-                        <a href="https://t.me//79210126216"><img src="{% static 'main_page/img/telegram1.png' %}" alt="telegram"></a>
-                    </div>
-                    <div class="col-lg-2">
-                        
-                    </div>
+                    <div class="col-lg-2"></div>
                 </div>
             </div>
         </div>
