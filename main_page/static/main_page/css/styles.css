@@ -9,7 +9,7 @@ body {
 
 .top-bar .top-bar-img img{
     height: 100px;
-    float: inline-end;
+    float: center;
 }
 
 .top-bar {
