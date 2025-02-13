@@ -105,7 +105,7 @@ body {
 }
 
 .LadyJustice-text h1 {
-    font-size: 3vh;
+    font-size: 50px;
     line-height: 55px;
     font-weight: 400;
     text-align: left;
@@ -179,11 +179,17 @@ body {
     padding: 8px;
     font-weight: 600;
     text-shadow: 3px 3px 6px #c6c6c6;
+    text-align: end;
+}
+
+@media (max-width:800px) {
+    .about-us .section-header h2 {
+        text-align: center;
+    }
 }
 
 .about-us .article {
-    margin-top: 25px;   
-
+    margin: 25px;   
 }
 
 .about-us .article h6 {
@@ -301,24 +307,63 @@ body {
     font-weight: 400;
     padding-left: 50px;
     text-shadow: 3px 8px 6px #2d2d2d7b;
-    
 }
 
-.work-stages .stage img {
+@media (max-width: 800px) {
+    .work-stages .text .section-header  {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        padding: 0%;
+    }
+}
+
+.work-stages .stage {
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 800px) {
+    .work-stages .stage {
+        flex-direction: column;
+    }
+}
+
+.work-stages .stage-img img {
     float: left;
     width: 80px;
     height: 80px;
     border-radius: 50%;
 }
 
-.work-stages .stage p {
+@media (max-width: 800px) {
+    .work-stages .stage-img {
+        margin: auto;
+    }
+}
+
+.work-stages .stage-text {
     padding: 25px;
     font-size: 23px;
     line-height: 23px;
     letter-spacing: 0.5px;
-    margin: 0px 0px 14px;
     font-weight: 400;
-    padding-left: 100px;
+}
+
+@media (max-width: 800px) {
+    .work-stages .stage-text {
+        text-align: center;
+        padding: 0%;
+    }
+}
+
+@media (max-width: 800px) {
+    .work-stages .phone-img img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .pricing {
