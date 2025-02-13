@@ -16,27 +16,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
-
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
 </head>
 <body>
     <div class="wrapper">
         <!--Top Bar Start-->
         <div class="top-bar">
             <div class="container-fluid">
-                <div class="row align-middle">
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-2">
+                <div class="row">
+                    <div class="col-lg-3">
                         <div class="top-bar-img">
                             <a href="https://lpy-15-tverdoepravo1-a864.twc1.net/main_page/" ><img class="img-fluid" src="{% static 'main_page/img/tplogo.png' %}" alt="tplogo"></a>
                         </div>
                     </div>
                     <div class="col-sm-3 phone-and-email">
-                        <div class="phone align-middle">
-                            <a href="tel:+79210126216" class="align-middle">
+                        <div class="phone">
+                            <a href="tel:+79210126216">
                                 <div class="img">
                                     <img src="{% static 'main_page/img/smartphone.png' %}" alt="smartphone">
                                 </div>
@@ -112,7 +109,7 @@
                             <div class="buttons">
                                 <a href="tel:+79210126216" class="btn btn-success">ПОЗВОНИТЬ</a>
                                 <!-- Button to Open the Modal -->
-                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"> ЗАПИСАТЬСЯ НА КОНСУЛЬТАЦИЮ </button>
+                                <a href="#contacts" class="btn btn-success"> ЗАПИСАТЬСЯ НА КОНСУЛЬТАЦИЮ </a>
                                 
                                 
                             </div>
@@ -547,7 +544,7 @@
                                       {{ form.phone.errors }}
                                       {{ form.phone }}
                                     </div>
-                                    <div>
+                                    <div class="comment">
                                       {{ form.comment.errors }}
                                       {{ form.comment }}
                                     </div>
