@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,600;1,700;1,800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link type = "text/css" href = "{% static 'main_page/css/styles.css' %}" rel = "stylesheet"/>
+    <link type = "text/css" href = "{% static 'main_page/css/main_page.css' %}" rel = "stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,7 @@
                             <a href="https://lpy-15-tverdoepravo1-a864.twc1.net/main_page/" ><img class="img-fluid" src="{% static 'main_page/img/tplogo.png' %}" alt="tplogo"></a>
                         </div>
                     </div>
-                    <div class="col-sm-3 phone-and-email">
+                    <div class="col-lg-3 phone-and-email">
                         <div class="phone">
                             <a href="tel:+79210126216">
                                 <div class="img">
@@ -46,7 +46,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-3 phone-and-email mail">
+                    <div class="col-lg-3 phone-and-email mail">
                         <div class="email">
                             <a href="mailto:tverdoepravo@mail.ru">
                                 <div class="img">
@@ -61,7 +61,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-3 align-self-center socials1">
+                    <div class="col-lg-3 align-self-center socials1">
                         <div class="socials">
                             <a href="https://wa.me/79210126216"><img src="{% static 'main_page/img/whatsapp.png' %}" alt="whatsapp"></a>
                             <a href="https://t.me//79210126216"><img src="{% static 'main_page/img/telegram1.png' %}" alt="telegram"></a>
@@ -71,13 +71,37 @@
             </div>
         </div>
         <!-- Top Bar End -->
+         
+        <div class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid navbar-custom">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-lg-flex justify-content-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="http://127.0.0.1:8000/main_page/#about-us">О НАС</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://127.0.0.1:8000/main_page/#lawyer-services">НАШИ УСЛУГИ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://127.0.0.1:8000/main_page/#pricing">СТОИМОСТЬ УСЛУГ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://127.0.0.1:8000/main_page/#contacts">КОНТАКТЫ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-        <!--Nav Bar Start-->
-        <div class="nav-bar">
-            <div class="container-fluid text-light">
-                <ul class="navbar-nav justify-content-center">
+        <!--Nav Bar Start
+        <div class="navbar">
+            <div class="container-fluid text-light d-lg-flex justify-content-center">
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="#about-us">О НАС</a>
+                        <a href="#about-us">О НАС</a>   
                     </li>
                     <li class="nav-item">
                         <a href="#lawyer-services">НАШИ УСЛУГИ</a>
@@ -91,7 +115,7 @@
                 </ul>
             </div>
         </div>
-        <!--Nav Bar End-->
+        Nav Bar End-->
 
         <!--Description With BG Lady Start-->
         <div class="LadyJustice">
@@ -99,7 +123,7 @@
                 <!--<img class="img-fluid float-end" src="{% static 'main_page/img/tpLadyJustice2.jpg' %}" alt="tpLadyJustice">-->
                 <div class="LadyJustice-text">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-lg">
                             <h1>ОТ КОНСУЛЬТАЦИИ ДО РЕШЕНИЯ: ВАШ ПУТЬ К<br> ПРАВОСУДИЮ</h1>
                         </div>
                     </div>
@@ -174,7 +198,7 @@
                         <p>
                             <img class="img-fluid first" src="{% static 'main_page/img/check-lg.svg' %}" alt="check">
                             <img class="img-fluid second" src="{% static 'main_page/img/hover1.jpg' %}" alt="check">
-                            <span><a href="#"><br>Затопление квартиры</a></span>
+                            <span><a href="http://127.0.0.1:8000/main_page/flooding/"><br>Затопление квартиры</a></span>
                         </p>
                     </div>
                     <div class="col-lg-3 service" id="compensation-for-damage">
@@ -391,7 +415,7 @@
                             <div class="stage-img">
                                 <img class="img-fluid" src="{% static 'main_page/img/check-lg.svg' %}" alt="stage">
                             </div>
-                            <div class="stage-text text-center">
+                            <div class="stage-text">
                                 <p>Консультация и оценка ситуации</p>
                             </div>
                         </div>
@@ -476,28 +500,24 @@
         <div class="blue-line">
             <div class="container-fluid text-light">
                 <div class="row">
-                    <div class="col-lg-2">
-                        <p></p>
-                    </div>
-                    <div class="col-lg-2 text-center">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg text-center guarantee">
                         <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone"> 
                         <p>Правовая защита<br> 24/7</p>
                     </div>
-                    <div class="col-lg-2 text-center">
+                    <div class="col-lg text-center guarantee">
                         <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone">
                         <p>Полное юридическое<br> сопровождение</p>
                     </div>
-                    <div class="col-lg-2 text-center">
+                    <div class="col-lg text-center guarantee">
                         <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone">
                         <p>Квалифицированная<br> юридическая помощь</p>
                     </div>
-                    <div class="col-lg-2 text-center">
+                    <div class="col-lg text-center guarantee">
                         <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone">
                         <p>Долгосрочное<br> сотрудничество</p>
                     </div>
-                    <div class="col-lg-2">
-                        <p></p>
-                    </div>
+                    <div class="col-lg-1"></div>
                 </div>
             </div>
         </div>

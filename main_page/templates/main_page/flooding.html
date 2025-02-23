@@ -1,0 +1,288 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>tverdoepravo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,600;1,700;1,800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link type = "text/css" href = "{% static 'main_page/css/flooding.css' %}" rel = "stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+</head>
+<body>
+    <div class="wrapper">
+        <!--Top Bar Start-->
+        <div class="top-bar">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="top-bar-img">
+                            <a href="https://lpy-15-tverdoepravo1-a864.twc1.net/main_page/" ><img class="img-fluid" src="{% static 'main_page/img/tplogo.png' %}" alt="tplogo"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 phone-and-email">
+                        <div class="phone">
+                            <a href="tel:+79210126216">
+                                <div class="img">
+                                    <img src="{% static 'main_page/img/smartphone.png' %}" alt="smartphone">
+                                </div>
+                                <div class="text">
+                                    <span>ТЕЛЕФОН</span>
+                                </div>
+                                <div class="link">
+                                    <span>+7(902)772-14-72</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 phone-and-email mail">
+                        <div class="email">
+                            <a href="mailto:tverdoepravo@mail.ru">
+                                <div class="img">
+                                    <img src="{% static 'main_page/img/mail.png' %}" alt="mail">
+                                </div>
+                                <div class="text">
+                                    <span>EMAIL</span>
+                                </div>
+                                <div class="link">
+                                    <span>tverdoepravo@mail.ru</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 align-self-center socials1">
+                        <div class="socials">
+                            <a href="https://wa.me/79210126216"><img src="{% static 'main_page/img/whatsapp.png' %}" alt="whatsapp"></a>
+                            <a href="https://t.me//79210126216"><img src="{% static 'main_page/img/telegram1.png' %}" alt="telegram"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top Bar End -->
+
+        <!--Nav Bar Start-->
+        <div class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-lg-flex justify-content-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="http://127.0.0.1:8000/main_page/#about-us">О НАС</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://127.0.0.1:8000/main_page/#lawyer-services">НАШИ УСЛУГИ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://127.0.0.1:8000/main_page/#pricing">СТОИМОСТЬ УСЛУГ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://127.0.0.1:8000/main_page/#contacts">КОНТАКТЫ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--Nav Bar End-->
+
+        <!-- Carousel Start -->
+        <div class="carousel-header">
+            <p>Что делать, если Вас затопили соседи</p>
+        </div>
+        <div id="carouselExample" class="carousel slide container" style="max-width: 1200px;">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'main_page/img/carousel-flooding1.jpeg' %}" class="d-block w-100" alt="..." style="max-height: 620px;">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'main_page/img/carousel-flooding2.jpeg' %}" class="d-block w-100" alt="..." style="max-height: 620px;">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'main_page/img/carousel-flooding3.jpeg' %}" class="d-block w-100" alt="..." style="max-height: 620px;">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <!--Carousel End-->
+
+        <!--text start-->
+        <div class="text">
+            <div class="container textbox">
+                <p>Проживание в многоквартирных домах имеет некоторые особенности и сопряжено с отдельными неудобствами. Тот или иной жилец со всех сторон окружен квартирами. Если в какой-то квартире что-то случится (потоп), это непременно отразится на соседях. Не надо объяснять, что подобная ситуация связана с порчей имущества и тратой большого количества нервов.
+                    <br/><br/>Ситуация, когда квартиру затопили соседи, является самым распространенным происшествием, которое можно встретить в повседневной жизни.</p>
+                <p><span style="font-weight: 700;">Что предпринять в первую очередь в случае возникновения потопа?</span></p>
+                <p>Прежде всего, надо позвонить в различные инстанции. <span style="text-decoration: underline;">Гражданин снимает телефонную трубку и звонит по следующим адресам:</span><br/><br/>
+                    1. Жильцы квартиры, по чьей причине произошел потоп.<br/><br/>
+                    2. Аварийная служба.<br/><br/>
+                    Соседи могут просто не открыть дверь по причине их отсутствия. Тогда прибывшая аварийная бригада полностью перекроет стояк.<br/><br/>
+                    3. Управляющая компания.<br/><br/>
+                    Звонок в нее необходим для фиксации случившегося происшествия.
+                </p>
+                <p><span style="font-weight: 700;">Дальнейший порядок действий<br/><br/></span></p>
+                <p><span style="text-decoration: underline;">В случае возникновения потопа по вине соседей, жилец должен выполнить следующие действия:<br/><br/></span>
+                    1. Мероприятия, исключающие замыкание электропроводки в квартире.<br/><br/>
+                    Если в квартире с потолка начало капать, следует опасаться воздействия электричества. Не исключено, что вода попадет на участки электропроводки с отсутствием изоляции. Следует немедленно отключить все бытовые электроприборы. Это предупредит их выход из строя.<br/><br/>
+                    2. Следует позвонить соседям.<br/><br/>
+                    Им необходимо сообщить, что квартиру заливает, а они должны предпринять попытки к устранению протекания.<br/><br/>
+                    <span style="color: #D32F2F;">Важно!</span> Если соседи не отвечают на звонки, дверь к ним ломать ни в коем случае нельзя. Даже благая цель спасения от потопа всего подъезда будет расценена, как незаконное проникновение в жилище. Подобные деяния преследуются по закону. В этом случае требуется вызвать аварийную бригаду.<br/><br/>
+                    3. Оценка и документация причиненного ущерба.<br/><br/>
+                    Для этого обращаются в Управляющую компанию. Существует конкретное Постановление Правительства, которое регламентирует порядок действий в таких ситуациях. После получения заявки представитель УК должен прибыть на место не позднее 12 часов. Представители оценят масштаб ущерба, заполнят все необходимые документы. Они будут выступать и в качестве свидетелей. <span style="text-decoration: underline;">Составляется акт, в котором находит свое отражение следующая информация:</span><br/><br/>
+                    - В акт вносятся все данные представителей комиссии.<br/><br/>
+                    - Указывается номер квартиры и все данные, относящиеся к ее собственнику.<br/><br/>
+                    - Отражается объем имеющегося ущерба.<br/><br/>
+                    - Указываются причины, по которым произошел потоп.<br/><br/>
+                    - Если нарушены нормы проживания, то эта информация также отражается в акте.<br/><br/>
+                    Акт составляется в присутствии собственника пострадавшей квартиры. С ним его следует ознакомить. При отсутствии виновного либо его отказе ставить свою подпись, информация об этом также вносится в акт. Составленный документ утверждается руководителем Управляющей компании.<br/><br/>
+                    <span style="color: #D32F2F;">Важно!</span> Составлять акт необходимо, что называется, по горячим следам. Если пройдет какое-то время, виновник может скрыть следы протечки и настаивать на том, что он к ней не причастен. Например, обои от намокания могут отклеиться, а потом высохнуть. Будет достаточно трудно доказать, то они отклеились именно по причине намокания в результате возникшего затопления.<br/><br/>
+                    На глазах у свидетелей можно сделать фото испорченной в результате потопа мебели, повреждений потолка, стен, напольного покрытия. Если в дальнейшем возникнет судебное разбирательство, все это будет служить доказательством причиненного ущерба.<br/><br/>
+                    <span style="color: #D32F2F;">Оригинал акта необходимо сохранять вплоть до полного возмещения ущерба.</span>
+                    Можно воспользоваться услугами специализированных оценочных компаний и провести экспертизу. Их сотрудники могут профессионально и точно оценить объем причиненного ущерба. <br/><br/>
+                    4. Требование выплаты компенсации.<br/><br/>
+                    Самым простым вариантом является попытка решить инцидент с соседями мирным путем. Вариантов мирного урегулирования конфликта существует достаточно много. Например, сосед за свой счет выполняет ремонтные работы. В случае непризнания своей вины и отказа выплаты компенсации, с исковым заявлением обращаются в судебную инстанцию.<br/><br/>
+                    <span style="font-weight: 700;">Порядок подачи искового заявления<br/><br/></span>
+                    Если потерпевший жилец решил прибегнуть к судебному обращению, ему потребуется собрать все необходимые документы. Например, придется представить копии документов о праве собственности на квартиру, акт лицензированной компании о размере причиненного ущерба, некоторые другие документы.<br/><br/>
+                    Важно! Необходимо соблюдение сроков подачи заявления. Это можно сделать не позднее месяца со дня произошедшего инцидента.<br/><br/>
+                    Пострадавший жилец квартиры должен обладать следующей информацией:<br/><br/>
+                    Даже в случае проживания виновника в квартире по социальному найму, ему все равно придется отвечать. Он должен обеспечивать сохранность и ремонт в занимаемом помещении (п.3 ст. 67 Жилищного кодекса).<br/><br/>
+                    Если у виновника отсутствуют средства на проведение ремонта, суд направит дело в ФССП. Они могут описать имущество, реализовать его с молотка, а деньги направить на возмещение ущерба.<br/><br/>
+                    Виновник возмещает ущерб в полном объеме. Размер компенсации может быть различный и определяется степенью вины, обстоятельствами дела. После определения размера ущерба, виновник может обратиться за помощью к независимому эксперту.<br/><br/>
+                    Потерпевший может претендовать и на возмещение морального вреда. Размер компенсации за моральный вред на законодательном уровне не определен и полностью зависит от решения судьи.<br/><br/>
+                    Потоп может носить не только разовый, но и систематический характер. Если соседи сверху затапливают жильцов находящихся под ними квартир постоянно, то это может являться косвенным свидетельством несоблюдения ими правил проживания в многоквартирных домах. Иногда причиной постоянного затопления является проживание сверху неблагополучных семей.<br/><br/>
+                    Единственный способ тогда состоит в обращении в суд. Судья может не только обязать соседей выплатить компенсацию, но принять решение об их выселении. Причиной выселения станет постоянное нарушение прав соседей.<br/><br/>
+                    Может возникнуть такая ситуация, когда затапливают соседи сверху, арендующие квартиру. В этом случае виновник определяется условиями договора аренды. Если в договоре прописано, что на арендатора возложена полная ответственность за сохранность и содержание квартиры, то, значит, он и будет отвечать. Но если квартира сдается в аренду без договора, то вся ответственность полностью ложится на собственника. Именно он и будет в полном объеме возмещать ущерб.<br/><br/>
+                    Но следует иметь в виду, что арендаторы не несут никакой ответственности за трубы, которые основательно прогнили. Обязанность собственника сдавать квартиру в аренду в надлежащем состоянии. Все коммуникации в ней должны быть исправны.<br/><br/>
+                    Если вы точно хотите узнать, как действовать в Вашей ситуации, запишитесь на консультацию к юристу. Для записи звоните по телефону: +7(902)772-14-72 или заполните форму обратной связи на нашем сайте. Вы можете задать по телефону любые вопросы, которые вас интересуют. <span style="color: #D32F2F; font-weight: 700;">Первичная консультация бесплатна.<br/><br/></span>
+                </p>
+            </div>
+        </div>
+        <div class="below-text">
+            <div class="container">
+                <div class="row">
+                    <div class="article col-lg-6 col-md-12">
+                        <div class="row">
+                            <div class="article-img d-md-flex justify-content-center">
+                                <img src="{% static 'main_page/img/flooding1.jpg' %}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="article-text">
+                                <a href="#"><p>Подробнее об экспертизе после залития квартиры <br/><br/><span>Читать</span></p></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article col-lg-6 col-md-12">
+                        <div class="row">
+                            <div class="article-img d-md-flex justify-content-center">
+                                <img src="{% static 'main_page/img/flooding2.jpg' %}">
+                            </div>
+                            <div class="article-text">
+                                <a href="#"><p>Досудебный порядок урегулирования споров <br/><br/><span>Читать</span></p></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contacts" id="contacts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 text-center">
+                        <div class="article-header">
+                            <h3>Получите бесплатную<br> консультацию</h3>
+                        </div>
+                        <p><span id="bold">Заполните форму,</span> чтобы получить бесплатную консультацию</p>
+                        <div class="row">
+                            <div class="col-lg-6 right-border">
+                                <a href="#"><img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone"></a>
+                                <div class="text">
+                                    <a href="#">телефон</a>
+                                </div>
+                                <div class="link">
+                                    <a href="#">+7(902)772-14-72</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <a href="#"><img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone"></a>
+                                <div class="text">
+                                    <a href="#">EMAIL</a>
+                                </div>
+                                <div class="link">
+                                    <a href="#">tverdoepravo@mail.ru</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <div class="feedback">
+                            <h3>Обратная связь</h3>
+                            <div class="form">
+                                <form action="/main_page/" method="post">{% csrf_token %}
+                                    {{ form.non_field_errors }}
+                                    <div>
+                                      {{ form.name.errors }}
+                                      {{ form.name }}
+                                    </div>
+                                    <div>
+                                      {{ form.phone.errors }}
+                                      {{ form.phone }}
+                                    </div>
+                                    <div class="comment">
+                                      {{ form.comment.errors }}
+                                      {{ form.comment }}
+                                    </div>
+                                    <div class="warning">
+                                        <span><input type="checkbox">Нажимая кнопку «Получить консультацию», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
+                                    </div>
+                                    <input type="submit" class="submit" value="Получить консультацию"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer" id="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8 rights-socials">
+                        <div class="rights">
+                            <p>© 2022-2024 "Твердое право"<br>Метелица Артём Александрович<br>Адрес: Латышских Стрелков, д. 17, к. 1<br>ИНН: 100399120058</p>
+                        </div>
+                        <div class="socials">
+                            <a href="https://wa.me/79210126216"><img src="{% static 'main_page/img/whatsapp.png' %}" alt="whatsapp"></a>
+                            <a href="https://t.me//79210126216"><img src="{% static 'main_page/img/telegram1.png' %}" alt="telegram"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
