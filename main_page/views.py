@@ -6,8 +6,10 @@ from .forms import ContactForm
 # Create your views here.
 
 def mainPage(request):
+
     if request.method == 'POST':
         form = ContactForm(request.POST)
+
         if form.is_valid():
             name = form.cleaned_data['name']
             phone = form.cleaned_data['phone']
@@ -24,15 +26,45 @@ def mainPage(request):
             return render(request, 'main_page/index.html', {'form':form})
         
     else:
+
         form = ContactForm()
 
     return render(request, 'main_page/main_page.html', {'form':form})
 
 
+
 def mainPage2(request):
+
     return render(request, 'main_page/index.html')
 
+
+
 def flooding(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            phone = form.cleaned_data['phone']
+            comment = form.cleaned_data['comment']
+            name_phone = f'{name} {phone}'
+
+            recipients = ['befordshir@gmail.com']
+
+            try:
+                send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
+            except BadHeaderError:
+                return HttpRequest('Invalid header found')
+            
+            return render(request, 'main_page/index.html', {'form': form})
+        
+    else:
+        form = ContactForm()
+
+    return render(request, 'main_page/flooding.html', {'form': form})
+
+
+
+def expertise(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -49,11 +81,38 @@ def flooding(request):
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
             
-            return render(request, 'main_page/index.html', {'form': form})
+            return render(request, 'main_page/expertise.html', {'form': form})
+            
+    else:
+        form = ContactForm()
+    
+    return render (request, 'main_page/expertise.html', {'form': form})
+
+
+
+def example(request):
+    if request.method =='POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            phone = form.cleaned_data['phone']
+            comment = form.cleaned_data['comment']
+            name_phone = f'{name} {phone}'
+
+            recipients = ['befordshir@gmail.com']
+
+            try:
+                send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
+
+            except BadHeaderError:
+                return HttpRequest('Invalid header found')
+            
+            return render(request, 'main_page/example.html', {'form': form})
         
     else:
         form = ContactForm()
 
-    return render(request, 'main_page/flooding.html', {'form': form})
+    return render(request, 'main_page/example.html', {'form': form})
+
 
 
