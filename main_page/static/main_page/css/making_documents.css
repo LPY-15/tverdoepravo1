@@ -162,6 +162,187 @@ body {
 
 /* navbar end */
 
+.pic-line {
+    background-image: url('../img/carousel-flooding1.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 2% 0% 2%;
+}
+
+.pic-line .text {
+    font-family: 'Open Sans', serif;
+    border-left: solid;
+    border-left-color: #242E81;
+    border-left-width: 6px;
+}
+
+.pic-line .text h2 {
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 5%;
+}
+
+.pic-line .text h4 {
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 5%;
+}
+
+.pic-line .text p {
+    font-size: 14px;
+    line-height: 22.4px;
+    margin: 5%;
+}
+
+.services .service {
+    background-color: #F7F7F7;
+    text-align: center;
+    padding: 10%;
+    font-family: 'Open Sans', serif;
+    margin: 3%;
+}
+
+.services .service h4 {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #0D195E;
+}
+
+.services .service h3 {
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 500;
+    color: #0D195E;
+}
+
+.services .service p {
+    font-size: 16px;
+    line-height: 25px;
+    color: #202F90;
+}
+
+.services .service a {
+    background-color: #202F90;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-width: 0px;
+    border-radius: 0%;
+}
+
+.services .service a:hover {
+    background-color: #4F60BF;
+}
+
+.work-stages {
+    background-color: #14112C;
+    color: #FFFFFF;
+    font-family: 'Open Sans', serif;
+    padding: 3% 10% 3% 10%;
+}
+
+.work-stages .moveleft {
+    margin-left: 5%;
+}
+
+@media (max-width:1000px) {
+    .work-stages .moveleft {
+        margin-left: 7%;
+    }
+}
+
+.work-stages .section-header h2 {
+    text-transform: uppercase;
+    font-size: 35px;
+    margin: 0px 0px 7px;
+    font-weight: 700;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+.work-stages .stage {
+    background-color: #1D1A37;
+    padding-top: 3%;
+    padding-bottom: 0.5%;
+    margin: 5px;
+    color: #CCCCC2;
+    margin-left: 4%;
+    margin-right: 4%;
+    min-height: 140px;
+}
+
+.work-stages .stage .stage-img {
+    position: relative;
+    float: left;
+    left: -23%;
+    top: -14%;
+    width: 50px;
+}
+
+@media (max-width:1100px) {
+    .work-stages .stage .stage-img {
+        left: -20%;
+    }
+}
+
+@media (max-width:1000px) {
+    .work-stages .stage .stage-img {
+        top: 10%;
+        left: -23%;
+    }
+}
+
+.work-stages .stage .stage-img .first {
+
+    max-width: 95px;
+    left: 0%;
+}
+
+.work-stages .stage .stage-img .second {
+    position: absolute;
+    max-width: 95px;
+    top: 0%;
+    left: 0%;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.work-stages .stage:hover .stage-img .second {
+    opacity: 1;
+}
+
+.work-stages .stage .stage-text {
+    margin-left: 0%;
+    margin-bottom: 5%;
+}
+
+@media (max-width:1000px) {
+    .work-stages .stage .stage-text {
+        padding: 6% 0% 0% 10%;
+    }
+}
+
+.work-stages .stage .stage-text h3 {
+    font-size: 17.5px;
+    line-height: 24.5px;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.work-stages .stage .stage-text p {
+    font-size: 14px;
+    line-height: 22.4px;
+    font-weight: 400;
+    vertical-align: text-top;
+}
+
 .contacts {
     padding: 20px;
 }

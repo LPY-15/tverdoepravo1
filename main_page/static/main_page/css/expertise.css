@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-    max-width: 1140px;
+    max-width: 1100px;
 }
 
 .row {
@@ -94,9 +94,15 @@ body {
     }
 }
 
-.top-bar .socials a img {
+.top-bar .socials a svg {
     width: 40px;
     border-radius: 50%;
+    color: #242E81;
+    transition: 0.3s;
+}
+
+.top-bar .socials a svg:hover {
+    color: #000000;
 }
 
 @media (max-width:1000px) {
@@ -105,6 +111,12 @@ body {
         margin:20px;
     }
 }
+
+/* top-bar end*/
+
+
+
+/*nav-bar start*/
 
 .navbar {
     background-color: #242e81 !important;
@@ -139,8 +151,16 @@ body {
 }
 
 .navbar-toggler {
-    margin-left: 300px;
+    margin-left: 92%;
 }
+
+@media (max-width:500px) {
+    .navbar-toggler {
+        margin-left: 85%;
+    }
+}
+
+/* navbar end */
 
 .pic-line {
     background-image: url('../img/carousel-flooding1.jpeg');
@@ -153,8 +173,8 @@ body {
 .pic-line .pic-line-text {
     padding-left: 30px;
     border-left: solid;
-    border-left-width: 5px;
-    border-left-color: #0D195E;
+    border-left-width: 6px;
+    border-left-color: #242E81;
     padding-bottom: 10px;
 }
 
@@ -344,11 +364,20 @@ body {
     line-height: 22.4px;
     font-weight: 400;
     vertical-align: text-top;
-
 }
 
 .contacts {
     padding: 20px;
+}
+
+.contacts .contacts-container {
+    max-width:1300px;
+}
+
+.contacts .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .contacts .article-header h3 {
@@ -384,6 +413,23 @@ body {
     .contacts .right-border {
         border-right-width: 0px;
     }
+}
+
+.contacts .links {
+    margin: 8%;
+}
+
+.contacts .links a img {
+    margin-top: 12%;
+}
+
+.contacts .links .link {
+    margin-bottom: 12%;
+}
+
+.contacts a img {
+    width: 50px;
+    margin: 5%;
 }
 
 .contacts .text a {
@@ -468,6 +514,10 @@ body {
     background-color: #EDEFF7;
 }
 
+.contacts .comment .form-control {
+    min-height: 100px;
+}
+
 .footer {
     background-color: #242e81;
 }
@@ -505,11 +555,22 @@ body {
     padding: 25px;
 }
 
-.footer .socials a img {
+.footer .socials a svg {
     width: 40px;
+    height: auto;
     border-radius: 50%;
     margin: 5px;
     margin-top: 20px;
+    color: #202F83;
+    transition: 0.3s;
+}
+
+.footer .socials a:hover svg {
+    color: #ffffff;
+}
+
+.footer .socials a:hover svg .filler {
+    fill: #000000;
 }
 
 @media (max-width:1000px) {
