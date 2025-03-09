@@ -188,6 +188,12 @@ body {
     font-weight: 700;   
 }
 
+@media (max-width:1100px) {
+    .pic-line h1 {
+        font-size: 32px; 
+    }
+}
+
 .text p {
     color: #3949AB;
     font-family: 'Open Sans', serif;
@@ -267,7 +273,7 @@ body {
     font-size: 22px;
     line-height: 26px;
     font-weight: 400;
-    margin: 0% 2% 2% 2%;
+    margin: 5%;
 }
 
 .blue-line .btn {
@@ -279,6 +285,7 @@ body {
     text-transform: uppercase;
     padding: 13px 30px;
     border-width: 0px;
+    margin: 5%;
 }
 
 .faq {
