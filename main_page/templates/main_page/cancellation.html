@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
     <title>tverdoepravo</title>
+    <link rel="icon" href="{% static 'main_page/img/favicon.png' %}" type="image/x-icon">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -287,7 +288,6 @@
         <div class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid navbar-custom d-lg-flex align-self-flex-end">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse d-lg-flex justify-content-center" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0">
@@ -310,7 +310,7 @@
         <!--navbar end-->
 
         <div class="pic-line">
-            <div class="container-fluid text-light">
+            <div class="container text-light">
                 <h1>Помощь юриста в отмене судебного приказа</h1>
             </div>
         </div>
@@ -329,22 +329,18 @@
         <div class="pricing" id="pricing">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="article">
-                            <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone">
-                            <div class="article-header">
-                                <h3>Заявление об<br> Отмене<br> судебного<br> приказа</h3>
-                                <div class="price">2999 руб.</div>
-                            </div>
+                    <div class="col-lg-6 article">
+                        <img src="{% static 'main_page/img/cancellation1.jpeg' %}" alt="phone">
+                        <div class="article-text">
+                            <h3>Заявление об<br> Отмене<br> судебного<br> приказа</h3>
+                            <p>2999 руб.</p>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="article">
-                            <img src="{% static 'main_page/img/hover1.jpg' %}" alt="phone">
-                            <div class="article-header">
-                                <h3>Заявление о<br> восстановлении<br> пропущенного<br> срока</h3>
-                                <div class="price">4499 руб.</div>
-                            </div>
+                    <div class="col-lg-6 article">
+                        <img src="{% static 'main_page/img/cancellation2.jpeg' %}" alt="phone">
+                        <div class="article-text">
+                            <h3>Заявление о<br> восстановлении<br> пропущенного<br> срока</h3>
+                            <p>4499 руб.</p>
                         </div>
                     </div>
                 </div>
@@ -372,7 +368,7 @@
                                 Что делать, если судебный приказ<br> вступил в силу?
                                 </button>
                             </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div id="collapseOne" class="accordion-collapse collapse">
                                 <div class="accordion-body">
                                     После вступления приказа о взыскании долга в силу решение можно обжаловать в апелляционном суде в двух случаях:<br>
                                     <ul>
@@ -389,7 +385,7 @@
                                     Спишут ли долги после отмены судебного приказа?
                                 </button>
                             </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div id="collapseTwo" class="accordion-collapse collapse">
                                 <div class="accordion-body">
                                     Если суд удовлетворяет прошение должника — исполнительное производство по взысканию долга прекращается.<br>
                                     Однако взыскатель будет вправе снова обратиться в суд, но уже только с исковым заявлением о взыскании задолженности.
@@ -402,7 +398,7 @@
                                     Что делать, если суд отказывается принять возражения, восстановить срок?
                                 </button>
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div id="collapseThree" class="accordion-collapse collapse">
                                 <div class="accordion-body">
                                     В этом случае судебный приказ может быть обжалован в кассационном порядке.<br>
                                     В качестве оснований для отмены приказа в кассационной инстанции могут быть указаны:<br><br>
@@ -422,7 +418,7 @@
                                         В чем отличие судебного приказа от исполнительного листа?
                                     </button>
                                 </h2>
-                                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div id="collapseFour" class="accordion-collapse collapse">
                                     <div class="accordion-body">
                                         Исполнительный лист выписывается в рамках искового производства на основании вступившего в законную силу решения суда.<br><br>
 

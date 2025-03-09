@@ -160,10 +160,11 @@ body {
     }
 }
 
+
 /* navbar end */
 
 .pic-line {
-    background-image: url('../img/carousel-flooding1.jpeg');
+    background-image: url('../img/expertise-main.png');
     background-size: cover;
     background-repeat: no-repeat;
     padding-top: 40px;
@@ -323,18 +324,18 @@ body {
 }
 
 .work-stages .stage .stage-img .first {
-
     max-width: 95px;
     left: 0%;
 }
 
 .work-stages .stage .stage-img .second {
     position: absolute;
-    max-width: 95px;
-    top: 0%;
-    left: 0%;
+    max-width: 80px;
+    top: 8%;
+    left: 15%;
     opacity: 0;
     transition: opacity 0.2s;
+    border-radius: 50%;
 }
 
 .work-stages .stage:hover .stage-img .second {
