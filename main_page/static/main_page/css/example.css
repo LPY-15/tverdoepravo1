@@ -48,6 +48,12 @@ body {
     margin-left: 10px;
 }
 
+@media (max-width:1100px) {
+    .top-bar .phone-and-email img {
+        display:none;
+    }
+}
+
 .top-bar .phone-and-email .text {
     color: #202F83;
     margin-left: 10px;
