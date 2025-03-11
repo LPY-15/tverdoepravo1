@@ -22,17 +22,18 @@ body {
 }
 
 .top-bar .top-bar-img img {
-    max-height: 100px;
+    width: 50%;
+    height: auto;
     float: inline-end;
 }
 
 @media (max-width:1000px) {
     .top-bar .top-bar-img img {
         display: block;
-        margin-left: auto;
-        margin-right: auto;
+        margin: auto;
         padding-left: 15px;
         float: none;
+        width: 100%;
     }
 }
 
@@ -181,6 +182,7 @@ body {
 .LadyJustice-text {
     color: aliceblue;
     font-weight: 100;
+    text-rendering: optimizeLegibility;
 }
 
 .LadyJustice-text h1 {
@@ -491,6 +493,7 @@ body {
 .pricing .article img {
     float: left;
     border-radius: 50%;
+    width: 95px;
 }
 
 .pricing .article .article-header {
@@ -517,6 +520,7 @@ body {
 .pricing .article-header .price {
     width: fit-content;
     margin-left: auto;
+    margin-bottom: 6%;
 }
 
 @media (max-width:1000px) {
