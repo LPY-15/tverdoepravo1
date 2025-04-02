@@ -16,14 +16,14 @@ def mainPage(request):
             comment = form.cleaned_data['comment']
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
             
-            return render(request, 'main_page/index.html', {'form':form})
+            return render(request, 'main_page/main_page.html', {'form':form})
         
     else:
 
@@ -48,14 +48,14 @@ def flooding(request):
             comment = form.cleaned_data['comment']
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
             
-            return render(request, 'main_page/index.html', {'form': form})
+            return render(request, 'main_page/flooding.html', {'form': form})
         
     else:
         form = ContactForm()
@@ -73,7 +73,7 @@ def expertise(request):
             comment = form.cleaned_data['comment']
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
@@ -99,7 +99,7 @@ def example(request):
             comment = form.cleaned_data['comment']
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
@@ -125,7 +125,7 @@ def pre_trial(request):
             comment = form.cleaned_data['comment']
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
@@ -149,7 +149,7 @@ def making_documents(request):
             comment = form.cleaned_data['comment']
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
@@ -176,7 +176,7 @@ def labor_disputes(request):
 
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
@@ -201,7 +201,7 @@ def cancellation(request):
 
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
@@ -228,7 +228,7 @@ def refusal(request):
 
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
@@ -255,7 +255,7 @@ def trademark(request):
 
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
