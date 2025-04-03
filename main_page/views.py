@@ -38,10 +38,11 @@ def mainPage2(request):
     return render(request, 'main_page/index.html')
 
 
-
 def flooding(request):
+
     if request.method == 'POST':
         form = ContactForm(request.POST)
+
         if form.is_valid():
             name = form.cleaned_data['name']
             phone = form.cleaned_data['phone']
@@ -55,13 +56,13 @@ def flooding(request):
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
             
-            return render(request, 'main_page/flooding.html', {'form': form})
+            return render(request, 'main_page/flooding.html', {'form':form})
         
     else:
+
         form = ContactForm()
 
-    return render(request, 'main_page/flooding.html', {'form': form})
-
+    return render(request, 'main_page/flooding.html', {'form':form})
 
 
 def expertise(request):
