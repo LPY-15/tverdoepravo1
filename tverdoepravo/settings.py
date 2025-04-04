@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-fqizj+!0!+^l4o1yjvqe=bt0p-%*#4$rnar1p^j%tim*n^pj@4
 DEBUG = True
 #DEBUG = bool(os.environ.get("DEBUG", default=0))
 
-ALLOWED_HOSTS = ['tverdoepravo.site', '127.0.0.1', 'eeeexperiment.ru', 'lpy-15.ru', 'tverdoepravo.ru', 'lpy-15-reg.ru', 'lpy-15-tverdoepravo1-2f85.twc1.net']
+ALLOWED_HOSTS = ['tverdoepravo.site', '127.0.0.1', 'eeeexperiment.ru', 'lpy-15.ru', 'tverdoepravo.ru', 'lpy-15-reg.ru']
 #ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS","127.0.0.1").split(",")
 
 
@@ -126,7 +126,7 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_USE_TLS = True
+EMAIL_USE_TLS = False
 EMAIL_HOST = 'smtp.yandex.ru' #Например, smtp.gmail.com
 EMAIL_HOST_USER = 'sunbaking@yandex.ru' #Например, user@gmail.com. Именно его необходимо указывать как ВАШ_EMAIL_ДЛЯ_ОТПРАВКИ_СООБЩЕНИЯ в исходном коде предыдущего пункта
 EMAIL_HOST_PASSWORD = 'dulviftmzkssindd'
