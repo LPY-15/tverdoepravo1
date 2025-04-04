@@ -133,4 +133,4 @@ EMAIL_HOST_PASSWORD = 'dulviftmzkssindd'
 
 APPEND_SLASH=False
 
-CSRF_TRUSTED_ORIGINS=['https://lpy-15.ru/']
+CSRF_TRUSTED_ORIGINS=['https://lpy-15.ru']
