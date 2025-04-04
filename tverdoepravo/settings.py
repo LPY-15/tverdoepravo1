@@ -130,7 +130,7 @@ EMAIL_PORT = 465
 EMAIL_USE_TLS = False
 EMAIL_HOST = 'smtp.yandex.ru' #Например, smtp.gmail.com
 EMAIL_HOST_USER = 'sunbaking@yandex.ru' #Например, user@gmail.com. Именно его необходимо указывать как ВАШ_EMAIL_ДЛЯ_ОТПРАВКИ_СООБЩЕНИЯ в исходном коде предыдущего пункта
-EMAIL_HOST_PASSWORD = '0f4785d49a1a83c844708371dd3f47ca'
-#'dulviftmzkssindd'
+EMAIL_HOST_PASSWORD = 'jjfnvdnoczydmdsm'
+#'dulviftmzkssindd' jjfnvdnoczydmdsm
 
 CSRF_TRUSTED_ORIGINS=['https://lpy-15.ru']
