@@ -132,3 +132,5 @@ EMAIL_HOST_USER = 'sunbaking@yandex.ru' #Например, user@gmail.com. Им�
 EMAIL_HOST_PASSWORD = 'dulviftmzkssindd'
 
 APPEND_SLASH=False
+
+CSRF_TRUSTED_ORIGINS=['https://lpy-15.ru/']
