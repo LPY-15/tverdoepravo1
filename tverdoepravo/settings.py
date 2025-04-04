@@ -131,6 +131,4 @@ EMAIL_HOST = 'smtp.yandex.ru' #Например, smtp.gmail.com
 EMAIL_HOST_USER = 'sunbaking@yandex.ru' #Например, user@gmail.com. Именно его необходимо указывать как ВАШ_EMAIL_ДЛЯ_ОТПРАВКИ_СООБЩЕНИЯ в исходном коде предыдущего пункта
 EMAIL_HOST_PASSWORD = 'dulviftmzkssindd'
 
-APPEND_SLASH=False
-
 CSRF_TRUSTED_ORIGINS=['https://lpy-15.ru']
