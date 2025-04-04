@@ -126,11 +126,11 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'main_page.backends.email_backend.EmailBackend'
+#EMAIL_BACKEND = 'main_page.backends.email_backend.EmailBackend'
 
 EMAIL_PORT = 465
 EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
+#EMAIL_USE_SSL = False
 EMAIL_HOST = 'smtp.yandex.ru' #Например, smtp.gmail.com
 EMAIL_HOST_USER = 'sunbaking@yandex.ru' #Например, user@gmail.com. Именно его необходимо указывать как ВАШ_EMAIL_ДЛЯ_ОТПРАВКИ_СООБЩЕНИЯ в исходном коде предыдущего пункта
 EMAIL_HOST_PASSWORD = 'dulviftmzkssindd'
