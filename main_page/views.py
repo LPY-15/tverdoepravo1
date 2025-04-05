@@ -93,7 +93,7 @@ def flooding(request):
             comment = form.cleaned_data['comment']
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['befordshir@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
