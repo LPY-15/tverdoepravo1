@@ -2,12 +2,13 @@ import smtplib
 import getpass
 
 
-EMAIL_ADDRESS = 'sunbaking@yandex.ru'
+EMAIL_ADDRESS = 'befordshir@gmail.com'
 EMAIL_PASSWORD = getpass.getpass('Enter password: ')
-"""dulviftmzkssindd"""           
+"""dulviftmzkssindd"""
+'''XSWbgt169'''           
 print(1)
 
-smtp = smtplib.SMTP('smtp.yandex.ru', 587)
+smtp = smtplib.SMTP('smtp-mail.outlook.com', 587)
 """smtp.ehlo()
 smtp.starttls()
 smtp.ehlo()"""
@@ -27,6 +28,6 @@ smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
 
 msg = f'my email is {EMAIL_ADDRESS}'
 
-smtp.sendmail(EMAIL_ADDRESS, 'befordshir@gmail.com', msg)
+smtp.sendmail(EMAIL_ADDRESS, 'befordshir@mail.ru', msg)
 
 smtp.quit()
