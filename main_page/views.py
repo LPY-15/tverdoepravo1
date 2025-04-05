@@ -19,7 +19,7 @@ def mainPage(request):
             recipients = ['befordshir@gmail.com']
 
             try:
-                send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
+                send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients, fail_silently=False)
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
             
