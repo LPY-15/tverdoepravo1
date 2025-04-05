@@ -136,4 +136,4 @@ EMAIL_HOST_USER = 'befordshir@mail.ru' #Например, user@gmail.com. Име
 EMAIL_HOST_PASSWORD = 'axfYCFFfxaw7ctZt6m1s'
 #'dulviftmzkssindd -yandex' jjfnvdnoczydmdsm
 
-CSRF_TRUSTED_ORIGINS=['https://lpy-15.ru']
+CSRF_TRUSTED_ORIGINS=['https://lpy-15.ru', 'https://tverdoepravo.site']
