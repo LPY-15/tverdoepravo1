@@ -300,7 +300,7 @@ def trademark(request):
 
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['sunbaking@yandex.ru']
 
             try:
                 send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
