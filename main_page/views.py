@@ -276,7 +276,7 @@ def refusal(request):
             recipients = ['befordshir@gmail.com']
 
             try:
-                send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
+                send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
@@ -303,7 +303,7 @@ def trademark(request):
             recipients = ['befordshir@gmail.com']
 
             try:
-                send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
+                send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')

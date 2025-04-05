@@ -128,12 +128,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-EMAIL_HOST = 'smtp.yandex.ru' #Например, smtp.gmail.com
-EMAIL_HOST_USER = 'sunbaking@yandex.ru' #Например, user@gmail.com. Именно его необходимо указывать как ВАШ_EMAIL_ДЛЯ_ОТПРАВКИ_СООБЩЕНИЯ в исходном коде предыдущего пункта
-EMAIL_HOST_PASSWORD = 'dulviftmzkssindd'
-#'dulviftmzkssindd' jjfnvdnoczydmdsm
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.mail.ru' #Например, smtp.gmail.com
+EMAIL_HOST_USER = 'befordshir@mail.ru' #Например, user@gmail.com. Именно его необходимо указывать как ВАШ_EMAIL_ДЛЯ_ОТПРАВКИ_СООБЩЕНИЯ в исходном коде предыдущего пункта
+EMAIL_HOST_PASSWORD = 'axfYCFFfxaw7ctZt6m1s'
+#'dulviftmzkssindd -yandex' jjfnvdnoczydmdsm
 
 CSRF_TRUSTED_ORIGINS=['https://lpy-15.ru']
