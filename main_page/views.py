@@ -2,12 +2,12 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from django.core.mail import send_mail, BadHeaderError
 from .forms import ContactForm
-import smtplib
+
 
 
 # Create your views here.
 
-'''def mainPage(request):
+def mainPage(request):
 
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -21,7 +21,7 @@ import smtplib
             recipients = ['befordshir@gmail.com']
 
             try:
-                send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients, fail_silently=False)
+                send_mail(name_phone, comment, 'befordshir@mail.ru', recipients, fail_silently=False)
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
             
@@ -31,55 +31,7 @@ import smtplib
 
         form = ContactForm()
 
-    return render(request, 'main_page/main_page.html', {'form':form})'''
-
-
-
-def mainPage(request):
-
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            phone = form.cleaned_data['phone']
-            comment = form.cleaned_data['comment']
-            name_phone = f'{name} {phone}'
-
-            '''recipients = ['befordshir@gmail.com']
-
-            try:
-                send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients, fail_silently=False)
-            except BadHeaderError:
-                return HttpRequest('Invalid header found')'''
-
-            EMAIL_ADDRESS = 'sunbaking@yandex.ru'
-            EMAIL_PASSWORD = 'dulviftmzkssindd'            
-
-            smtp = smtplib.SMTP('smtp.yandex.ru', 465)
-            smtp.ehlo()
-            smtp.starttls()
-            smtp.ehlo()
-
-            smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
-
-            msg = f'{name_phone} {comment}'
-
-            smtp.sendmail(EMAIL_ADDRESS, 'befordshir@gmail.com', msg)
-
-            
-            return render(request, 'main_page/main_page.html', {'form':form})
-        
-    else:
-
-        form = ContactForm()
-
     return render(request, 'main_page/main_page.html', {'form':form})
-
-
-def mainPage2(request):
-
-    return render(request, 'main_page/index.html')
 
 
 def flooding(request):
@@ -93,10 +45,10 @@ def flooding(request):
             comment = form.cleaned_data['comment']
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@mail.ru']
+            recipients = ['befordshir@gmail.com']
 
             try:
-                send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
+                send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
             
@@ -121,7 +73,7 @@ def expertise(request):
             recipients = ['befordshir@gmail.com']
 
             try:
-                send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
+                send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
@@ -147,7 +99,7 @@ def example(request):
             recipients = ['befordshir@gmail.com']
 
             try:
-                send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
+                send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
@@ -173,7 +125,7 @@ def pre_trial(request):
             recipients = ['befordshir@gmail.com']
 
             try:
-                send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
+                send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
@@ -197,7 +149,7 @@ def making_documents(request):
             recipients = ['befordshir@gmail.com']
 
             try:
-                send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
+                send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
@@ -224,7 +176,7 @@ def labor_disputes(request):
             recipients = ['befordshir@gmail.com']
 
             try:
-                send_mail(name_phone, comment, 'sunbaking@yandex.ru', recipients)
+                send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
@@ -273,7 +225,7 @@ def refusal(request):
 
             name_phone = f'{name} {phone}'
 
-            recipients = ['sunbaking@yandex.ru']
+            recipients = ['befordshir@gmail.com']
 
             try:
                 send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
@@ -300,7 +252,7 @@ def trademark(request):
 
             name_phone = f'{name} {phone}'
 
-            recipients = ['sunbaking@yandex.ru']
+            recipients = ['befordshir@gmail.com']
 
             try:
                 send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
