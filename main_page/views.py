@@ -198,7 +198,7 @@ def cancellation(request):
 
             name_phone = f'{name} {phone}'
 
-            recipients = ['tverdoepravo@mail.ru']
+            recipients = ['befordshir@gmail.com']
 
             try:
                 send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
