@@ -18,7 +18,7 @@ def mainPage(request):
             comment = form.cleaned_data['comment']
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'befordshir@mail.ru', recipients, fail_silently=False)
@@ -45,7 +45,7 @@ def flooding(request):
             comment = form.cleaned_data['comment']
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
@@ -70,7 +70,7 @@ def expertise(request):
             comment = form.cleaned_data['comment']
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
@@ -96,7 +96,7 @@ def example(request):
             comment = form.cleaned_data['comment']
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
@@ -122,7 +122,7 @@ def pre_trial(request):
             comment = form.cleaned_data['comment']
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
@@ -146,7 +146,7 @@ def making_documents(request):
             comment = form.cleaned_data['comment']
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
@@ -173,7 +173,7 @@ def labor_disputes(request):
 
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
@@ -198,7 +198,7 @@ def cancellation(request):
 
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
@@ -225,7 +225,7 @@ def refusal(request):
 
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
@@ -252,7 +252,7 @@ def trademark(request):
 
             name_phone = f'{name} {phone}'
 
-            recipients = ['befordshir@gmail.com']
+            recipients = ['tverdoepravo@mail.ru']
 
             try:
                 send_mail(name_phone, comment, 'befordshir@mail.ru', recipients)
