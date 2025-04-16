@@ -9,7 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../../static/main_page/js/modal.js" defer></script>
+    <script src="../../../static/main_page/js/modal-buttons.js" defer></script>
+    <script src="../../../static/main_page/js/jquery-3.7.1.min.js" defer></script>
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,600;1,700;1,800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link type = "text/css" href = "{% static 'main_page/css/cancellation.css' %}" rel = "stylesheet"/>
@@ -25,6 +27,10 @@
 </head>
 <body>
     <div class="wrapper">
+        <button class="contact-button">
+            <img src="{% static 'main_page/img/contact-button1.svg' %}" alt="contact-button" class="first">
+            <img src="{% static 'main_page/img/contact-button2.svg' %}" alt="contact-button" class="second">
+        </button>
         <!--Top Bar Start-->
         <div class="top-bar">
             <div class="container-fluid">
@@ -488,7 +494,50 @@
                                       {{ form.comment }}
                                     </div>
                                     <div class="warning">
-                                        <input type="checkbox" required="required" value="Нажимая кнопку «Получить консультацию», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных">
+                                        <button type="button" class="modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <span><input type="checkbox" id="checkbox" required="true">Нажимая кнопку «Получить консультацию», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
+                                           
+                                        </button>
+
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                            <div class="modal-content" style="height: 90%;">
+                                                <div class="modal-header">
+                                                    <p class="modal-title" id="exampleModalLabel">Согласие на обработку персональных данных</p>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p class="modal-text">
+                                                        Настоящим в соответствии с Федеральным законом № 152-ФЗ «О персональных данных» от 27.07.2006 года свободно, своей волей и в своем интересе выражаю свое безусловное согласие на обработку моих персональных данных Метелица Артём Александрович ИНН 100399120058, зарегистрированным в соответствии с законодательством РФ по адресу:<br>
+                                                        г. Санкт-Петербург, ул. Латышских Стрелков, д. 17, корп. 1 (далее по тексту - Оператор).<br>
+                                                        1. Согласие дается на обработку одной, нескольких или всех категорий персональных данных, не являющихся специальными или биометрическими, предоставляемых мною, которые могут включать:<br><br>
+                                                        
+                                                        - Имя;<br>
+                                                        - Телефон;<br>
+                                                        - Комментарий.<br><br>
+                                                        
+                                                        2. Оператор может совершать следующие действия: сбор; запись; систематизация; накопление; хранение; уточнение (обновление, изменение); извлечение; использование; блокирование; удаление; уничтожение.<br><br>
+                                                        
+                                                        3. Способы обработки: как с использованием средств автоматизации, так и без их использования.<br><br>
+                                                        
+                                                        4. Цель обработки: предоставление мне услуг/работ, включая, направление в мой адрес уведомлений, касающихся предоставляемых услуг/работ, подготовка и направление ответов на мои запросы, направление в мой адрес информации о мероприятиях/товарах/услугах/работах Оператора.<br><br>
+                                                        
+                                                        5. В связи с тем, что Оператор может осуществлять обработку моих персональных данных посредством программы для ЭВМ «1С-Битрикс24», я даю свое согласие Оператору на осуществление соответствующего поручения ООО «1С-Битрикс», (ОГРН 5077746476209), зарегистрированному по адресу: 109544, г. Москва, б-р Энтузиастов, д. 2, эт.13, пом. 8-19.<br><br>
+                                                        
+                                                        6. Настоящее согласие действует до момента его отзыва путем направления соответствующего уведомления на электронный адрес tverdoepravo@mail.ru или направления по адресу г. Санкт-Петербург, ул. Латышских Стрелков, д. 17, корп. 1.<br><br>
+                                                        
+                                                        7. В случае отзыва мною согласия на обработку персональных данных Оператор вправе продолжить обработку персональных данных без моего согласия при наличии оснований, предусмотренных Федеральным законом №152-ФЗ «О персональных данных» от 27.07.2006 г.
+                                                    </p>
+                                                    <button type="button" class="btn accept-button" data-bs-dismiss="modal" onclick='check()'>Принимаю</button>
+                                                    <button type="button" class="btn decline-button" data-bs-dismiss="modal" onclick='uncheck()'>Не принимаю</button>
+                                                </div>
+                                                <!--<div class="modal-footer" style="display: flex; justify-content: center;">
+                                                    <button type="button" class="btn accept-button" data-bs-dismiss="modal" onclick='check()'>Принимаю</button>
+                                                    <button type="button" class="btn decline-button" data-bs-dismiss="modal" onclick='uncheck()'>Не принимаю</button>
+                                                </div>-->
+                                            </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <input type="submit" class="submit" value="Получить консультацию"/>
                                 </form>
@@ -506,16 +555,7 @@
                         <div class="rights">
                             <p>© 2022-2024 "Твердое право"<br>Метелица Артём Александрович<br>Адрес: Латышских Стрелков, д. 17, к. 1<br>ИНН: 100399120058</p>
                         </div>
-                        <button class="modal_button">
-                            <span>123</span>
-                        </button>
-                        <div class="modal">
-                            <div class="modal_text">
-                                <p>
-                                    123
-                                </p>
-                            </div>
-                        </div>
+
                         <div class="socials">
                             <a href="https://wa.me/+79027721472"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 width="100%" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">

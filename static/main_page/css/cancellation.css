@@ -16,6 +16,17 @@ body {
     margin-right: 0px;
 }
 
+.contact-button {
+    position: fixed; 
+    bottom: 40px; 
+    right: 40px; 
+    width: 60px; 
+    height: 60px;
+    border-radius: 50%;
+    background-color: #535ba4;
+    border-width: 0px;
+}
+
 .top-bar {
     color: #202F83;
     font-family: "Open Sans", serif;
@@ -481,7 +492,9 @@ body {
     display: flex;
 }
 
-.contacts .form .warning span {
+.contacts .modal-btn {
+    background-color: #ffffff;
+    border-width: 0px;
     font-family: "Open Sans", serif;
     color: #919191;
     font-size: 11px;
@@ -489,6 +502,40 @@ body {
     font-weight: 400;
     margin-bottom: 10px;
     text-align: left;
+}
+
+.contacts .modal-dialog p {
+    color: #0D195E;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: left;
+}
+
+.contacts .modal-header button {
+    background-color: #202F83;
+    opacity: 0.4;
+    border-radius: 50%;
+    color: #FFFFFF;
+}
+
+.contacts .modal-body .btn {
+    width: 47%;
+    padding: 3%;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Open Sans', 'serif';
+    margin: 1%;
+}
+
+.contacts .modal-body .accept-button {
+    background-color: #202F83;
+    color: #ffffff;
+}
+
+.contacts .modal-body .decline-button {
+    color: #202F83;
+    border-width: 1px;
+    border-color: #202F83;
 }
 
 .form-control {
