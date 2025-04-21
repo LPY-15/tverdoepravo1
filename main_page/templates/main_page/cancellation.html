@@ -11,6 +11,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../../static/main_page/js/modal-buttons.js" defer></script>
     <script src="../../../static/main_page/js/jquery-3.7.1.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,600;1,700;1,800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -27,7 +30,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <button class="contact-button">
+        <button class="contact-button" id="contact-button">
             <img src="{% static 'main_page/img/contact-button1.svg' %}" alt="contact-button" class="first">
             <img src="{% static 'main_page/img/contact-button2.svg' %}" alt="contact-button" class="second">
         </button>
@@ -36,7 +39,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-3">
-                        <div class="top-bar-img">
+                        <div class="top-bar-img" id="top-bar-img">
                             <a href="/" ><img class="img-fluid" src="{% static 'main_page/img/tplogo.png' %}" alt="tplogo"></a>
                         </div>
                     </div>
@@ -46,7 +49,7 @@
                                 <div class="img">
                                     <img src="{% static 'main_page/img/smartphone.svg' %}" alt="smartphone">
                                 </div>
-                                <div class="text">
+                                <div class="text" id="replacement">
                                     <span>ТЕЛЕФОН</span>
                                 </div>
                                 <div class="link">
@@ -450,7 +453,7 @@
             <div class="container contacts-container">
                 <div class="row">
                     <div class="col-lg-6 text-center left">
-                        <div class="article-header">
+                        <div class="article-header" id="bold2">
                             <h3>Получите бесплатную<br> консультацию</h3>
                         </div>
                         <p><span id="bold">Заполните форму,</span> чтобы получить бесплатную консультацию</p>
@@ -500,13 +503,18 @@
                                         </button>
 
                                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" id="model-dialog">
                                             <div class="modal-content" style="height: 90%;">
-                                                <div class="modal-header">
+                                                <!--<div class="modal-header">
                                                     <p class="modal-title" id="exampleModalLabel">Согласие на обработку персональных данных</p>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
+                                                </div>-->
+                                                <div class="modal-body" id="modal-body">
+                                                    <p class="modal-title" id="exampleModalLabel">Согласие на обработку персональных данных</p>
+                                                    <hr style="opacity: 0.1;">
+                                                    <button class="exit-button" data-bs-dismiss="modal">
+                                                        <img src="{% static 'main_page/img/exit.svg' %}" alt="exit-button">
+                                                    </button>
                                                     <p class="modal-text">
                                                         Настоящим в соответствии с Федеральным законом № 152-ФЗ «О персональных данных» от 27.07.2006 года свободно, своей волей и в своем интересе выражаю свое безусловное согласие на обработку моих персональных данных Метелица Артём Александрович ИНН 100399120058, зарегистрированным в соответствии с законодательством РФ по адресу:<br>
                                                         г. Санкт-Петербург, ул. Латышских Стрелков, д. 17, корп. 1 (далее по тексту - Оператор).<br>
@@ -526,15 +534,21 @@
                                                         
                                                         6. Настоящее согласие действует до момента его отзыва путем направления соответствующего уведомления на электронный адрес tverdoepravo@mail.ru или направления по адресу г. Санкт-Петербург, ул. Латышских Стрелков, д. 17, корп. 1.<br><br>
                                                         
-                                                        7. В случае отзыва мною согласия на обработку персональных данных Оператор вправе продолжить обработку персональных данных без моего согласия при наличии оснований, предусмотренных Федеральным законом №152-ФЗ «О персональных данных» от 27.07.2006 г.
+                                                        7. В случае отзыва мною согласия на обработку персональных данных Оператор вправе продолжить обработку персональных данных без моего согласия при наличии оснований, предусмотренных Федеральным законом №152-ФЗ <span id="modal-end">«О персональных данных» от 27.07.2006 г.</span>
                                                     </p>
-                                                    <button type="button" class="btn accept-button" data-bs-dismiss="modal" onclick='check()'>Принимаю</button>
-                                                    <button type="button" class="btn decline-button" data-bs-dismiss="modal" onclick='uncheck()'>Не принимаю</button>
                                                 </div>
-                                                <!--<div class="modal-footer" style="display: flex; justify-content: center;">
-                                                    <button type="button" class="btn accept-button" data-bs-dismiss="modal" onclick='check()'>Принимаю</button>
-                                                    <button type="button" class="btn decline-button" data-bs-dismiss="modal" onclick='uncheck()'>Не принимаю</button>
-                                                </div>-->
+                                                <div class="modal-footer" id="modal-footer" style="display: flex; justify-content: center;">
+                                                    <div class="footer_scrolled_down" id="footer_scrolled_down" style="display: none;">
+                                                        <button type="button" class="btn accept-button" data-bs-dismiss="modal" onclick='check()'>Принимаю</button>
+                                                        <button type="button" class="btn decline-button" data-bs-dismiss="modal" onclick='uncheck()'>Не принимаю</button> 
+                                                    </div>
+                                                    <a href="../cancellation/#modal-end" class="modal-link">
+                                                        <div class="footer_not_scrolled_down" id="footer_not_scrolled_down">
+                                                            <p>Прочитайте до конца</p>
+                                                            <!--<img src="{% static 'main_page/img/modal-footer-pointers.png' %}" alt="pointers">-->
+                                                        </div>
+                                                    </a>
+                                                </div>
                                             </div>
                                             </div>
                                         </div>
@@ -547,16 +561,40 @@
                 </div>
             </div>
         </div>
+        <script>
+            const contentDiv = document.getElementById('footer_scrolled_down');
+            const newContentDiv = document.getElementById('footer_not_scrolled_down');
+            const threshold = 560;
+            const modalBody = document.getElementById('modal-body');
+            document.getElementById('exampleModal').addEventListener('shown.bs.modal', function () {
+
+            // Listen to the scroll event
+                modalBody.addEventListener('scroll', () => {
+                    let currentScroll = modalBody.scrollY;
+                    if (modalBody.scrollTop > threshold) { // Scroll down
+                        // Hide the original content and show the new content
+                        contentDiv.style.display = 'block';
+                        newContentDiv.style.display = 'none';
+                    } else { // Scroll up
+                        // Show the original content and hide the new content
+                        contentDiv.style.display = 'none';
+                        newContentDiv.style.display = 'block';
+                    }
+
+                    lastScroll = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll position
+                });
+            });
+        </script>
         <div class="footer" id="footer">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-2"></div>
                     <div class="col-lg-8 rights-socials">
-                        <div class="rights">
+                        <div class="rights" id="rights">
                             <p>© 2022-2024 "Твердое право"<br>Метелица Артём Александрович<br>Адрес: Латышских Стрелков, д. 17, к. 1<br>ИНН: 100399120058</p>
                         </div>
 
-                        <div class="socials">
+                        <div class="socials" id="socials">
                             <a href="https://wa.me/+79027721472"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 width="100%" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
                            <path class='filler' fill="#FFFFFF" opacity="1.000000" stroke="none" 
