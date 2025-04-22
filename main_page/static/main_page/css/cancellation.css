@@ -582,6 +582,8 @@ body {
 .contacts .modal-footer .footer_not_scrolled_down {
     display: flex;
     justify-content: center;
+
+    flex-direction: column;
 }
 
 .contacts .modal-footer .footer_not_scrolled_down p {
@@ -591,7 +593,10 @@ body {
 }
 
 .contacts .modal-footer .footer_not_scrolled_down img {
-    width: 50px;
+    width: 100px;
+    height: 100px;
+    margin-top: 0%;
+    margin-bottom: 0%;
 }
 
 .contacts .modal-footer .footer_scrolled_down {
