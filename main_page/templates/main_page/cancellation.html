@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Твердое право</title>
+    <title>Отмена судебного приказа</title>
     <link rel="icon" href="{% static 'main_page/img/favicon.png' %}" type="image/x-icon">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -361,7 +361,7 @@
             <div class="container-fluid bg">
                 <div class="container">
                     <h3>Внесите в форму все необходимые данные, оплатите и получите готовый, юридически грамотный документ на вашу электронную почту</h3>
-                    <a href="../cancellation/#contacts" class="btn btn-success">Отменить судебный приказ</a>
+                    <a href="../cancellation/#contacts" class="btn btn-success">Получить заявление об отмене судебного приказа</a>
                 </div>
             </div>
         </div>
@@ -499,9 +499,7 @@
                                     <div class="warning">
                                         <button type="button" class="modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                             <span><input type="checkbox" id="checkbox" required="true">Нажимая кнопку «Получить консультацию», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
-                                           
                                         </button>
-
                                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" id="model-dialog">
                                             <div class="modal-content" style="height: 90%;">
@@ -542,14 +540,14 @@
                                                         <button type="button" class="btn accept-button" data-bs-dismiss="modal" onclick='check()'>Принимаю</button>
                                                         <button type="button" class="btn decline-button" data-bs-dismiss="modal" onclick='uncheck()'>Не принимаю</button> 
                                                     </div>
-                                                    <a href="../cancellation/#modal-end" class="modal-link">
                                                         <div class="footer_not_scrolled_down" id="footer_not_scrolled_down">
-                                                            <p>Прочитайте до конца</p>
-                                                            <!--<img src="{% static 'main_page/img/modal-footer.svg' %}" alt="pointers">-->
+                                                            <a href="../cancellation/#modal-end" class="modal-link">
+                                                                <p>Прочитайте до конца</p>
+                                                                <img src="{% static 'main_page/img/modal-footer.png' %}" alt="pointers">
+                                                            </a>
                                                         </div>
-                                                    </a>
+                                                    </div>
                                                 </div>
-                                            </div>
                                             </div>
                                         </div>
                                     </div>

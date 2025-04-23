@@ -180,17 +180,13 @@ body {
 
 /* navbar end */
 
-.main-img .image h1 {
-    font-family: 'Open Sans', sans-serif;
-    color: #3A4AA1;
-    font-size: 38px;
-    line-height: 53px;
-    text-align: center;
-    font-weight: 400;
+.pic-line {
+    height: 200px;
 }
 
-.main-img .image img {
-    width: 100%;
+.pic-line img {
+    width: 200px;
+    height: 200px;
 }
 
 .text p {

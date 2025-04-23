@@ -3,12 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Твердое право</title>
+    <title>Трудовые споры</title>
     <link rel="icon" href="{% static 'main_page/img/favicon.png' %}" type="image/x-icon">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../static/main_page/js/modal-buttons.js" defer></script>
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,600;1,700;1,800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link type = "text/css" href = "{% static 'main_page/css/labor_disputes.css' %}" rel = "stylesheet"/>
@@ -20,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
-    <base href="https://lpy-15-reg.ru/" />
+    <base href="http://127.0.0.1:8000/" />
 </head>
 <body>
     <div class="wrapper">
@@ -310,12 +312,11 @@
         </div>
         <!--navbar end-->
 
-        <div class="main-img">
-            <div class="container image">
-                <h1>Что делать, если Ваши права нарушили?</h1>
-                <img class="img-fluid" src="{% static 'main_page/img/labor_disputes-main.png' %}">
-            </div>
+        <!--pic-line start-->
+        <div class="container-fluid pic-line">
+            <img src="{% static 'main_page/img/labor-disputes-main.png' %}" class="img-fluid" alt="main">
         </div>
+        <!--pic-line end-->
 
         <div class="text">
             <div class="container">
@@ -414,7 +415,59 @@
                                       {{ form.comment }}
                                     </div>
                                     <div class="warning">
-                                        <span><input type="checkbox" required="required">Нажимая кнопку «Получить консультацию», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
+                                        <button type="button" class="modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <span><input type="checkbox" id="checkbox" required="true">Нажимая кнопку «Получить консультацию», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
+                                        </button>
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" id="model-dialog">
+                                            <div class="modal-content" style="height: 90%;">
+                                                <!--<div class="modal-header">
+                                                    <p class="modal-title" id="exampleModalLabel">Согласие на обработку персональных данных</p>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>-->
+                                                <div class="modal-body" id="modal-body">
+                                                    <p class="modal-title" id="exampleModalLabel">Согласие на обработку персональных данных</p>
+                                                    <hr style="opacity: 0.1;">
+                                                    <button class="exit-button" data-bs-dismiss="modal">
+                                                        <img src="{% static 'main_page/img/exit.png' %}" alt="exit-button">
+                                                    </button>
+                                                    <p class="modal-text">
+                                                        Настоящим в соответствии с Федеральным законом № 152-ФЗ «О персональных данных» от 27.07.2006 года свободно, своей волей и в своем интересе выражаю свое безусловное согласие на обработку моих персональных данных Метелица Артём Александрович ИНН 100399120058, зарегистрированным в соответствии с законодательством РФ по адресу:<br>
+                                                        г. Санкт-Петербург, ул. Латышских Стрелков, д. 17, корп. 1 (далее по тексту - Оператор).<br>
+                                                        1. Согласие дается на обработку одной, нескольких или всех категорий персональных данных, не являющихся специальными или биометрическими, предоставляемых мною, которые могут включать:<br><br>
+                                                        
+                                                        - Имя;<br>
+                                                        - Телефон;<br>
+                                                        - Комментарий.<br><br>
+                                                        
+                                                        2. Оператор может совершать следующие действия: сбор; запись; систематизация; накопление; хранение; уточнение (обновление, изменение); извлечение; использование; блокирование; удаление; уничтожение.<br><br>
+                                                        
+                                                        3. Способы обработки: как с использованием средств автоматизации, так и без их использования.<br><br>
+                                                        
+                                                        4. Цель обработки: предоставление мне услуг/работ, включая, направление в мой адрес уведомлений, касающихся предоставляемых услуг/работ, подготовка и направление ответов на мои запросы, направление в мой адрес информации о мероприятиях/товарах/услугах/работах Оператора.<br><br>
+                                                        
+                                                        5. В связи с тем, что Оператор может осуществлять обработку моих персональных данных посредством программы для ЭВМ «1С-Битрикс24», я даю свое согласие Оператору на осуществление соответствующего поручения ООО «1С-Битрикс», (ОГРН 5077746476209), зарегистрированному по адресу: 109544, г. Москва, б-р Энтузиастов, д. 2, эт.13, пом. 8-19.<br><br>
+                                                        
+                                                        6. Настоящее согласие действует до момента его отзыва путем направления соответствующего уведомления на электронный адрес tverdoepravo@mail.ru или направления по адресу г. Санкт-Петербург, ул. Латышских Стрелков, д. 17, корп. 1.<br><br>
+                                                        
+                                                        7. В случае отзыва мною согласия на обработку персональных данных Оператор вправе продолжить обработку персональных данных без моего согласия при наличии оснований, предусмотренных Федеральным законом №152-ФЗ <span id="modal-end">«О персональных данных» от 27.07.2006 г.</span>
+                                                    </p>
+                                                </div>
+                                                <div class="modal-footer" id="modal-footer" style="display: flex; justify-content: center;">
+                                                    <div class="footer_scrolled_down" id="footer_scrolled_down" style="display: none;">
+                                                        <button type="button" class="btn accept-button" data-bs-dismiss="modal" onclick='check()'>Принимаю</button>
+                                                        <button type="button" class="btn decline-button" data-bs-dismiss="modal" onclick='uncheck()'>Не принимаю</button> 
+                                                    </div>
+                                                        <div class="footer_not_scrolled_down" id="footer_not_scrolled_down">
+                                                            <a href="../labor-disputes/#modal-end" class="modal-link">
+                                                                <p>Прочитайте до конца</p>
+                                                                <img src="{% static 'main_page/img/modal-footer.png' %}" alt="pointers">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <input type="submit" class="submit" value="Получить консультацию"/>
                                 </form>
@@ -424,6 +477,30 @@
                 </div>
             </div>
         </div>
+        <script>
+            const contentDiv = document.getElementById('footer_scrolled_down');
+            const newContentDiv = document.getElementById('footer_not_scrolled_down');
+            const threshold = 560;
+            const modalBody = document.getElementById('modal-body');
+            document.getElementById('exampleModal').addEventListener('shown.bs.modal', function () {
+
+            // Listen to the scroll event
+                modalBody.addEventListener('scroll', () => {
+                    let currentScroll = modalBody.scrollY;
+                    if (modalBody.scrollTop > threshold) { // Scroll down
+                        // Hide the original content and show the new content
+                        contentDiv.style.display = 'block';
+                        newContentDiv.style.display = 'none';
+                    } else { // Scroll up
+                        // Show the original content and hide the new content
+                        contentDiv.style.display = 'none';
+                        newContentDiv.style.display = 'block';
+                    }
+
+                    lastScroll = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll position
+                });
+            });
+        </script>
         <div class="footer" id="footer">
             <div class="container-fluid">
                 <div class="row">
