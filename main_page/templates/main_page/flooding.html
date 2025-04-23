@@ -481,7 +481,7 @@
                                             <span><input type="checkbox" id="checkbox" required="true">Нажимая кнопку «Получить консультацию», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
                                         </button>
                                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" id="model-dialog">
+                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" id="model-dialog" style="max-width: 600px;">
                                             <div class="modal-content" style="height: 90%;">
                                                 <!--<div class="modal-header">
                                                     <p class="modal-title" id="exampleModalLabel">Согласие на обработку персональных данных</p>
@@ -542,7 +542,7 @@
         <script>
             const contentDiv = document.getElementById('footer_scrolled_down');
             const newContentDiv = document.getElementById('footer_not_scrolled_down');
-            const threshold = 560;
+            const threshold = 465;
             const modalBody = document.getElementById('modal-body');
             document.getElementById('exampleModal').addEventListener('shown.bs.modal', function () {
 
