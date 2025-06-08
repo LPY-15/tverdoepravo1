@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 from django.urls import re_path
 from django.views.static import serve
 from django.conf import settings
+from .forms import CancellationFormPage1, CancellationFormPage2, CancellationFormPage3
 
 app_name = 'main_page'
 
@@ -15,7 +16,7 @@ urlpatterns = [
     path('pre-trial/', views.pre_trial, name = 'pre-trial'),
     path('making-documents/', views.making_documents, name = 'making_documents'),
     path('labor-disputes/', views.labor_disputes, name = 'labor_disputes'),
-    path('cancellation/', views.cancellation, name = 'cancellation'),
+    path('cancellation/', views.CancellationWizardView.as_view([CancellationFormPage1, CancellationFormPage2, CancellationFormPage3]), name = 'cancellation'),
     path('refusal/', views.refusal, name = 'refusal'),
     path('trademark/', views.trademark, name = 'trademark'),
     re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
