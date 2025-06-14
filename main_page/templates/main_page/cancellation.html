@@ -15,6 +15,8 @@
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+    
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,600;1,700;1,800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -28,7 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
     <base href="http://127.0.0.1:8000/" />
-    {{ wizard.form.media }}
+    <!--{{ wizard.form.media }}-->
 </head>
 <body>
     <div class="wrapper">
@@ -324,28 +326,28 @@
         </div>
         <!--navbar end-->
 
-        <div class="pic-line">
+        <div class="pic-line" id="pic-line">
             <div class="container text-light">
                 <h1>Помощь юриста в отмене судебного приказа</h1>
-                <p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
-                                <form action="" method="post">{% csrf_token %}
-                                <table>
-                                {{ wizard.management_form }}
-                                {% if wizard.form.forms %}
-                                    {{ wizard.form.management_form }}
-                                    {% for form in wizard.form.forms %}
-                                        {{ form.as_table }}
-                                    {% endfor %}
-                                {% else %}
-                                    {{ wizard.form }}
-                                {% endif %}
-                                </table>
-                                {% if wizard.steps.prev %}
-                                <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% translate "first step" %}</button>
-                                <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% translate "prev step" %}</button>
-                                {% endif %}
-                                <input type="submit" value="{% translate 'submit' %}"/>
-                                </form>
+                <!--<p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
+                <form id="lizardForm" method="post">{% csrf_token %}
+                <table>
+                {{ wizard.management_form }}
+                {% if wizard.form.forms %}
+                    {{ wizard.form.management_form }}
+                    {% for form in wizard.form.forms %}
+                        {{ form.as_table }}
+                    {% endfor %}
+                {% else %}
+                    {{ wizard.form }}
+                {% endif %}
+                </table>
+                {% if wizard.steps.prev %}
+                <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% translate "first step" %}</button>
+                <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% translate "prev step" %}</button>
+                {% endif %}
+                <input type="submit" value="{% translate 'submit' %}"/>
+                </form>-->
             </div>
         </div>
 
@@ -383,7 +385,6 @@
         <div class="blue-line">
             <div class="container-fluid bg">
                 <div class="container">
-                    <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
                     <h3>Внесите в форму все необходимые данные, оплатите и получите готовый, юридически грамотный документ на вашу электронную почту</h3>
                     <button type="button" name ="cancellation_modal" class="btn modal-btn cancellation-modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal ">
                         Получить заявление об отмене судебного приказа
@@ -398,9 +399,114 @@
                               <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
+                            <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
                             <div class="modal-body">
-                                <p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
-                                <form action="" method="post">{% csrf_token %}
+                                
+                                <form id="1_page" method="POST">
+                                    {% csrf_token %}
+                                    {{ cancellation_form_page1.debtor_name }}
+                                    {{ cancellation_form_page1.debtor_address }}
+                                    {{ cancellation_form_page1.debtor_email }}
+                                    {{ cancellation_form_page1.debtor_phone }}
+                                    <button type="submit" id="1_page_submit" name="1_page_submit"> Далее</button>
+                                </form>
+                                <form id="2_page" method="POST" style="display: none;">
+                                    {% csrf_token %}
+                                    {{ cancellation_form_page2.court_type }}
+                                    {{ cancellation_form_page2.court_name }}
+                                    {{ cancellation_form_page2.court_address }}
+                                    {{ cancellation_form_page2.court_order_number }}
+                                    {{ cancellation_form_page2.order_issuing_date }}
+                                    {{ cancellation_form_page2.order_receiving_date }}
+                                    <button type="submit" id="2_page_submit" name="2_page_submit">Далее</button>
+                                </form>
+                                <form id="3_page" method="POST" style="display: none;">
+                                    {% csrf_token %}
+                                    {{ cancellation_form_page3.collector_name }}
+                                    {{ cancellation_form_page3.collector_address }}
+                                    <button type="submit" name="3_page_submit">Отправить</button>
+                                </form>
+                                <script>
+                                    first_page = document.getElementById('1_page')
+                                    second_page = document.getElementById('2_page')
+                                    third_page = document.getElementById('3_page')
+
+                                    
+
+                                    $(document).ready(function() {
+                                        $('#1_page').on('submit', function (e) {
+
+                                            e.preventDefault();
+                                            
+                                            const debtorName = $('#debtor_name').val()
+                                            const debtorAddress = $('#debtor_address').val()
+                                            const debtorEmail = $('#debtor_email').val()
+                                            const debtorPhone = $('#debtor_phone').val()
+
+
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: '{% url "main_page:cancellation" %}',
+                                                data: {
+                                                    debtor_name: debtorName,
+                                                    debtor_address: debtorAddress,
+                                                    debtor_email: debtorEmail,
+                                                    debtor_phone: debtorPhone,
+                                                    csrfmiddlewaretoken: $('[name=csrfmiddlewaretoken]').val()
+                                                },
+                                                success: function(response, data) {
+                                                    // Handle success
+                                                    console.log('Form submitted successfully!');
+                                                    first_page.style.display = 'none'
+                                                    second_page.style.display = 'block'
+                                                },
+                                            });
+                                        });
+                                        $('#2_page').on('submit', function (e) {
+                                            
+                                            e.preventDefault();
+
+                                            const courtType = $('#court_type').val()
+                                            const courtName = $('#court_name').val()
+                                            const courtAddress = $('#court_address').val()
+                                            const courtOrderNumber = $('#court_order_number').val()
+                                            const orderIssuingDate = $('#order_issuing_date').val()
+                                            const orderReceivingDate = $('#order_receiving_date').val()
+
+
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: '{% url "main_page:cancellation" %}',
+                                                data:{
+                                                    court_type: courtType,
+                                                    court_name: courtName,
+                                                    court_address: courtAddress,
+                                                    court_order_number: courtOrderNumber,
+                                                    order_issuing_date: orderIssuingDate,
+                                                    order_receiving_date: orderReceivingDate,
+                                                    csrfmiddlewaretoken: $('[name=csrfmiddlewaretoken]').val()
+                                                },
+                                                success: function(response, data) {
+                                                    // Handle success
+                                                    console.log('Form submitted successfully!');
+                                                    second_page.style.display = 'none'
+                                                    third_page.style.display = 'block'
+                                                },
+                                            });
+                                        });
+                                    });
+                                </script>
+                                
+                                <!--<p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
+                                <form id="wizardForm" method="POST">
+                                    --<script>
+                                        $('#exampleModal').on('show.bs.modal', function () {
+                                            $.get('../cancellation/0/', function(data) {
+                                                $('#modal-content').html(data);
+                                            });
+                                        });
+                                    </script>--
+                                    {% csrf_token %}
                                 <table>
                                 {{ wizard.management_form }}
                                 {% if wizard.form.forms %}
@@ -416,9 +522,74 @@
                                 <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% translate "first step" %}</button>
                                 <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% translate "prev step" %}</button>
                                 {% endif %}
-                                <input type="submit" value="{% translate 'submit' %}"/>
+                                <input type="submit" value="{% translate 'submit' %}"/>-->
+                                <script>
+                                    
+                                
+                                $(document).ready(function() {
+                                    $('#wizardForm').on('submit', function (e) {
+
+                                        e.preventDefault();
+                                        
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: '{% url "main_page:cancellation" %}',
+                                            data: $(this).serialize(),
+                                            success: function(response, data) {
+                                                // Handle success
+                                                console.log('Form submitted successfully!');
+
+                                                /*$('#modal-content').html(data);
+
+                                                const sub = new XMLHttpRequest();
+                                                const wizardForm = document.getElementById('pic-line')
+                                                sub.onload = function() {
+                                                    document.getElementById('wizardForm').innerHTML = wizardForm.innerHTML;
+                                                }
+
+                                                
+
+                                                sub.open('GET', '../cancellation/<next_step>');
+                                                sub.send();*/
+
+                                            },
+                                            /*error: function(error) {
+                                                // Handle error
+                                                console.error('Error submitting form:', error);
+                                            }*/
+                                            
+                                            //success: function (data) {
+                                                //$('#modal-content').html(data);
+                                            //}
+                                        });
+                                    });
+                                });
+                                
+                                    
+                                    /*$(document).on('submit', '#wizardForm', function(e){
+                                        
+
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: '/cancellation/',
+                                            data: {
+                                                debtor_name:$('#debtor_name').val(),
+                                                debtor_address:$('#debtor_address').val(),
+                                                debtor_email:$('#debtor_email').val(),
+                                                debtor_phone:$('#debtor_phone').val(),
+                                                csrfmiddlewaretoken: '{%csrf_token%}'
+                                            },
+                                            success: function(){
+                                                alert("123");
+                                            }
+                                        });
+                                    });*/
+
+                                    
+                                </script>
                                 </form>
-                                <form action="../cancellation/" target="dummyframe" method="post" id="myForm">
+                                
+                                <!--<form action="../cancellation/" target="dummyframe" method="post" id="myForm">
                                     <div class="second-page" id="second-page" style="display: none;">
                                         <h4>Страница 2</h4>
                                         {% csrf_token %}
@@ -454,12 +625,12 @@
 
                                         <button type="submit" name="cancellation_submit" class="submit">Получить консультацию</button>
                                     </div>
-                                </form>
+                                </form>-->
                             </div>
                           </div>
                         </div>
                       </div>
-                      <script>
+                      <!--<script>
 
                         const first_page = document.getElementById('first-page')
                         const second_page = document.getElementById('second-page')
@@ -513,7 +684,7 @@
                             third_page.style.display = 'none'
                             second_page.style.display = 'block'
                         });
-                    </script>
+                    </script>-->
                 </div>
             </div>
         </div>

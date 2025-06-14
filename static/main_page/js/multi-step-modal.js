@@ -124,4 +124,4 @@
 
         initialize();
     })
-}(jQuery);
+};

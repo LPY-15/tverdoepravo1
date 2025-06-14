@@ -15,9 +15,9 @@ court_type_list = [
 
 class CancellationFormPage1(forms.Form):
     debtor_name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'ФИО должника (кому был выдан)', 'id': 'debtor_name'}))
-    debtor_address = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Адрес должника (по прописке)'}))
-    debtor_email = forms.CharField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'E-mail'}))
-    debtor_phone = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Телефон'}))
+    debtor_address = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Адрес должника (по прописке)', 'id': 'debtor_address'}))
+    debtor_email = forms.CharField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'E-mail', 'id': 'debtor_email'}))
+    debtor_phone = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Телефон', 'id': 'debtor_phone'}))
 '''    court_type = forms.ChoiceField(choices=court_type_list, widget=forms.Select(attrs={'class': 'form-control'}))
     court_type = forms.CharField(widget=forms.Select(attrs={'placeholder': 'Тип суда'}), initial='Тип суда')
     court_name = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Полное наименование судебного участка'}))
@@ -30,13 +30,13 @@ class CancellationFormPage1(forms.Form):
 '''
 
 class CancellationFormPage2(forms.Form):
-    court_type = forms.ChoiceField(choices=court_type_list, widget=forms.Select(attrs={'class': 'form-control'}))
-    court_name = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Полное наименование судебного участка'}))
-    court_address = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Полный адрес судебного участка'}))
-    court_order_number = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Номер судебного приказа (судебного дела, производства)'}))
-    order_issuing_date = forms.DateField(required=True, widget=AdminDateWidget(attrs={'class': 'form-control', 'placeholder': 'Дата вынесения судебного приказа', 'type': 'date', 'onfocus': "this.showPicker && this.showPicker()"}))
-    order_receiving_date = forms.DateField(required=True, widget=forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Дата получения судебного приказа' ,'type': 'date', 'onfocus': "this.showPicker && this.showPicker()"}))
+    court_type = forms.ChoiceField(choices=court_type_list, widget=forms.Select(attrs={'class': 'form-control', 'id': 'court_type'}))
+    court_name = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Полное наименование судебного участка', 'id': 'court_name'}))
+    court_address = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Полный адрес судебного участка', 'id': 'court_address'}))
+    court_order_number = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Номер судебного приказа (судебного дела, производства)', 'id': 'court_order_number'}))
+    order_issuing_date = forms.DateField(required=True, widget=AdminDateWidget(attrs={'class': 'form-control', 'placeholder': 'Дата вынесения судебного приказа', 'type': 'date', 'onfocus': "this.showPicker && this.showPicker()", 'id': 'order_issuing_date'}))
+    order_receiving_date = forms.DateField(required=True, widget=forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Дата получения судебного приказа' ,'type': 'date', 'onfocus': "this.showPicker && this.showPicker()", 'id': 'order_receiving_date'}))
 
 class CancellationFormPage3(forms.Form):
-    collector_name = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Наименование взыскателя'}))
-    collector_address = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Адрес взыскателя'}))
+    collector_name = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Наименование взыскателя', 'id': 'collector_name'}))
+    collector_address = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Адрес взыскателя', 'id': 'collector_address'}))
