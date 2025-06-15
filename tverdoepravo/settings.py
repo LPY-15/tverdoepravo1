@@ -83,6 +83,8 @@ WSGI_APPLICATION = 'tverdoepravo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+
 
 
 
