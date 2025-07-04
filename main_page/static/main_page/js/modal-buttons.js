@@ -1,11 +1,15 @@
+var checkbox1 = document.getElementById('checkbox1')
+var checkbox2 = document.getElementById('checkbox2')
+
+
 function check()
 {
-    var checkbox = document.getElementById('checkbox')
-    checkbox.checked = true
+    checkbox1.checked = true
+    checkbox2.checked = true
 }
 
 function uncheck()
 {
-    var checkbox = document.getElementById('checkbox')
-    checkbox.checked = false
+    checkbox1.checked = false
+    checkbox2.checked = false
 }

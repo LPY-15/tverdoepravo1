@@ -14,7 +14,6 @@
     <script src="../../../static/main_page/js/multi-step-modal.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
     
 
@@ -329,6 +328,7 @@
         <div class="pic-line" id="pic-line">
             <div class="container text-light">
                 <h1>Помощь юриста в отмене судебного приказа</h1>
+                <button type="button" id="open_agreement_modal">123</button>
                 <!--<p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
                 <form id="lizardForm" method="post">{% csrf_token %}
                 <table>
@@ -386,28 +386,29 @@
             <div class="container-fluid bg">
                 <div class="container">
                     <h3>Внесите в форму все необходимые данные, оплатите и получите готовый, юридически грамотный документ на вашу электронную почту</h3>
-                    <button type="button" name ="cancellation_modal" class="btn modal-btn cancellation-modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal ">
-                        Получить заявление об отмене судебного приказа
+                    <button type="button" name ="cancellation_modal" class="btn modal-btn cancellation-modal-btn" data-bs-toggle="modal" data-bs-target="#cancellationModal ">
+                        Получить заявление об отмене судебного приказа  
                     </button>
                     
                       
                       <!-- Modal -->
-                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      
+                      <div class="modal fade" id="cancellationModal" tabindex="-1" aria-labelledby="cancellationModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                              <h1 class="modal-title fs-5" id="cancellationModalLabel">Modal title</h1>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
                             <div class="modal-body">
-                                
                                 <form id="1_page" method="POST">
                                     {% csrf_token %}
                                     {{ cancellation_form_page1.debtor_name }}
                                     {{ cancellation_form_page1.debtor_address }}
                                     {{ cancellation_form_page1.debtor_email }}
                                     {{ cancellation_form_page1.debtor_phone }}
+
                                     <button type="submit" id="1_page_submit" name="1_page_submit"> Далее</button>
                                 </form>
                                 <form id="2_page" method="POST" style="display: none;">
@@ -418,12 +419,21 @@
                                     {{ cancellation_form_page2.court_order_number }}
                                     {{ cancellation_form_page2.order_issuing_date }}
                                     {{ cancellation_form_page2.order_receiving_date }}
+                                    <button id="2_page_back">Назад</button>
                                     <button type="submit" id="2_page_submit" name="2_page_submit">Далее</button>
                                 </form>
                                 <form id="3_page" method="POST" style="display: none;">
                                     {% csrf_token %}
                                     {{ cancellation_form_page3.collector_name }}
                                     {{ cancellation_form_page3.collector_address }}
+                                    
+                                    <button type="button" class="modal-btn agreement-modal-btn" id="agree-show">
+                                        <span><input type="checkbox" id="checkbox1" required="true" style="pointer-events: none;">Нажимая кнопку «Получить консультацию», я даю свое 
+                                            согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ 
+                                            «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
+                                    </button>
+                                    
+                                    <button id="3_page_back">Назад</button>
                                     <button type="submit" name="3_page_submit">Отправить</button>
                                 </form>
                                 <script>
@@ -431,7 +441,22 @@
                                     second_page = document.getElementById('2_page')
                                     third_page = document.getElementById('3_page')
 
-                                    
+                                    document.getElementById('agree-show').addEventListener('click', function(){
+                                        const am = new bootstrap.Modal(document.getElementById('agreementModal'));
+                                        am.show();
+                                    });
+
+                                    document.getElementById('2_page_back').addEventListener('click', function(e) {
+                                        e.preventDefault();
+                                        first_page.style.display = 'block'
+                                        second_page.style.display = 'none'
+                                    });
+
+                                    document.getElementById('3_page_back').addEventListener('click', function(e) {
+                                        e.preventDefault();
+                                        second_page.style.display = 'block'
+                                        third_page.style.display = 'none'
+                                    });
 
                                     $(document).ready(function() {
                                         $('#1_page').on('submit', function (e) {
@@ -448,6 +473,7 @@
                                                 type: 'POST',
                                                 url: '{% url "main_page:cancellation" %}',
                                                 data: {
+                                                    form_step: 'step1',
                                                     debtor_name: debtorName,
                                                     debtor_address: debtorAddress,
                                                     debtor_email: debtorEmail,
@@ -478,6 +504,7 @@
                                                 type: 'POST',
                                                 url: '{% url "main_page:cancellation" %}',
                                                 data:{
+                                                    form_step: 'step2',
                                                     court_type: courtType,
                                                     court_name: courtName,
                                                     court_address: courtAddress,
@@ -495,6 +522,8 @@
                                             });
                                         });
                                     });
+
+                                    
                                 </script>
                                 
                                 <!--<p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
@@ -824,11 +853,11 @@
                                     </div>
                                     <div class="warning">
                                         <button type="button" class="modal-btn agreement-modal-btn" data-bs-toggle="modal" data-bs-target="#agreementModal">
-                                            <span><input type="checkbox" id="checkbox" required="true">Нажимая кнопку «Получить консультацию», я даю свое 
+                                            <span><input type="checkbox" id="checkbox2" required="true" style="pointer-events: none;">Нажимая кнопку «Получить консультацию», я даю свое 
                                                 согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ 
                                                 «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
                                         </button>
-                                        <div class="modal fade" id="agreementModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="agreementModal" tabindex="-1" aria-labelledby="agreementModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable agreement-modal-dialog" id="model-dialog" style="max-width: 600px;">
                                             <div class="modal-content" style="height: 90%;">
                                                 <!--<div class="modal-header agreement-modal-header">
@@ -838,7 +867,7 @@
                                                 <div class="modal-body agreement-modal-body" id="agreement-modal-body">
                                                     <p class="modal-title" id="agreementModalLabel">Согласие на обработку персональных данных</p>
                                                     <hr style="opacity: 0.1;">
-                                                    <button class="exit-button" data-bs-dismiss="modal">
+                                                    <button type="button" class="exit-button" id="exit-button">
                                                         <img src="{% static 'main_page/img/exit.png' %}" alt="exit-button">
                                                     </button>
                                                     <p class="modal-text">
@@ -869,8 +898,8 @@
                                                 </div>
                                                 <div class="modal-footer agreement-modal-footer" id="modal-footer" style="display: flex; justify-content: center;">
                                                     <div class="footer_scrolled_down" id="footer_scrolled_down" style="display: none;">
-                                                        <button type="button" class="btn accept-button" data-bs-dismiss="modal" onclick='check()'>Принимаю</button>
-                                                        <button type="button" class="btn decline-button" data-bs-dismiss="modal" onclick='uncheck()'>Не принимаю</button> 
+                                                        <button type="button" class="btn accept-button" id="accept-button" data-bs-dismiss="modal" onclick='check()'>Принимаю</button>
+                                                        <button type="button" class="btn decline-button" id="decline-button" data-bs-dismiss="modal" onclick='uncheck()'>Не принимаю</button> 
                                                     </div>
                                                         <div class="footer_not_scrolled_down" id="footer_not_scrolled_down">
                                                             <a href="../cancellation/#agreement-modal-end" class="agreement-modal-link">
@@ -896,6 +925,16 @@
             const newContentDiv = document.getElementById('footer_not_scrolled_down');
             const threshold = 465;
             const modalBody = document.getElementById('agreement-modal-body');
+
+            document.getElementById('exit-button').addEventListener('click', function () {
+                const agreementModal = document.getElementById('agreementModal');
+                const modalInstance = bootstrap.Modal.getOrCreateInstance(agreementModal);
+                modalInstance.hide();
+                console.log(modalInstance);
+            });
+
+
+
             document.getElementById('agreementModal').addEventListener('shown.bs.modal', function () {
 
             // Listen to the scroll event

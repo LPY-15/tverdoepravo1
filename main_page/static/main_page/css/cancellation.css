@@ -337,6 +337,62 @@ body {
     margin: 5%;
 }
 
+.blue-line #cancellationModal {
+    left:9%;
+    z-index: 1200;
+    position: fixed;
+    width: 150%;
+}
+
+#agree {
+    position: absolute; 
+    right: 102%;
+    top: 0%;
+    border: #000000;
+    border-width: 30px;
+}
+
+#agreement-inside-cancellation-body {
+    background-color: #ffffff;
+    scroll-behavior: smooth;
+}
+
+.exit_agreement_inside_cancellation {
+    position: fixed;
+    right: 35%;
+    top: 15%;
+    width: 1px;
+    height: 1px;
+    background-color: #ffffff;
+    border-width: 0px;
+    border-radius: 50%;
+}
+
+.exit_agreement_inside_cancellation img {
+    width: 30px;
+    border-radius: 50%;
+    position: fixed;
+    right: 35%;
+    top: 15%;
+}
+
+@media (max-width: 1100px) {
+    .exit_agreement_inside_cancellation {
+        right: 20%;
+    }
+}
+
+.exit_agreement_inside_cancellation img:hover {
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.blue-line .agreement-inside-cancellation-text {
+    overflow-y: scroll;
+    height: 300px;
+    width: 600px;
+}
+
 .faq {
     font-family: 'Open Sans', serif;
 }
@@ -523,7 +579,11 @@ body {
     display: flex;
 }
 
-.contacts .agreement-modal-btn {
+.contacts #agreementModal {
+    z-index: 1300;
+}
+
+.agreement-modal-btn {
     background-color: #ffffff;
     border-width: 0px;
     font-family: "Open Sans", serif;
@@ -554,9 +614,9 @@ body {
 }
 
 .contacts .agreement-modal-body .exit-button {
-    position: fixed ;
+    position: fixed;
     right: 35%;
-    top: 9%;
+    top: 10%;
     width: 1px;
     height: 1px;
     background-color: #ffffff;
@@ -574,7 +634,7 @@ body {
 }
 
 .contacts .agreement-modal-body .exit-button img {
-    width: 60px;
+    width: 35px;
     border-radius: 50%;
     animation-name: fadeInOpacity;
 	animation-timing-function: ease-in;

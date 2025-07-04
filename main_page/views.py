@@ -247,16 +247,15 @@ def cancellation(request):
             debtor_phone = request.POST.get('debtor_phone')
             request.session['debtor_phone'] = cancellation_form_page1.cleaned_data['debtor_phone']
 
-            try:
+            '''try:
                 send_mail('1step', '123', sender, recipient)
 
             except BadHeaderError:
                 return HttpResponse('Invalid header found')
 
-            print("AJAX POST received!")   # Or use logging
-            logger.info("AJAX POST received!")
-            # rest of your code...
-            # send email or process form
+            print("AJAX POST received!")
+            logger.info("AJAX POST received!")'''
+            
             
 
         elif cancellation_form_page2.is_valid():
@@ -275,14 +274,14 @@ def cancellation(request):
             request.session['order_receiving_date'] = str(cancellation_form_page2.cleaned_data['order_receiving_date'])
             
 
-            try:
+            '''try:
                 send_mail('2step', '123', sender, recipient)
 
             except BadHeaderError:
                 return HttpResponse('Invalid header found')
 
-            print("AJAX POST received!")   # Or use logging
-            logger.info("AJAX POST received!")
+            print("AJAX POST received!")
+            logger.info("AJAX POST received!")'''
                 
 
         elif cancellation_form_page3.is_valid():

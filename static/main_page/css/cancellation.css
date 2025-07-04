@@ -337,6 +337,10 @@ body {
     margin: 5%;
 }
 
+.blue-line .modal-body {
+    left:0%
+}
+
 .faq {
     font-family: 'Open Sans', serif;
 }
