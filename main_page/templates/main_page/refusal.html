@@ -10,6 +10,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../../static/main_page/js/modal-buttons.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- Optional: Flatpickr Russian locale -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,600;1,700;1,800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link type = "text/css" href = "{% static 'main_page/css/refusal.css' %}" rel = "stylesheet"/>
@@ -365,7 +377,203 @@
             <div class="container-fluid bg">
                 <div class="container">
                     <h3>Заполните личные данные, оплатите и получите готовый, юридически грамотный документ на вашу электронную почту</h3>
-                    <a href="../refusal/#contacts" class="btn btn-success">заполнить личные данные</a>
+                    <button type="button" name ="cancellation_modal" class="btn modal-btn cancellation-modal-btn" data-bs-toggle="modal" data-bs-target="#cancellationModal">
+                        Заполнить личные данные
+                    </button>
+                </div>
+
+                <div class="modal fade" id="cancellationModal" tabindex="-1" aria-labelledby="cancellationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <h1 id="cancellationModalLabel">Заявление об отмене<br> судебного приказа</h1>
+                            <hr style="border-width: 1px; color: #4d4e55;">
+                            <div class="modal-body">
+                                <button type="button" class="cancellation-exit-button" id="cancellation-exit-button" style="position: fixed;">
+                                    <img src="{% static 'main_page/img/exit.svg' %}" alt="exit-button">
+                                </button>
+                                <form id="1_page" method="POST">
+                                    <div class="page_number">
+                                        <img src="{% static 'main_page/img/cancellation_1_page.svg' %}" alt="phone"><p>Страница 1</p>
+                                    </div>
+                                    {% csrf_token %}
+                                    {{ refusal_form_page1.refusal_form_name }}
+                                    {{ refusal_form_page1.refusal_form_email }}
+                                    {{ refusal_form_page1.refusal_form_phone }}
+                                    <button type="submit" class="btn cancellation_page_submit first_page_submit" id="1_page_submit" name="1_page_submit"> Далее</button>
+                                </form>
+                                <form id="2_page" method="POST" style="display: none;">
+                                    <div class="page_number">
+                                        <img src="{% static 'main_page/img/cancellation_2_page.svg' %}" style="width: 50px; height: 50px; float: left; margin: 0% 0% 3% 0%;" alt="phone"><p>Страница 2</p>
+                                    </div>
+                                    {% csrf_token %}
+                                    {{ refusal_form_page2.passport_series_and_number }}
+                                    {{ refusal_form_page2.passport_issue_org }}
+                                    {{ refusal_form_page2.passport_issue_date }}
+                                    {{ refusal_form_page2.declarant_address }}
+                                    <button class="btn cancellation_page_back" id="2_page_back">Назад</button>
+                                    <button type="submit" class="btn cancellation_page_submit" id="2_page_submit" name="2_page_submit">Далее</button>
+                                </form>
+                                <form id="3_page" method="POST" style="display: none;">
+                                    <div class="page_number">
+                                        <img src="{% static 'main_page/img/cancellation_3_page.svg' %}" style="width: 50px; height: 50px; float: left; margin: 0% 0% 3% 0%;" alt="phone"><p>Страница 2</p>
+                                    </div>
+                                    {% csrf_token %}
+                                    {{ refusal_form_page3.creditor_name_or_tax_identification_number }}
+                                    {{ refusal_form_page3.credit_agreement_number }}
+                                    {{ refusal_form_page3.creditor_address }}
+                                    {{ refusal_form_page3.credit_agreement_date }}
+                                    <button class="btn cancellation_page_back" id="3_page_back">Назад</button>
+                                    <button type="submit" class="btn cancellation_page_submit" id="3_page_submit" name="3_page_submit">Далее</button>
+                                </form>
+                                <form id="4_page" method="POST" style="display: none;">
+                                    <div class="page_number">
+                                        <img src="{% static 'main_page/img/cancellation_3_page.svg' %}" style="width: 50px; height: 50px; float: left; margin: 0% 0% 3% 0%;" alt="phone"><p>Страница 3</p>
+                                    </div>
+                                    {% csrf_token %}
+                                    {{ refusal_form_page4.refusal_form_comment }}
+                                    <button type="button" class="modal-btn agreement-modal-btn" id="agree-show" style="background-color: #0d195e;">
+                                        <span><input type="checkbox" id="checkbox1" required="true" style="pointer-events: none;"> Нажимая кнопку «Получить консультацию», я даю свое 
+                                            согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ 
+                                            «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
+                                    </button>
+                                    
+                                    <button class="btn cancellation_page_back" id="4_page_back">Назад</button>
+                                    <button type="submit" class="btn cancellation_page_submit" name="4_page_submit">Отправить</button>
+                                </form>
+                                <script>
+                                    first_page = document.getElementById('1_page')
+                                    second_page = document.getElementById('2_page')
+                                    third_page = document.getElementById('3_page')
+                                    fourth_page = document.getElementById('4_page')
+
+                                    document.addEventListener("DOMContentLoaded", function () {
+                                        flatpickr(".flatpickr_calendar", {
+                                            dateFormat: "Y-m-d", // Matches your form input format
+                                            disableMobile: true,
+                                            locale: "ru",        // Russian language for calendar
+                                            altInput: true,
+                                            allowInput: true,
+                                            altFormat: "d.m.Y",  // Display format for users
+                                        });
+                                    });
+
+                                    document.getElementById('cancellation-exit-button').addEventListener('click', function () {
+                                        const cancellationModal = document.getElementById('cancellationModal');
+                                        const modalInstance = bootstrap.Modal.getOrCreateInstance(cancellationModal);
+                                        modalInstance.hide();
+                                        console.log(modalInstance);
+                                    });
+
+                                    document.getElementById('agree-show').addEventListener('click', function(){
+                                        const am = new bootstrap.Modal(document.getElementById('agreementModal'));
+                                        am.show();
+                                    });
+
+                                    document.getElementById('2_page_back').addEventListener('click', function(e) {
+                                        e.preventDefault();
+                                        first_page.style.display = 'block'
+                                        second_page.style.display = 'none'
+                                    });
+
+                                    document.getElementById('3_page_back').addEventListener('click', function(e) {
+                                        e.preventDefault();
+                                        second_page.style.display = 'block'
+                                        third_page.style.display = 'none'
+                                    });
+
+                                    document.getElementById('4_page_back').addEventListener('click', function(e) {
+                                        e.preventDefault();
+                                        third.style.display = 'block'
+                                        fourth_page.style.display = 'none'
+                                    });
+
+                                    $(document).ready(function() {
+                                        $('#1_page').on('submit', function (e) {
+
+                                            e.preventDefault();
+                                            
+                                            const refusalFormName = $('#refusal_form_name').val()
+                                            const refusalFormEmail = $('#refusal_form_email').val()
+                                            const refusalFormPhone = $('#refusal_form_phone').val()
+
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: '{% url "main_page:refusal" %}',
+                                                data: {
+                                                    form_step: 'step1',
+                                                    refusal_form_name: refusalFormName,
+                                                    refusal_form_email: refusalFormEmail,
+                                                    refusal_form_phone: refusalFormPhone,
+                                                    csrfmiddlewaretoken: $('[name=csrfmiddlewaretoken]').val()
+                                                },
+                                                success: function(response, data) {
+                                                    console.log('1 step completed')
+                                                    first_page.style.display = 'none'
+                                                    second_page.style.display = 'block'
+                                                },
+                                            });
+                                        });
+
+                                        $('#2_page').on('submit', function (e) {
+                                            
+                                            e.preventDefault();
+
+                                            const passportSeriesAndNumber = $('#passport_series_and_number').val()
+                                            const passportIssueOrg = $('#passport_issue_org').val()
+                                            const passportIssueDate = $('#passport_issue_date').val()
+                                            const declarantAddress = $('#declarant_address').val()
+
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: '{% url "main_page:refusal" %}',
+                                                data: {
+                                                    form_step: 'step2',
+                                                    passport_series_and_number: passportSeriesAndNumber,
+                                                    passport_issue_org: passportIssueOrg,
+                                                    passport_issue_date: passportIssueDate,
+                                                    declarant_address: declarantAddress,
+                                                    csrfmiddlewaretoken: $('[name=csrfmiddlewaretoken]').val()
+                                                },
+                                                success: function(response, data) {
+                                                    console.log('2 step completed')
+                                                    second_page.style.display = 'none'
+                                                    third_page.style.display = 'block'
+                                                },
+                                            });
+                                        });
+                                        
+                                        $('#3_page').on('submit', function (e) {
+                                            
+                                            e.preventDefault();
+
+                                            const creditorNameOrTaxIdentificationNumber = $('#creditor_name_or_tax_identification_number').val()
+                                            const creditAgreementNumber = $('#credit_agreement_number').val()
+                                            const creditorAddress = $('#creditor_address').val()
+                                            const creditAgreementDate = $('#credit_agreement_date').val()
+
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: '{% url "main_page:refusal" %}',
+                                                data: {
+                                                    form_step: 'step3',
+                                                    creditor_name_or_tax_identification_number: creditorNameOrTaxIdentificationNumber,
+                                                    credit_agreement_number: creditAgreementNumber,
+                                                    creditor_address: creditorAddress,
+                                                    credit_agreement_date: creditAgreementDate,
+                                                    csrfmiddlewaretoken: $('[name=csrfmiddlewaretoken]').val()
+                                                },
+                                                success: function(response, data) {
+                                                    console.log('3 step completed')
+                                                    third_page.style.display = 'none'
+                                                    fourth_page.style.display = 'block'
+                                                },
+                                            });
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -425,13 +633,13 @@
         <div class="contacts" id="contacts">
             <div class="container contacts-container">
                 <div class="row">
-                    <div class="col-lg-6 text-center left">
-                        <div class="article-header">
+                    <div class="col-md-6 text-center left">
+                        <div class="article-header" id="bold2">
                             <h3>Получите бесплатную<br> консультацию</h3>
                         </div>
                         <p><span id="bold">Заполните форму,</span> чтобы получить бесплатную консультацию</p>
                         <div class="row links">
-                            <div class="col-lg-6 right-border">
+                            <div class="col-md-6 right-border">
                                 <a href="tel:+79027721472"><img src="{% static 'main_page/img/phone1.svg' %}" alt="phone"></a>
                                 <div class="text">
                                     <a href="tel:+79027721472">телефон</a>
@@ -440,56 +648,61 @@
                                     <a href="tel:+79027721472">+7(902)772-14-72</a>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-md-6">
                                 <a href="mailto:tverdoepravo@mail.ru"><img src="{% static 'main_page/img/mail.svg' %}" alt="mail"></a>
                                 <div class="text">
                                     <a href="mailto:tverdoepravo@mail.ru">EMAIL</a>
                                 </div>
                                 <div class="link">
-                                    <a href="mailto:tverdoepravo@mail.ru">tverdoepravo@mail.ru</a>
+                                    <a href="mailto:tverdoepravo@mail.ru">tverdoepravo</br>@mail.ru</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 text-center">
+                    <div class="col-md-6 text-center">
                         <div class="feedback">
                             <h3>Обратная связь</h3>
                             <div class="form">
-                                <form action="../refusal/" method="post">{% csrf_token %}
-                                    {{ form.non_field_errors }}
+                                <form action="../refusal/" method="post">
+                                    {% csrf_token %}
+                                    {{ agreement_form.non_field_errors }}
                                     <div>
-                                      {{ form.name.errors }}
-                                      {{ form.name }}
+                                      {{ agreement_form.name.errors }}
+                                      {{ agreement_form.name }}
                                     </div>
                                     <div>
-                                      {{ form.phone.errors }}
-                                      {{ form.phone }}
+                                      {{ agreement_form.phone.errors }}
+                                      {{ agreement_form.phone }}
+                                      {{ cancellation_form.debtor_name.errors }}
+                                      {{ cancellation_form.debtor_name }}
                                     </div>
                                     <div class="comment">
-                                      {{ form.comment.errors }}
-                                      {{ form.comment }}
+                                      {{ agreement_form.comment.errors }}
+                                      {{ agreement_form.comment }}
                                     </div>
                                     <div class="warning">
-                                        <button type="button" class="modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span><input type="checkbox" id="checkbox" required="true">Нажимая кнопку «Получить консультацию», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
+                                        <button type="button" class="modal-btn agreement-modal-btn" data-bs-toggle="modal" data-bs-target="#agreementModal">
+                                            <span><input type="checkbox" id="checkbox2" required="true" style="pointer-events: none;">Нажимая кнопку «Получить консультацию», я даю свое 
+                                                согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ 
+                                                «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
                                         </button>
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" id="model-dialog" style="max-width: 600px;">
+                                        <div class="modal fade" id="agreementModal" tabindex="-1" aria-labelledby="agreementModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable agreement-modal-dialog" id="model-dialog" style="max-width: 600px;">
                                             <div class="modal-content" style="height: 90%;">
-                                                <!--<div class="modal-header">
-                                                    <p class="modal-title" id="exampleModalLabel">Согласие на обработку персональных данных</p>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>-->
-                                                <div class="modal-body" id="modal-body">
-                                                    <p class="modal-title" id="exampleModalLabel">Согласие на обработку персональных данных</p>
+                                                <div class="modal-body agreement-modal-body" id="agreement-modal-body">
+                                                    <p class="modal-title" id="agreementModalLabel">Согласие на обработку персональных<br id="agreement-modal-header-break-line"> данных</p>
                                                     <hr style="opacity: 0.1;">
-                                                    <button class="exit-button" data-bs-dismiss="modal">
+                                                    <button type="button" class="exit-button" id="exit-button">
                                                         <img src="{% static 'main_page/img/exit.png' %}" alt="exit-button">
                                                     </button>
                                                     <p class="modal-text">
-                                                        Настоящим в соответствии с Федеральным законом № 152-ФЗ «О персональных данных» от 27.07.2006 года свободно, своей волей и в своем интересе выражаю свое безусловное согласие на обработку моих персональных данных Метелица Артём Александрович ИНН 100399120058, зарегистрированным в соответствии с законодательством РФ по адресу:<br>
-                                                        г. Санкт-Петербург, ул. Латышских Стрелков, д. 17, корп. 1 (далее по тексту - Оператор).<br>
-                                                        1. Согласие дается на обработку одной, нескольких или всех категорий персональных данных, не являющихся специальными или биометрическими, предоставляемых мною, которые могут включать:<br><br>
+                                                        Настоящим в соответствии с Федеральным законом № 152-ФЗ «О персональных данных» от 27.07.2006 
+                                                        года свободно, своей волей и в своем интересе выражаю свое безусловное согласие на обработку 
+                                                        моих персональных данных Метелица Артём Александрович ИНН 100399120058, зарегистрированным в 
+                                                        соответствии с законодательством РФ по адресу:<br>
+                                                        г. Санкт-Петербург, ул. Латышских Стрелков, д. 17, корп. 1 (далее по тексту - Оператор).<br />
+                                                        1. Согласие дается на обработку одной, нескольких или всех категорий персональных данных, 
+                                                        не являющихся специальными или биометрическими, предоставляемых мною, которые могут включать:<br><br>
                                                         
                                                         - Имя;<br>
                                                         - Телефон;<br>
@@ -505,16 +718,16 @@
                                                         
                                                         6. Настоящее согласие действует до момента его отзыва путем направления соответствующего уведомления на электронный адрес tverdoepravo@mail.ru или направления по адресу г. Санкт-Петербург, ул. Латышских Стрелков, д. 17, корп. 1.<br><br>
                                                         
-                                                        7. В случае отзыва мною согласия на обработку персональных данных Оператор вправе продолжить обработку персональных данных без моего согласия при наличии оснований, предусмотренных Федеральным законом №152-ФЗ <span id="modal-end">«О персональных данных» от 27.07.2006 г.</span>
+                                                        7. В случае отзыва мною согласия на обработку персональных данных Оператор вправе продолжить обработку персональных данных без моего согласия при наличии оснований, предусмотренных Федеральным законом №152-ФЗ <span id="agreement-modal-end">«О персональных данных» от 27.07.2006 г.</span>
                                                     </p>
                                                 </div>
-                                                <div class="modal-footer" id="modal-footer" style="display: flex; justify-content: center;">
+                                                <div class="modal-footer agreement-modal-footer" id="modal-footer" style="display: flex; justify-content: center;">
                                                     <div class="footer_scrolled_down" id="footer_scrolled_down" style="display: none;">
-                                                        <button type="button" class="btn accept-button" data-bs-dismiss="modal" onclick='check()'>Принимаю</button>
-                                                        <button type="button" class="btn decline-button" data-bs-dismiss="modal" onclick='uncheck()'>Не принимаю</button> 
+                                                        <button type="button" class="btn accept-button" id="accept-button" data-bs-dismiss="modal" onclick='check()'>Принимаю</button>
+                                                        <button type="button" class="btn decline-button" id="decline-button" data-bs-dismiss="modal" onclick='uncheck()'>Не принимаю</button> 
                                                     </div>
                                                         <div class="footer_not_scrolled_down" id="footer_not_scrolled_down">
-                                                            <a href="../refusal/#modal-end" class="modal-link">
+                                                            <a href="../refusal/#agreement-modal-end" class="agreement-modal-link">
                                                                 <p>Прочитайте до конца</p>
                                                                 <img src="{% static 'main_page/img/modal-footer.png' %}" alt="pointers">
                                                             </a>
@@ -524,7 +737,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="submit" class="submit" value="Получить консультацию"/>
+                                    <button type="submit" name="agreement_submit" class="submit">Получить консультацию</button>
                                 </form>
                             </div>
                         </div>
@@ -533,27 +746,32 @@
             </div>
         </div>
         <script>
-            const contentDiv = document.getElementById('footer_scrolled_down');
-            const newContentDiv = document.getElementById('footer_not_scrolled_down');
-            const threshold = 465;
-            const modalBody = document.getElementById('modal-body');
-            document.getElementById('exampleModal').addEventListener('shown.bs.modal', function () {
+            const agreementModalFooterScrolledDown = document.getElementById('footer_scrolled_down');
+            const agreementModalFooterNotScrolledDown = document.getElementById('footer_not_scrolled_down');
+            const agreementModalEnd = document.getElementById('agreement-modal-end');
 
-            // Listen to the scroll event
-                modalBody.addEventListener('scroll', () => {
-                    let currentScroll = modalBody.scrollY;
-                    if (modalBody.scrollTop > threshold) { // Scroll down
-                        // Hide the original content and show the new content
-                        contentDiv.style.display = 'block';
-                        newContentDiv.style.display = 'none';
-                    } else { // Scroll up
-                        // Show the original content and hide the new content
-                        contentDiv.style.display = 'none';
-                        newContentDiv.style.display = 'block';
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Element is on screen
+                        agreementModalFooterScrolledDown.style.display = 'block';
+                        agreementModalFooterNotScrolledDown.style.display = 'none';
+                    } else {
+                        // Element is off screen
+                        agreementModalFooterScrolledDown.style.display = 'none';
+                        agreementModalFooterNotScrolledDown.style.display = 'block';    
                     }
-
-                    lastScroll = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll position
                 });
+            }, {
+                threshold: 0.5 // Trigger when at least 10% of the element is visible
+            });
+
+            observer.observe(agreementModalEnd);
+
+            document.getElementById('exit-button').addEventListener('click', function () {
+                const agreementModal = document.getElementById('agreementModal');
+                const modalInstance = bootstrap.Modal.getOrCreateInstance(agreementModal);
+                modalInstance.hide();
             });
         </script>
         <div class="footer" id="footer">

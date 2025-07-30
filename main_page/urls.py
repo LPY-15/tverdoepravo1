@@ -4,7 +4,6 @@ from django.views.generic import TemplateView
 from django.views.static import serve
 from django.conf import settings
 from .forms import CancellationFormPage1, CancellationFormPage2, CancellationFormPage3
-from .views import CancellationWizardView
 
 app_name = 'main_page'
 

@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.core.mail import send_mail, BadHeaderError
-from .forms import ContactForm, CancellationFormPage1, CancellationFormPage2, CancellationFormPage3
-from formtools.wizard.views import CookieWizardView, NamedUrlCookieWizardView
+from .forms import ContactForm, CancellationFormPage1, CancellationFormPage2, CancellationFormPage3, RefusalFormPage1, RefusalFormPage2, RefusalFormPage3, RefusalFormPage4
 from django.template.loader import render_to_string
 import logging
 logger = logging.getLogger(__name__)
@@ -184,34 +183,6 @@ def labor_disputes(request):
 
     return render(request, 'main_page/labor_disputes.html', {'form': form})
 
-class CancellationWizardView(NamedUrlCookieWizardView):
-    
-    form_list = [CancellationFormPage1, CancellationFormPage2, CancellationFormPage3]
-    template_name = 'main_page/cancellation.html'
-
-    '''def render_next_step(self, form, **kwargs):
-        """
-        Override this to customize AJAX response for the next step.
-        """
-        if self.request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-            # Render only the form part as HTML
-            html = render_to_string('main_page/cancellation.html', {'form': form})
-            return HttpResponse('1')
-            #return JsonResponse({'form_html': html})
-        else:
-            # fallback for normal POST
-            return HttpResponse('2')
-            #return super().render_next_step(form, **kwargs)'''
-        
-
-    def done(self, form_list, **kwargs):
-        try:
-            send_mail('5', '4', sender, recipient)
-
-        except BadHeaderError:
-            return HttpRequest('Invalid header found')
-        
-        return HttpResponse('123')
 
 
 def cancellation(request):
@@ -238,66 +209,40 @@ def cancellation(request):
 
         if cancellation_form_page1.is_valid():
 
-            debtor_name = request.POST.get('debtor_name')
-            request.session['debtor_name'] = cancellation_form_page1.cleaned_data['debtor_name']
-            debtor_address = request.POST.get('debtor_address')
-            request.session['debtor_address'] = cancellation_form_page1.cleaned_data['debtor_address']
-            debtor_email = request.POST.get('debtor_email')
-            request.session['debtor_email'] = cancellation_form_page1.cleaned_data['debtor_email']
-            debtor_phone = request.POST.get('debtor_phone')
-            request.session['debtor_phone'] = cancellation_form_page1.cleaned_data['debtor_phone']
+            cleaned = cancellation_form_page1.cleaned_data
 
-            '''try:
-                send_mail('1step', '123', sender, recipient)
-
-            except BadHeaderError:
-                return HttpResponse('Invalid header found')
-
-            print("AJAX POST received!")
-            logger.info("AJAX POST received!")'''
-            
-            
+            request.session['debtor_name'] = cleaned['debtor_name']
+            request.session['debtor_address'] = cleaned['debtor_address']
+            request.session['debtor_email'] = cleaned['debtor_email']
+            request.session['debtor_phone'] = cleaned['debtor_phone']
 
         elif cancellation_form_page2.is_valid():
 
-            court_type = request.POST.get('court_type')
-            request.session['court_type'] = cancellation_form_page2.cleaned_data['court_type']
-            court_name = request.POST.get('court_name')
-            request.session['court_name'] = cancellation_form_page2.cleaned_data['court_name']
-            court_address = request.POST.get('court_address')
-            request.session['court_address'] = cancellation_form_page2.cleaned_data['court_address']
-            court_order_number = request.POST.get('court_order_number')
-            request.session['court_order_number'] = cancellation_form_page2.cleaned_data['court_order_number']
-            order_issuing_date = request.POST.get('order_issuing_date')
-            request.session['order_issuing_date'] = str(cancellation_form_page2.cleaned_data['order_issuing_date'])
-            order_receiving_date = request.POST.get('order_receiving_date')
-            request.session['order_receiving_date'] = str(cancellation_form_page2.cleaned_data['order_receiving_date'])
+            cleaned = cancellation_form_page2.cleaned_data
             
-
-            '''try:
-                send_mail('2step', '123', sender, recipient)
-
-            except BadHeaderError:
-                return HttpResponse('Invalid header found')
-
-            print("AJAX POST received!")
-            logger.info("AJAX POST received!")'''
-                
-
+            request.session['court_type'] = cleaned['court_type']
+            request.session['court_name'] = cleaned['court_name']
+            request.session['court_address'] = cleaned['court_address']
+            request.session['court_order_number'] = cleaned['court_order_number']
+            request.session['order_issuing_date'] = str(cleaned['order_issuing_date'])
+            request.session['order_receiving_date'] = str(cleaned['order_receiving_date'])
+            
         elif cancellation_form_page3.is_valid():
             
-            collector_name = cancellation_form_page3.cleaned_data['collector_name']
-            collector_address = cancellation_form_page3.cleaned_data['collector_address']
             debtor_name = request.session.get('debtor_name')
             debtor_address = request.session.get('debtor_address')
             debtor_email = request.session.get('debtor_email')
             debtor_phone = request.session.get('debtor_phone')
+
             court_type = request.session.get('court_type')
             court_name = request.session.get('court_name')
             court_address = request.session.get('court_address')
             court_order_number = request.session.get('court_order_number')
             order_issuing_date = request.session.get('order_issuing_date')
             order_receiving_date = request.session.get('order_receiving_date')
+
+            collector_name = cancellation_form_page3.cleaned_data['collector_name']
+            collector_address = cancellation_form_page3.cleaned_data['collector_address']
             
             debtor_data = f'{debtor_name} {debtor_address} {debtor_email} {debtor_phone}'
             court_data = f'{court_type} {court_name} {court_address} {court_order_number} {order_issuing_date} {order_receiving_date}'
@@ -310,168 +255,90 @@ def cancellation(request):
             except BadHeaderError:
                 return HttpResponse('Invalid header found')
 
-            print("AJAX POST received!")   # Or use logging
-            logger.info("AJAX POST received!")
-            # rest of your code...
-            # send email or process form
-            return JsonResponse({'success': True})
-            
-
-            
-
-        
-            '''if '1_page_submit' in request.POST:
-
-            try:
-                send_mail('123', '123', sender, recipient)
-
-            except BadHeaderError:
-                return HttpResponse('Invalid header found')'''
-
-            '''cancellation_form_page1 = CancellationFormPage1(request.POST)
-            cancellation_form_page2 = CancellationFormPage2(request.POST)
-            cancellation_form_page3 = CancellationFormPage3(request.POST)
-
-            debtor_data = cancellation_form_page1.cleaned_data'''
-
-
-
-                #if cancellation_form_page2.is_valid() and cancellation_form_page1.is_valid() and cancellation_form_page3.is_valid():
-
-            '''debtor_name = cancellation_form_page1.cleaned_data
-                debtor_name2 = cancellation_form_page2.cleaned_data
-                debtor_name3 = cancellation_form_page3.cleaned_data
-                debtor_name4 = f'{debtor_name} {debtor_name2} {debtor_name3}'
-                debtor_address = cancellation_form_page1.cleaned_data['debtor_address']
-                debtor_email = cancellation_form_page1.cleaned_data['debtor_email']
-                debtor_phone = cancellation_form_page1.cleaned_data['debtor_phone']'''
-
-                
-            '''if cancellation_form_page2.is_valid():
-
-                    court_type = cancellation_form_page2.cleaned_data['court_type']
-                    court_name = cancellation_form_page2.cleaned_data['court_name']
-                    court_address = cancellation_form_page2.cleaned_data['court_address']
-                    court_order_number = cancellation_form_page2.cleaned_data['court_order_number']
-                    order_issuing_date = cancellation_form_page2.cleaned_data['order_issuing_date']
-                    order_receiving_date = cancellation_form_page2.cleaned_data['order_receiving_date']
-
-                    if cancellation_form_page3.is_valid():
-
-                        collector_name = cancellation_form_page3.cleaned_data['collector_name']
-                        collector_address = cancellation_form_page3.cleaned_data['collector_address']
-                        debtor_data = f'Имя должника: {debtor_name}, адрес должника: {debtor_address}, e-mail должника: {debtor_email}, телефон должника: {debtor_phone}'
-                        court_data = f'Тип суда: {court_type}, полное наименование судебного участка: {court_name}, полный адрес судебного участка: {court_address}, номер судебнго приказа:{court_order_number}, дата вынесения судебнго приказа: {order_issuing_date}, дата получения судебноого приказа: {order_receiving_date}'
-                        collector_data = f'Наименование взыскателя: {collector_name}, адрес взыскателя: {collector_address}'
-                        cancellation_form_data = f'{debtor_data} {court_data} {collector_data}'
-
-                        try:
-                            send_mail(collector_name, collector_address, sender, recipient)
-
-                        except BadHeaderError:
-                            return HttpResponse('Invalid header found')'''
-            
-
-
-            #cancellation_form_page1 = CancellationFormPage1(request.POST)
-            '''cancellation_form_page2 = CancellationFormPage2(request.POST)
-            cancellation_form_page3 = CancellationFormPage3(request.POST)'''
-
-            ''' if cancellation_form_page1.is_valid():
-                debtor_name = cancellation_form_page1.cleaned_data['debtor_name']
-                debtor_address = cancellation_form_page1.cleaned_data['debtor_address']
-                debtor_email = cancellation_form_page1.cleaned_data['debtor_email']
-                debtor_phone = cancellation_form_page1.cleaned_data['debtor_phone']'''
-            '''court_type = cancellation_form_page2.cleaned_data['court_type']
-                court_name = cancellation_form_page2.cleaned_data['court_name']
-                court_address = cancellation_form_page2.cleaned_data['court_address']
-                court_order_number = cancellation_form_page2.cleaned_data['court_order_number']
-                order_issuing_date = cancellation_form_page2.cleaned_data['order_issuing_date']
-                order_receiving_date = cancellation_form_page2.cleaned_data['order_receiving_date']
-                collector_name = cancellation_form_page3.cleaned_data['collector_name']
-                collector_address = cancellation_form_page3.cleaned_data['collector_address']'''
-
-                #debtor_data = f'debtor_name, debtor_address, debtor_email, debtor_phone'
-            '''court_data = f'Тип суда: {court_type}, полное наименование судебного участка: {court_name}, полный адрес судебного участка: {court_address}, номер судебнго приказа:{court_order_number}, дата вынесения судебнго приказа: {order_issuing_date}, дата получения судебноого приказа: {order_receiving_date}'
-                collector_data = f'Наименование взыскателя: {collector_name}, адрес взыскателя: {collector_address}'
-                cancellation_form_data = f'{debtor_data} {court_data} {collector_data}'''
-
-
-        '''elif 'submit_page_2' in request.POST:
-
-            cancellation_form_page2 = CancellationFormPage2(request.POST)
-
-            if cancellation_form_page2.is_valid():
-                court_type = cancellation_form_page2.cleaned_data['court_type']
-                court_name = cancellation_form_page2.cleaned_data['court_name']
-                court_address = cancellation_form_page2.cleaned_data['court_address']
-                court_order_number = cancellation_form_page2.cleaned_data['court_order_number']
-                order_issuing_date = cancellation_form_page2.cleaned_data['order_issuing_date']
-                order_receiving_date = cancellation_form_page2.cleaned_data['order_receiving_date']
-
-                court_data = f'court_type, court_name, court_address, court_order_number, order_issuing_date, order_receiving_date'
-
-                try:
-                    send_mail(debtor_data, '4', sender, recipient)
-
-                except BadHeaderError:
-                    return HttpRequest('Invalid header found')''' 
-
-        '''elif 'submit_page_3' in request.POST:
-
-            cancellation_form_page3 = CancellationFormPage3(request.POST)
-
-            if cancellation_form_page3.is_valid():
-                collector_name = cancellation_form_page3.cleaned_data['collector_name']
-                collector_address = cancellation_form_page3.cleaned_data['collector_address']
-
-                collector_data = [collector_name, collector_address]  
-                try:
-                    send_mail('5', '4', sender, recipient)
-
-                except BadHeaderError:
-                    return HttpRequest('Invalid header found')   '''   
-            
-        #debtor_data = f'Имя должника: {debtor_name}, адрес должника: {debtor_address}, e-mail должника: {debtor_email}, телефон должника: {debtor_phone}'
-        #court_data = f'Тип суда: {court_type}, полное наименование судебного участка: {court_name}, полный адрес судебного участка: {court_address}, номер судебнго приказа:{court_order_number}, дата вынесения судебнго приказа: {order_issuing_date}, дата получения судебноого приказа: {order_receiving_date}'
-        #collector_data = f'Наименование взыскателя: {collector_name}, адрес взыскателя: {collector_address}'
-        #cancellation_form_data = f'{debtor_data} {court_data} {collector_data}'
-
-        ''' if 'cancellation_submit' in request.POST:
-                    cancellation_form_data = f'{debtor_data} {court_data} {collector_data}'
-                    try:
-                        send_mail('5', '4', sender, recipient)
-
-                    except BadHeaderError:
-                        return HttpRequest('Invalid header found')'''
-
-
     return render(request, 'main_page/cancellation.html', {'agreement_form': agreement_form, 'cancellation_form_page1': cancellation_form_page1, 'cancellation_form_page2': cancellation_form_page2, 'cancellation_form_page3': cancellation_form_page3})
 
         
 
 def refusal(request):
-    if request.method =='POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            phone = form.cleaned_data['phone']
-            comment = form.cleaned_data['comment']
+    agreement_form = ContactForm()
+    refusal_form_page1 = RefusalFormPage1()
+    refusal_form_page2 = RefusalFormPage2()
+    refusal_form_page3 = RefusalFormPage3()
+    refusal_form_page4 = RefusalFormPage4()
 
-            name_phone = f'{name} {phone}'
+    if request.method =='POST':
+
+        agreement_form = ContactForm(request.POST)
+        refusal_form_page1 = RefusalFormPage1(request.POST)
+        refusal_form_page2 = RefusalFormPage2(request.POST)
+        refusal_form_page3 = RefusalFormPage3(request.POST)
+        refusal_form_page4 = RefusalFormPage4(request.POST)
+
+        if agreement_form.is_valid():
 
             try:
-                send_mail(name_phone, comment, sender, recipient)
+                send_mail('1', '1', sender, recipient)
 
             except BadHeaderError:
-                return HttpRequest('Invalid header found')
-            
-        return render(request, 'main_page/refusal.html', {'form': form})
-    
-    else:
-        form = ContactForm()
+                return HttpResponse('Invalid header found')
 
-    return render(request, 'main_page/refusal.html', {'form': form})
+        if refusal_form_page1.is_valid():
+
+            cleaned = refusal_form_page1.cleaned_data
+            request.session['refusal_form_name'] = cleaned['refusal_form_name']
+            request.session['refusal_form_email'] = cleaned['refusal_form_email']
+            request.session['refusal_form_phone'] = cleaned['refusal_form_phone']
+
+
+        elif refusal_form_page2.is_valid():
+
+            cleaned = refusal_form_page2.cleaned_data
+            request.session['passport_series_and_number'] = cleaned['passport_series_and_number']
+            request.session['passport_issue_org'] = cleaned['passport_issue_org']
+            request.session['passport_issue_date'] = str(cleaned['passport_issue_date'])
+            request.session['declarant_address'] = cleaned['declarant_address']
+
+
+        elif refusal_form_page3.is_valid():
+
+            cleaned = refusal_form_page3.cleaned_data
+            request.session['creditor_name_or_tax_identification_number'] = cleaned['creditor_name_or_tax_identification_number']
+            request.session['credit_agreement_number'] = cleaned['credit_agreement_number']
+            request.session['creditor_address'] = cleaned['creditor_address']
+            request.session['credit_agreement_date'] = str(cleaned['credit_agreement_date'])
+
+
+        elif refusal_form_page4.is_valid():
+
+            refusal_form_name = request.session.get('refusal_form_name')
+            refusal_form_email = request.session.get('refusal_form_email')
+            refusal_form_phone = request.session.get('refusal_form_phone')
+
+            passport_series_and_number = request.session.get('passport_series_and_number')
+            passport_issue_org = request.session.get('passport_issue_org')
+            passport_issue_date = request.session.get('passport_issue_date')
+            declarant_address = request.session.get('declarant_address')
+
+            creditor_name_or_tax_identification_number = request.session.get('creditor_name_or_tax_identification_number')
+            credit_agreement_number = request.session.get('credit_agreement_number')
+            creditor_address = request.session.get('creditor_address')
+            credit_agreement_date = request.session.get('credit_agreement_date')
+
+            refusal_form_comment = refusal_form_page4.cleaned_data['refusal_form_comment']
+            
+            refusal_form_data_page1 = f'{refusal_form_name} {refusal_form_email} {refusal_form_phone}'
+            refusal_form_data_page2 = f'{passport_series_and_number} {passport_issue_org} {passport_issue_date} {declarant_address}'
+            refusal_form_data_page3 = f'{creditor_name_or_tax_identification_number} {credit_agreement_number} {creditor_address} {credit_agreement_date}'
+            refusal_form_data_page4 = f'{refusal_form_comment}'
+            refusal_form_data = f'{refusal_form_data_page1} {refusal_form_data_page2} {refusal_form_data_page3} {refusal_form_data_page4}'
+            
+            try:
+                send_mail('4step', refusal_form_data, sender, recipient)
+
+            except BadHeaderError:
+                return HttpResponse('Invalid header found')
+
+    return render(request, 'main_page/refusal.html', {'agreement_form': agreement_form, 'refusal_form_page1': refusal_form_page1, 'refusal_form_page2': refusal_form_page2, 'refusal_form_page3': refusal_form_page3, 'refusal_form_page4': refusal_form_page4})
 
 
 

@@ -11,10 +11,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../../static/main_page/js/modal-buttons.js" defer></script>
-    <script src="../../../static/main_page/js/multi-step-modal.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- Optional: Flatpickr Russian locale -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
     
 
     <!-- Google Font -->
@@ -29,56 +36,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
     <base href="http://127.0.0.1:8000/" />
-    <!--{{ wizard.form.media }}-->
 </head>
 <body>
     <div class="wrapper">
         
-            
-        <button class="contact-button" id="contact-button">
-            <img src="{% static 'main_page/img/contact-button1.svg' %}" alt="contact-button" class="first">
-            <img src="{% static 'main_page/img/contact-button2.svg' %}" alt="contact-button" class="second">
-        </button>
         <!--Top Bar Start-->
         <div class="top-bar">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-3">
-                        <div class="top-bar-img" id="top-bar-img">
-                            <a href="/" ><img class="img-fluid" src="{% static 'main_page/img/tplogo.png' %}" alt="tplogo"></a>
-                        </div>
+                    <div class="col-md-3 top-bar-img">
+                        <a href="/" ><img class="img" src="{% static 'main_page/img/tplogo.png' %}" alt="tplogo"></a>
                     </div>
-                    <div class="col-lg-3 phone-and-email">
-                        <div class="phone">
-                            <a href="tel:+79027721472">
-                                <div class="img">
-                                    <img src="{% static 'main_page/img/smartphone.svg' %}" alt="smartphone">
-                                </div>
-                                <div class="text" id="replacement">
-                                    <span>ТЕЛЕФОН</span>
-                                </div>
-                                <div class="link">
-                                    <span>+7(902)772-14-72</span>
-                                </div>
-                            </a>
-                        </div>
+                    <div class="col-md-3 phone-and-email">
+                        <a href="tel:+79027721472">
+                            <img src="{% static 'main_page/img/smartphone.svg' %}" alt="smartphone">
+                            <p>ТЕЛЕФОН</p>
+                            <p class="link">+7(902)772-</br>14-72</p>
+                        </a>
                     </div>
-                    <div class="col-lg-3 phone-and-email mail">
-                        <div class="email">
-                            <a href="mailto:tverdoepravo@mail.ru">
-                                <div class="img">
-                                    <img src="{% static 'main_page/img/top-mail.svg' %}" alt="mail">
-                                </div>
-                                <div class="text">
-                                    <span>EMAIL</span>
-                                </div>
-                                <div class="link">
-                                    <span>tverdoepravo@mail.ru</span>
-                                </div>
-                            </a>
-                        </div>
+                    <div class="col-md-3 phone-and-email email">
+                        <a href="mailto:tverdoepravo@mail.ru">
+                            <img src="{% static 'main_page/img/top-mail.svg' %}" alt="mail">
+                            <p class="mail">EMAIL</p>
+                            <p class="link">tverdoepravo</br>@mail.ru</p>
+                        </a>
                     </div>
-                    <div class="col-lg-3 align-self-center socials1">
+                    <div class="col-md-3 align-self-center socials1">
                         <div class="socials">
                             <a href="https://wa.me/+79027721472"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 width="100%" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
@@ -302,11 +285,11 @@
          
         <!--navbar start-->
         <div class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid navbar-custom d-lg-flex align-self-flex-end">
+            <div class="container-fluid navbar-custom d-md-flex align-self-flex-end">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 </button>
                 <div class="collapse navbar-collapse d-lg-flex justify-content-center" id="navbarSupportedContent">
-                    <ul class="navbar-nav mb-2 mb-lg-0">
+                    <ul class="navbar-nav mb-2 mb-md-0">
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/#about-us">О НАС</a>
                         </li>
@@ -328,26 +311,6 @@
         <div class="pic-line" id="pic-line">
             <div class="container text-light">
                 <h1>Помощь юриста в отмене судебного приказа</h1>
-                <button type="button" id="open_agreement_modal">123</button>
-                <!--<p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
-                <form id="lizardForm" method="post">{% csrf_token %}
-                <table>
-                {{ wizard.management_form }}
-                {% if wizard.form.forms %}
-                    {{ wizard.form.management_form }}
-                    {% for form in wizard.form.forms %}
-                        {{ form.as_table }}
-                    {% endfor %}
-                {% else %}
-                    {{ wizard.form }}
-                {% endif %}
-                </table>
-                {% if wizard.steps.prev %}
-                <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% translate "first step" %}</button>
-                <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% translate "prev step" %}</button>
-                {% endif %}
-                <input type="submit" value="{% translate 'submit' %}"/>
-                </form>-->
             </div>
         </div>
 
@@ -365,14 +328,14 @@
         <div class="pricing" id="pricing">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 article">
+                    <div class="col-md-6 article">
                         <img src="{% static 'main_page/img/cancellation1.jpeg' %}" alt="phone">
                         <div class="article-text">
                             <h3>Заявление об<br> Отмене<br> судебного<br> приказа</h3>
                             <p>2999 руб.</p>
                         </div>
                     </div>
-                    <div class="col-lg-6 article">
+                    <div class="col-md-6 article">
                         <img src="{% static 'main_page/img/cancellation2.jpeg' %}" alt="phone">
                         <div class="article-text">
                             <h3>Заявление о<br> восстановлении<br> пропущенного<br> срока</h3>
@@ -386,32 +349,37 @@
             <div class="container-fluid bg">
                 <div class="container">
                     <h3>Внесите в форму все необходимые данные, оплатите и получите готовый, юридически грамотный документ на вашу электронную почту</h3>
-                    <button type="button" name ="cancellation_modal" class="btn modal-btn cancellation-modal-btn" data-bs-toggle="modal" data-bs-target="#cancellationModal ">
+                    <button type="button" name ="cancellation_modal" class="btn modal-btn cancellation-modal-btn" data-bs-toggle="modal" data-bs-target="#cancellationModal">
                         Получить заявление об отмене судебного приказа  
                     </button>
-                    
+                </div>
                       
-                      <!-- Modal -->
-                      
-                      <div class="modal fade" id="cancellationModal" tabindex="-1" aria-labelledby="cancellationModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h1 class="modal-title fs-5" id="cancellationModalLabel">Modal title</h1>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+                <div class="modal fade" id="cancellationModal" tabindex="-1" aria-labelledby="cancellationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <h1 id="cancellationModalLabel">Заявление об отмене<br> судебного приказа</h1>
+                            <hr style="border-width: 1px; color: #4d4e55;">
                             <div class="modal-body">
+                                <button type="button" class="cancellation-exit-button" id="cancellation-exit-button" style="position: fixed;">
+                                    <img src="{% static 'main_page/img/exit.svg' %}" alt="exit-button">
+                                </button>
                                 <form id="1_page" method="POST">
+                                    <div class="page_number">
+                                        <img src="{% static 'main_page/img/cancellation_1_page.svg' %}" alt="phone"><p>Страница 1</p>
+                                    </div>
                                     {% csrf_token %}
                                     {{ cancellation_form_page1.debtor_name }}
                                     {{ cancellation_form_page1.debtor_address }}
                                     {{ cancellation_form_page1.debtor_email }}
                                     {{ cancellation_form_page1.debtor_phone }}
 
-                                    <button type="submit" id="1_page_submit" name="1_page_submit"> Далее</button>
+
+                                    <button type="submit" class="btn cancellation_page_submit first_page_submit" id="1_page_submit" name="1_page_submit"> Далее</button>
                                 </form>
                                 <form id="2_page" method="POST" style="display: none;">
+                                    <div class="page_number">
+                                        <img src="{% static 'main_page/img/cancellation_2_page.svg' %}" style="width: 50px; height: 50px; float: left; margin: 0% 0% 3% 0%;" alt="phone"><p>Страница 2</p>
+                                    </div>
                                     {% csrf_token %}
                                     {{ cancellation_form_page2.court_type }}
                                     {{ cancellation_form_page2.court_name }}
@@ -419,27 +387,66 @@
                                     {{ cancellation_form_page2.court_order_number }}
                                     {{ cancellation_form_page2.order_issuing_date }}
                                     {{ cancellation_form_page2.order_receiving_date }}
-                                    <button id="2_page_back">Назад</button>
-                                    <button type="submit" id="2_page_submit" name="2_page_submit">Далее</button>
+                                    <button class="btn cancellation_page_back" id="2_page_back">Назад</button>
+                                    <button type="submit" class="btn cancellation_page_submit" id="2_page_submit" name="2_page_submit">Далее</button>
                                 </form>
                                 <form id="3_page" method="POST" style="display: none;">
+                                    <div class="page_number">
+                                        <img src="{% static 'main_page/img/cancellation_3_page.svg' %}" style="width: 50px; height: 50px; float: left; margin: 0% 0% 3% 0%;" alt="phone"><p>Страница 3</p>
+                                    </div>
                                     {% csrf_token %}
                                     {{ cancellation_form_page3.collector_name }}
                                     {{ cancellation_form_page3.collector_address }}
                                     
-                                    <button type="button" class="modal-btn agreement-modal-btn" id="agree-show">
-                                        <span><input type="checkbox" id="checkbox1" required="true" style="pointer-events: none;">Нажимая кнопку «Получить консультацию», я даю свое 
+                                    <button type="button" class="modal-btn agreement-modal-btn" id="agree-show" style="background-color: #0d195e;">
+                                        <span><input type="checkbox" id="checkbox1" required="true" style="pointer-events: none;"> Нажимая кнопку «Получить консультацию», я даю свое 
                                             согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ 
                                             «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
                                     </button>
                                     
-                                    <button id="3_page_back">Назад</button>
-                                    <button type="submit" name="3_page_submit">Отправить</button>
+                                    <button class="btn cancellation_page_back" id="3_page_back">Назад</button>
+                                    <button type="submit" class="btn cancellation_page_submit" name="3_page_submit">Отправить</button>
                                 </form>
                                 <script>
                                     first_page = document.getElementById('1_page')
                                     second_page = document.getElementById('2_page')
                                     third_page = document.getElementById('3_page')
+
+                                    document.addEventListener("DOMContentLoaded", function () {
+                                        flatpickr("#order_receiving_date", {
+                                            dateFormat: "Y-m-d", // Matches your form input format
+                                            disableMobile: true,
+                                            locale: "ru",        // Russian language for calendar
+                                            altInput: true,
+                                            allowInput: true,
+                                            altFormat: "d.m.Y",  // Display format for users
+                                        });
+
+
+                                        // court_type form dropdown menu options white
+                                        const courtTypeSelect = document.getElementById('court_type');
+
+                                        function updatePlaceholderStyle() {
+                                            if (courtTypeSelect.value === '') {
+                                            courtTypeSelect.classList.add('placeholder-selected');
+                                            } else {
+                                            courtTypeSelect.classList.remove('placeholder-selected');
+                                            }
+                                        }
+
+                                        // Run once on load
+                                        updatePlaceholderStyle();
+
+                                        // Run every time the user selects something
+                                        courtTypeSelect.addEventListener('change', updatePlaceholderStyle);
+                                    });
+
+                                    document.getElementById('cancellation-exit-button').addEventListener('click', function () {
+                                        const cancellationModal = document.getElementById('cancellationModal');
+                                        const modalInstance = bootstrap.Modal.getOrCreateInstance(cancellationModal);
+                                        modalInstance.hide();
+                                        console.log(modalInstance);
+                                    });
 
                                     document.getElementById('agree-show').addEventListener('click', function(){
                                         const am = new bootstrap.Modal(document.getElementById('agreementModal'));
@@ -481,8 +488,6 @@
                                                     csrfmiddlewaretoken: $('[name=csrfmiddlewaretoken]').val()
                                                 },
                                                 success: function(response, data) {
-                                                    // Handle success
-                                                    console.log('Form submitted successfully!');
                                                     first_page.style.display = 'none'
                                                     second_page.style.display = 'block'
                                                 },
@@ -514,216 +519,27 @@
                                                     csrfmiddlewaretoken: $('[name=csrfmiddlewaretoken]').val()
                                                 },
                                                 success: function(response, data) {
-                                                    // Handle success
-                                                    console.log('Form submitted successfully!');
                                                     second_page.style.display = 'none'
                                                     third_page.style.display = 'block'
                                                 },
                                             });
                                         });
                                     });
-
-                                    
                                 </script>
-                                
-                                <!--<p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
-                                <form id="wizardForm" method="POST">
-                                    --<script>
-                                        $('#exampleModal').on('show.bs.modal', function () {
-                                            $.get('../cancellation/0/', function(data) {
-                                                $('#modal-content').html(data);
-                                            });
-                                        });
-                                    </script>--
-                                    {% csrf_token %}
-                                <table>
-                                {{ wizard.management_form }}
-                                {% if wizard.form.forms %}
-                                    {{ wizard.form.management_form }}
-                                    {% for form in wizard.form.forms %}
-                                        {{ form.as_table }}
-                                    {% endfor %}
-                                {% else %}
-                                    {{ wizard.form }}
-                                {% endif %}
-                                </table>
-                                {% if wizard.steps.prev %}
-                                <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">{% translate "first step" %}</button>
-                                <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% translate "prev step" %}</button>
-                                {% endif %}
-                                <input type="submit" value="{% translate 'submit' %}"/>-->
-                                <script>
-                                    
-                                
-                                $(document).ready(function() {
-                                    $('#wizardForm').on('submit', function (e) {
-
-                                        e.preventDefault();
-                                        
-                                        $.ajax({
-                                            type: 'POST',
-                                            url: '{% url "main_page:cancellation" %}',
-                                            data: $(this).serialize(),
-                                            success: function(response, data) {
-                                                // Handle success
-                                                console.log('Form submitted successfully!');
-
-                                                /*$('#modal-content').html(data);
-
-                                                const sub = new XMLHttpRequest();
-                                                const wizardForm = document.getElementById('pic-line')
-                                                sub.onload = function() {
-                                                    document.getElementById('wizardForm').innerHTML = wizardForm.innerHTML;
-                                                }
-
-                                                
-
-                                                sub.open('GET', '../cancellation/<next_step>');
-                                                sub.send();*/
-
-                                            },
-                                            /*error: function(error) {
-                                                // Handle error
-                                                console.error('Error submitting form:', error);
-                                            }*/
-                                            
-                                            //success: function (data) {
-                                                //$('#modal-content').html(data);
-                                            //}
-                                        });
-                                    });
-                                });
-                                
-                                    
-                                    /*$(document).on('submit', '#wizardForm', function(e){
-                                        
-
-                                        $.ajax({
-                                            type: 'POST',
-                                            url: '/cancellation/',
-                                            data: {
-                                                debtor_name:$('#debtor_name').val(),
-                                                debtor_address:$('#debtor_address').val(),
-                                                debtor_email:$('#debtor_email').val(),
-                                                debtor_phone:$('#debtor_phone').val(),
-                                                csrfmiddlewaretoken: '{%csrf_token%}'
-                                            },
-                                            success: function(){
-                                                alert("123");
-                                            }
-                                        });
-                                    });*/
-
-                                    
-                                </script>
-                                </form>
-                                
-                                <!--<form action="../cancellation/" target="dummyframe" method="post" id="myForm">
-                                    <div class="second-page" id="second-page" style="display: none;">
-                                        <h4>Страница 2</h4>
-                                        {% csrf_token %}
-                                            {{ cancellation_form_page2.court_type }}
-                                            {{ cancellation_form_page2.court_name }}
-                                            {{ cancellation_form_page2.court_address }}
-                                            {{ cancellation_form_page2.court_order_number }}
-                                            {{ cancellation_form_page2.order_issuing_date }}
-                                            {{ cancellation_form_page2.order_receiving_date }}
-                                        <button id="second-page-back-button">Назад</button>
-                                        <button type="submit" name="submit_page_2" onclick="myFunc2()" class="submit">Получить консультацию</button>
-                                    </div>
-                                </form>
-                                <form action="../cancellation/" target="dummyframe" method="post" id="myForm">
-                                    <div class="third-page" id="third-page" style="display: none;"> 
-                                        <h4>Страница 3</h4>
-                                            {% csrf_token %}
-                                            {{ cancellation_form_page3.collector_name }}
-                                            {{ cancellation_form_page3.collector_address }}
-                                            <button type="button" class="modal-btn agreement-modal-btn" data-bs-toggle="modal" data-bs-target="#agreementModal">
-                                                <span><input type="checkbox" id="checkbox">Нажимая кнопку «Получить консультацию», я даю свое 
-                                                    согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ 
-                                                    «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
-                                            </button>
-                                        <button id="third-page-back-button">Назад</button>
-                                        <button type="submit" name="submit_page_3" onclick="myFunc3()" class="submit">Подтвердить</button>
-                                    </div>
-                                </form>
-                                <form action="../cancellation/" method="post" id="myForm">
-                                    <div class="fourth-page" id="fourth-page" style="display: none;"> 
-                                        <h4>Страница 4</h4>
-                                            {% csrf_token %}
-
-                                        <button type="submit" name="cancellation_submit" class="submit">Получить консультацию</button>
-                                    </div>
-                                </form>-->
                             </div>
-                          </div>
                         </div>
-                      </div>
-                      <!--<script>
-
-                        const first_page = document.getElementById('first-page')
-                        const second_page = document.getElementById('second-page')
-                        const third_page = document.getElementById('third-page')
-                        const fourth_page = document.getElementById('fourth-page')
-                        const first_page_continue_button = document.getElementById('123')
-                        const second_page_continue_button = document.getElementById('second-page-continue-button')
-                                            
-                                            
-                        const second_page_back_button = document.getElementById('second-page-back-button')
-                        const third_page_continue_button = document.getElementById('third-page-continue-button')
-                        const third_page_back_button = document.getElementById('third-page-back-button')
-
-                        function myFunc1() {
-                            
-                            event.preventDefault();
-
-                            const debtorName = document.getElementById("debtor_name");
-
-
-                            if (debtorName.value === "") {
-                            alert("Please enter your name.");
-                            return;
-                            }
-                            first_page.style.display = 'none';
-                            second_page.style.display = 'block';
-                        }
-                        function myFunc2() {
-                            second_page.style.display = 'none';
-                            third_page.style.display = 'block';
-                        }
-                        function myFunc3() {
-                            third_page.style.display = 'none';
-                            fourth_page.style.display = 'block';
-                        }
-
-                        
-                        first_page_continue_button.addEventListener('click', function() {
-                            first_page.style.display = 'none'
-                            second_page.style.display = 'block'
-                        });
-                        second_page_continue_button.addEventListener('click', function() {
-                            second_page.style.display = 'none'
-                            third_page.style.display = 'block'
-                        });
-                        second_page_back_button.addEventListener('click', function() {
-                            first_page.style.display = 'block'
-                            second_page.style.display = 'none'
-                        });
-                        third_page_back_button.addEventListener('click', function() {
-                            third_page.style.display = 'none'
-                            second_page.style.display = 'block'
-                        });
-                    </script>-->
+                    </div>
                 </div>
             </div>
         </div>
+                                            
         <div class="faq">
             <div class="container">
                 <div class="header">
                     <h3>Часто задаваемые вопросы</h3>
                 </div>
-                <div class="row d-lg-flex justify-content-center">
-                    <div class="col-lg-8">
+                <div class="row d-md-flex justify-content-center">
+                    <div class="col-md-8">
                         <div class="accordion" id="accordionExample">
                             <div class="accordion-item">
                             <h2 class="accordion-header">
@@ -804,13 +620,13 @@
         <div class="contacts" id="contacts">
             <div class="container contacts-container">
                 <div class="row">
-                    <div class="col-lg-6 text-center left">
+                    <div class="col-md-6 text-center left">
                         <div class="article-header" id="bold2">
                             <h3>Получите бесплатную<br> консультацию</h3>
                         </div>
                         <p><span id="bold">Заполните форму,</span> чтобы получить бесплатную консультацию</p>
                         <div class="row links">
-                            <div class="col-lg-6 right-border">
+                            <div class="col-md-6 right-border">
                                 <a href="tel:+79027721472"><img src="{% static 'main_page/img/phone1.svg' %}" alt="phone"></a>
                                 <div class="text">
                                     <a href="tel:+79027721472">телефон</a>
@@ -819,18 +635,18 @@
                                     <a href="tel:+79027721472">+7(902)772-14-72</a>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-md-6">
                                 <a href="mailto:tverdoepravo@mail.ru"><img src="{% static 'main_page/img/mail.svg' %}" alt="mail"></a>
                                 <div class="text">
                                     <a href="mailto:tverdoepravo@mail.ru">EMAIL</a>
                                 </div>
                                 <div class="link">
-                                    <a href="mailto:tverdoepravo@mail.ru">tverdoepravo@mail.ru</a>
+                                    <a href="mailto:tverdoepravo@mail.ru">tverdoepravo</br>@mail.ru</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 text-center">
+                    <div class="col-md-6 text-center">
                         <div class="feedback">
                             <h3>Обратная связь</h3>
                             <div class="form">
@@ -860,12 +676,8 @@
                                         <div class="modal fade" id="agreementModal" tabindex="-1" aria-labelledby="agreementModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable agreement-modal-dialog" id="model-dialog" style="max-width: 600px;">
                                             <div class="modal-content" style="height: 90%;">
-                                                <!--<div class="modal-header agreement-modal-header">
-                                                    <p class="modal-title" id="agreementModalLabel">Согласие на обработку персональных данных</p>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>-->
                                                 <div class="modal-body agreement-modal-body" id="agreement-modal-body">
-                                                    <p class="modal-title" id="agreementModalLabel">Согласие на обработку персональных данных</p>
+                                                    <p class="modal-title" id="agreementModalLabel">Согласие на обработку персональных<br id="agreement-modal-header-break-line"> данных</p>
                                                     <hr style="opacity: 0.1;">
                                                     <button type="button" class="exit-button" id="exit-button">
                                                         <img src="{% static 'main_page/img/exit.png' %}" alt="exit-button">
@@ -875,7 +687,7 @@
                                                         года свободно, своей волей и в своем интересе выражаю свое безусловное согласие на обработку 
                                                         моих персональных данных Метелица Артём Александрович ИНН 100399120058, зарегистрированным в 
                                                         соответствии с законодательством РФ по адресу:<br>
-                                                        г. Санкт-Петербург, ул. Латышских Стрелков, д. 17, корп. 1 (далее по тексту - Оператор).<br>
+                                                        г. Санкт-Петербург, ул. Латышских Стрелков, д. 17, корп. 1 (далее по тексту - Оператор).<br />
                                                         1. Согласие дается на обработку одной, нескольких или всех категорий персональных данных, 
                                                         не являющихся специальными или биометрическими, предоставляемых мною, которые могут включать:<br><br>
                                                         
@@ -921,44 +733,39 @@
             </div>
         </div>
         <script>
-            const contentDiv = document.getElementById('footer_scrolled_down');
-            const newContentDiv = document.getElementById('footer_not_scrolled_down');
-            const threshold = 465;
-            const modalBody = document.getElementById('agreement-modal-body');
+            const agreementModalFooterScrolledDown = document.getElementById('footer_scrolled_down');
+            const agreementModalFooterNotScrolledDown = document.getElementById('footer_not_scrolled_down');
+            const agreementModalEnd = document.getElementById('agreement-modal-end');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Element is on screen
+                        agreementModalFooterScrolledDown.style.display = 'block';
+                        agreementModalFooterNotScrolledDown.style.display = 'none';
+                    } else {
+                        // Element is off screen
+                        agreementModalFooterScrolledDown.style.display = 'none';
+                        agreementModalFooterNotScrolledDown.style.display = 'block';    
+                    }
+                });
+            }, {
+                threshold: 0.5 // Trigger when at least 10% of the element is visible
+            });
+
+            observer.observe(agreementModalEnd);
 
             document.getElementById('exit-button').addEventListener('click', function () {
                 const agreementModal = document.getElementById('agreementModal');
                 const modalInstance = bootstrap.Modal.getOrCreateInstance(agreementModal);
                 modalInstance.hide();
-                console.log(modalInstance);
-            });
-
-
-
-            document.getElementById('agreementModal').addEventListener('shown.bs.modal', function () {
-
-            // Listen to the scroll event
-                modalBody.addEventListener('scroll', () => {
-                    let currentScroll = modalBody.scrollY;
-                    if (modalBody.scrollTop > threshold) { // Scroll down
-                        // Hide the original content and show the new content
-                        contentDiv.style.display = 'block';
-                        newContentDiv.style.display = 'none';
-                    } else { // Scroll up
-                        // Show the original content and hide the new content
-                        contentDiv.style.display = 'none';
-                        newContentDiv.style.display = 'block';
-                    }
-
-                    lastScroll = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll position
-                });
             });
         </script>
         <div class="footer" id="footer">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-8 rights-socials">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 rights-socials">
                         <div class="rights" id="rights">
                             <p>© 2022-2025 "Твердое право"<br>Метелица Артём Александрович<br>Адрес: Латышских Стрелков, д. 17, к. 1<br>ИНН: 100399120058</p>
                         </div>
@@ -1179,7 +986,7 @@
                            </svg></a>
                         </div>
                     </div>
-                    <div class="col-lg-2"></div>
+                    <div class="col-md-2"></div>
                 </div>  
             </div>
         </div>
