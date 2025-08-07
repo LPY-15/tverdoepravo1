@@ -6,9 +6,9 @@ from django.template.loader import render_to_string
 import logging
 logger = logging.getLogger(__name__)
 import requests
+from honeypot.decorators import check_honeypot
 
 
-# Create your views here.
 sender = 'befordshir@mail.ru'
 recipient = ['befordshir@gmail.com']
 
@@ -184,7 +184,7 @@ def labor_disputes(request):
     return render(request, 'main_page/labor_disputes.html', {'form': form})
 
 
-
+@check_honeypot
 def cancellation(request):
 
     agreement_form = ContactForm()
@@ -258,7 +258,7 @@ def cancellation(request):
     return render(request, 'main_page/cancellation.html', {'agreement_form': agreement_form, 'cancellation_form_page1': cancellation_form_page1, 'cancellation_form_page2': cancellation_form_page2, 'cancellation_form_page3': cancellation_form_page3})
 
         
-
+@check_honeypot
 def refusal(request):
     agreement_form = ContactForm()
     refusal_form_page1 = RefusalFormPage1()

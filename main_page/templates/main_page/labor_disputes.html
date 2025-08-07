@@ -1,4 +1,5 @@
 {% load static %}
+{% load honeypot %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -413,6 +414,7 @@
                                     <div class="comment">
                                       {{ form.comment.errors }}
                                       {{ form.comment }}
+                                      {% render_honeypot_field %}
                                     </div>
                                     <div class="warning">
                                         <button type="button" class="modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">

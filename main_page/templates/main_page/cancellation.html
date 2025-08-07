@@ -1,4 +1,5 @@
 {% load static %}
+{% load honeypot %}
 {% load widget_tweaks %}
 {% load i18n %}
 <!DOCTYPE html>
@@ -397,7 +398,7 @@
                                     {% csrf_token %}
                                     {{ cancellation_form_page3.collector_name }}
                                     {{ cancellation_form_page3.collector_address }}
-                                    
+                                    {% render_honeypot_field %}
                                     <button type="button" class="modal-btn agreement-modal-btn" id="agree-show" style="background-color: #0d195e;">
                                         <span><input type="checkbox" id="checkbox1" required="true" style="pointer-events: none;"> Нажимая кнопку «Получить консультацию», я даю свое 
                                             согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ 
@@ -666,6 +667,7 @@
                                     <div class="comment">
                                       {{ agreement_form.comment.errors }}
                                       {{ agreement_form.comment }}
+                                      {% render_honeypot_field %}
                                     </div>
                                     <div class="warning">
                                         <button type="button" class="modal-btn agreement-modal-btn" data-bs-toggle="modal" data-bs-target="#agreementModal">
