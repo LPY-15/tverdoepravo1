@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../../static/main_page/js/modal-buttons.js" defer></script>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,600;1,700;1,800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link type = "text/css" href = "{% static 'main_page/css/pre-trial.css' %}" rel = "stylesheet"/>
@@ -26,46 +25,45 @@
 </head>
 <body>
     <div class="wrapper">
+
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show success-alert" id="success-alert" role="alert">
+                <strong>Спасибо, ваши данные отправлены</strong>
+            </div>
+        {% endfor %}
+
+        <script> 
+            function hideDiv() { 
+                const targetDiv = document.getElementById('success-alert'); // Trigger fade-out by adding the "fading-out" class 
+                setTimeout(() => { 
+                    targetDiv.style.display = 'none'; 
+                }, 7500); 
+            } 
+            hideDiv()
+        </script>
+
         <!--Top Bar Start-->
         <div class="top-bar">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-3">
-                        <div class="top-bar-img">
-                            <a href="/" ><img class="img-fluid" src="{% static 'main_page/img/tplogo.png' %}" alt="tplogo"></a>
-                        </div>
+                    <div class="col-md-3 top-bar-img">
+                        <a href="/" ><img class="img" src="{% static 'main_page/img/tplogo.png' %}" alt="tplogo"></a>
                     </div>
-                    <div class="col-lg-3 phone-and-email">
-                        <div class="phone">
-                            <a href="tel:+79027721472">
-                                <div class="img">
-                                    <img src="{% static 'main_page/img/smartphone.svg' %}" alt="smartphone">
-                                </div>
-                                <div class="text">
-                                    <span>ТЕЛЕФОН</span>
-                                </div>
-                                <div class="link">
-                                    <span>+7(902)772-14-72</span>
-                                </div>
-                            </a>
-                        </div>
+                    <div class="col-md-3 phone-and-email">
+                        <a href="tel:+79027721472">
+                            <img src="{% static 'main_page/img/smartphone.svg' %}" alt="smartphone">
+                            <p>ТЕЛЕФОН</p>
+                            <p class="link">+7(902)772-</br>14-72</p>
+                        </a>
                     </div>
-                    <div class="col-lg-3 phone-and-email mail">
-                        <div class="email">
-                            <a href="mailto:tverdoepravo@mail.ru">
-                                <div class="img">
-                                    <img src="{% static 'main_page/img/top-mail.svg' %}" alt="mail">
-                                </div>
-                                <div class="text">
-                                    <span>EMAIL</span>
-                                </div>
-                                <div class="link">
-                                    <span>tverdoepravo@mail.ru</span>
-                                </div>
-                            </a>
-                        </div>
+                    <div class="col-md-3 phone-and-email email">
+                        <a href="mailto:tverdoepravo@mail.ru">
+                            <img src="{% static 'main_page/img/top-mail.svg' %}" alt="mail">
+                            <p class="mail">EMAIL</p>
+                            <p class="link">tverdoepravo</br>@mail.ru</p>
+                        </a>
                     </div>
-                    <div class="col-lg-3 align-self-center socials1">
+                    <div class="col-md-3 align-self-center socials1">
                         <div class="socials">
                             <a href="https://wa.me/+79027721472"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 width="100%" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
@@ -295,21 +293,46 @@
                 <div class="collapse navbar-collapse d-lg-flex justify-content-center" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="../#about-us">О НАС</a>
+                            <a class="nav-link" id="nav-bar-about-us" href="/">О НАС</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../#lawyer-services">НАШИ УСЛУГИ</a>
+                            <a class="nav-link" id="nav-bar-lawyer-services" href="/">НАШИ УСЛУГИ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../#pricing">СТОИМОСТЬ УСЛУГ</a>
+                            <a class="nav-link" id="nav-bar-pricing" href="/">СТОИМОСТЬ УСЛУГ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../pre-trial/#contacts">КОНТАКТЫ</a>
+                            <a class="nav-link" id="nav-bar-contacts">КОНТАКТЫ</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
+        <script> 
+
+            document.getElementById('nav-bar-about-us').addEventListener('click', function(element) { // Assuming the target element ID is known 
+                const targetId = 'about-us';
+                localStorage.setItem('targetElement', targetId); 
+                window.location.href = element.href; 
+            });
+
+            document.getElementById('nav-bar-lawyer-services').addEventListener('click', function(element) { // Assuming the target element ID is known 
+                const targetId = 'lawyer-services';
+                localStorage.setItem('targetElement', targetId); 
+                window.location.href = element.href; 
+            });
+
+            document.getElementById('nav-bar-pricing').addEventListener('click', function(element) { // Assuming the target element ID is known 
+                const targetId = 'pricing';
+                localStorage.setItem('targetElement', targetId); 
+                window.location.href = element.href; 
+            });
+
+            document.getElementById('nav-bar-contacts').addEventListener('click', function(e) {
+                document.getElementById('contacts').scrollIntoView()
+            });
+
+        </script>
         <!--navbar end-->
 
         <!--pic-line start-->
@@ -323,35 +346,35 @@
         <div class="services">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div class="service">
-                            <h4>Подготовка Претензии</h4>
+                    <div class="col-lg-4 col-sm-4 service">
+                        <div>
+                            <h4>Подготовка<br/> претензии</h4>
                             <hr>
                             <h3>от 3 000 рублей</h3>
                             <hr>
                             <p>Выработка правовой позиции по досудебному урегулированию спора и составление претензии</p>
-                            <a href="tel:+79027721472" class="btn btn-success">ВЫБРАТЬ</a>
                         </div>
+                        <a href="tel:+79027721472" class="btn btn-success">ВЫБРАТЬ</a>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="service">
+                    <div class="col-lg-4 col-sm-4 service">
+                        <div>
                             <h4>ПОДГОТОВКА ОТВЕТА НА ПРЕТЕНЗИЮ</h4>
                             <hr>
                             <h3>от 3 000 рублей</h3>
                             <hr>
                             <p>Составление ответа на претензию, при необходимости проведение экспертиз</p>
-                            <a href="tel:+79027721472" class="btn btn-success">ВЫБРАТЬ</a>
                         </div>
+                        <a href="tel:+79027721472" class="btn btn-success">ВЫБРАТЬ</a>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="service">
+                    <div class="col-lg-4 col-sm-4 service">
+                        <div>
                             <h4>Участие юриста в переговорах в рамках досудебного урегулирования спора</h4>
                             <hr>
                             <h3>от 12 000 рублей</h3>
                             <hr>
                             <p>Выезд юриста для проведения переговоров</p>
-                            <a href="tel:+79027721472" class="btn btn-success">ВЫБРАТЬ</a>
                         </div>
+                        <a href="tel:+79027721472" class="btn btn-success">ВЫБРАТЬ</a>
                     </div>
                 </div>
             </div>
@@ -435,13 +458,13 @@
         <div class="contacts" id="contacts">
             <div class="container contacts-container">
                 <div class="row">
-                    <div class="col-lg-6 text-center left">
-                        <div class="article-header">
+                    <div class="col-md-6 text-center left">
+                        <div class="article-header" id="bold2">
                             <h3>Получите бесплатную<br> консультацию</h3>
                         </div>
                         <p><span id="bold">Заполните форму,</span> чтобы получить бесплатную консультацию</p>
                         <div class="row links">
-                            <div class="col-lg-6 right-border">
+                            <div class="col-sm-6 right-border">
                                 <a href="tel:+79027721472"><img src="{% static 'main_page/img/phone1.svg' %}" alt="phone"></a>
                                 <div class="text">
                                     <a href="tel:+79027721472">телефон</a>
@@ -450,57 +473,56 @@
                                     <a href="tel:+79027721472">+7(902)772-14-72</a>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-sm-6">
                                 <a href="mailto:tverdoepravo@mail.ru"><img src="{% static 'main_page/img/mail.svg' %}" alt="mail"></a>
                                 <div class="text">
                                     <a href="mailto:tverdoepravo@mail.ru">EMAIL</a>
                                 </div>
                                 <div class="link">
-                                    <a href="mailto:tverdoepravo@mail.ru">tverdoepravo@mail.ru</a>
+                                    <a href="mailto:tverdoepravo@mail.ru">tverdoepravo</br style='display:none'>@mail.ru</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 text-center">
+                    <div class="col-md-6 text-center">
                         <div class="feedback">
                             <h3>Обратная связь</h3>
                             <div class="form">
-                                <form action="../pre-trial/" method="post">{% csrf_token %}
-                                    {{ form.non_field_errors }}
+                                <form action="../pre-trial/" method="post">
+                                    {% csrf_token %}
                                     <div>
-                                      {{ form.name.errors }}
-                                      {{ form.name }}
+                                      {{ contact_form.name }}
                                     </div>
                                     <div>
-                                      {{ form.phone.errors }}
-                                      {{ form.phone }}
+                                      {{ contact_form.phone }}
                                     </div>
                                     <div class="comment">
-                                      {{ form.comment.errors }}
-                                      {{ form.comment }}
+                                      {{ contact_form.comment }}
                                       {% render_honeypot_field %}
                                     </div>
                                     <div class="warning">
-                                        <button type="button" class="modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <span><input type="checkbox" id="checkbox" required="true">Нажимая кнопку «Получить консультацию», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
+                                        <button type="button" class="modal-btn agreement-modal-btn" data-bs-toggle="modal" data-bs-target="#agreementModal">
+                                            <span><input type="checkbox" id="contacts-checkbox" required="true" style="pointer-events: none;">Нажимая кнопку «Получить консультацию», я даю свое 
+                                                согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ 
+                                                «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
                                         </button>
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" id="model-dialog" style="max-width: 600px;">
+                                        <div class="modal fade" id="agreementModal" tabindex="-1" aria-labelledby="agreementModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable agreement-modal-dialog" id="model-dialog" style="max-width: 600px;">
                                             <div class="modal-content" style="height: 90%;">
-                                                <!--<div class="modal-header">
-                                                    <p class="modal-title" id="exampleModalLabel">Согласие на обработку персональных данных</p>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>-->
-                                                <div class="modal-body" id="modal-body">
-                                                    <p class="modal-title" id="exampleModalLabel">Согласие на обработку персональных данных</p>
+                                                <div class="modal-body agreement-modal-body" id="agreement-modal-body">
+                                                    <p class="modal-title" id="agreementModalLabel">Согласие на обработку персональных<br id="agreement-modal-header-break-line"> данных</p>
                                                     <hr style="opacity: 0.1;">
-                                                    <button class="exit-button" data-bs-dismiss="modal">
+                                                    <button type="button" class="exit-button" id="exit-button">
                                                         <img src="{% static 'main_page/img/exit.png' %}" alt="exit-button">
                                                     </button>
                                                     <p class="modal-text">
-                                                        Настоящим в соответствии с Федеральным законом № 152-ФЗ «О персональных данных» от 27.07.2006 года свободно, своей волей и в своем интересе выражаю свое безусловное согласие на обработку моих персональных данных Метелица Артём Александрович ИНН 100399120058, зарегистрированным в соответствии с законодательством РФ по адресу:<br>
-                                                        г. Санкт-Петербург, ул. Латышских Стрелков, д. 17, корп. 1 (далее по тексту - Оператор).<br>
-                                                        1. Согласие дается на обработку одной, нескольких или всех категорий персональных данных, не являющихся специальными или биометрическими, предоставляемых мною, которые могут включать:<br><br>
+                                                        Настоящим в соответствии с Федеральным законом № 152-ФЗ «О персональных данных» от 27.07.2006 
+                                                        года свободно, своей волей и в своем интересе выражаю свое безусловное согласие на обработку 
+                                                        моих персональных данных Метелица Артём Александрович ИНН 100399120058, зарегистрированным в 
+                                                        соответствии с законодательством РФ по адресу:<br>
+                                                        г. Санкт-Петербург, ул. Латышских Стрелков, д. 17, корп. 1 (далее по тексту - Оператор).<br />
+                                                        1. Согласие дается на обработку одной, нескольких или всех категорий персональных данных, 
+                                                        не являющихся специальными или биометрическими, предоставляемых мною, которые могут включать:<br><br>
                                                         
                                                         - Имя;<br>
                                                         - Телефон;<br>
@@ -516,16 +538,16 @@
                                                         
                                                         6. Настоящее согласие действует до момента его отзыва путем направления соответствующего уведомления на электронный адрес tverdoepravo@mail.ru или направления по адресу г. Санкт-Петербург, ул. Латышских Стрелков, д. 17, корп. 1.<br><br>
                                                         
-                                                        7. В случае отзыва мною согласия на обработку персональных данных Оператор вправе продолжить обработку персональных данных без моего согласия при наличии оснований, предусмотренных Федеральным законом №152-ФЗ <span id="modal-end">«О персональных данных» от 27.07.2006 г.</span>
+                                                        7. В случае отзыва мною согласия на обработку персональных данных Оператор вправе продолжить обработку персональных данных без моего согласия при наличии оснований, предусмотренных Федеральным законом №152-ФЗ <span id="agreement-modal-end">«О персональных данных» от 27.07.2006 г.</span>
                                                     </p>
                                                 </div>
-                                                <div class="modal-footer" id="modal-footer" style="display: flex; justify-content: center;">
+                                                <div class="modal-footer agreement-modal-footer" id="modal-footer" style="display: flex; justify-content: center;">
                                                     <div class="footer_scrolled_down" id="footer_scrolled_down" style="display: none;">
-                                                        <button type="button" class="btn accept-button" data-bs-dismiss="modal" onclick='check()'>Принимаю</button>
-                                                        <button type="button" class="btn decline-button" data-bs-dismiss="modal" onclick='uncheck()'>Не принимаю</button> 
+                                                        <button type="button" class="btn agreement-modal-accept-button" id="agreement-modal-accept-button" data-bs-dismiss="modal" onclick='check()'>Принимаю</button>
+                                                        <button type="button" class="btn agreement-modal-decline-button" id="agreement-modal-decline-button" data-bs-dismiss="modal" onclick='uncheck()'>Не принимаю</button> 
                                                     </div>
                                                         <div class="footer_not_scrolled_down" id="footer_not_scrolled_down">
-                                                            <a href="../pre-trial/#modal-end" class="modal-link">
+                                                            <a class="agreement-modal-link" id="agreement-modal-link">
                                                                 <p>Прочитайте до конца</p>
                                                                 <img src="{% static 'main_page/img/modal-footer.png' %}" alt="pointers">
                                                             </a>
@@ -535,7 +557,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="submit" class="submit" value="Получить консультацию"/>
+                                    <button type="submit" name="agreement_submit" class="submit">Получить консультацию</button>
                                 </form>
                             </div>
                         </div>
@@ -544,38 +566,60 @@
             </div>
         </div>
         <script>
-            const contentDiv = document.getElementById('footer_scrolled_down');
-            const newContentDiv = document.getElementById('footer_not_scrolled_down');
-            const threshold = 465;
-            const modalBody = document.getElementById('modal-body');
-            document.getElementById('exampleModal').addEventListener('shown.bs.modal', function () {
+            const agreementModalFooterScrolledDown = document.getElementById('footer_scrolled_down');
+            const agreementModalFooterNotScrolledDown = document.getElementById('footer_not_scrolled_down');
+            const agreementModalEnd = document.getElementById('agreement-modal-end');
+            contactsCheckbox = document.getElementById('contacts-checkbox')
 
-            // Listen to the scroll event
-                modalBody.addEventListener('scroll', () => {
-                    let currentScroll = modalBody.scrollY;
-                    if (modalBody.scrollTop > threshold) { // Scroll down
-                        // Hide the original content and show the new content
-                        contentDiv.style.display = 'block';
-                        newContentDiv.style.display = 'none';
-                    } else { // Scroll up
-                        // Show the original content and hide the new content
-                        contentDiv.style.display = 'none';
-                        newContentDiv.style.display = 'block';
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Element is on screen
+                        agreementModalFooterScrolledDown.style.display = 'block';
+                        agreementModalFooterNotScrolledDown.style.display = 'none';
+                    } else {
+                        // Element is off screen
+                        agreementModalFooterScrolledDown.style.display = 'none';
+                        agreementModalFooterNotScrolledDown.style.display = 'block';    
                     }
-
-                    lastScroll = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll position
                 });
+            }, {
+                threshold: 0.5
             });
+
+            observer.observe(agreementModalEnd);
+
+            document.getElementById('exit-button').addEventListener('click', function () {
+                const agreementModal = document.getElementById('agreementModal');
+                const modalInstance = bootstrap.Modal.getOrCreateInstance(agreementModal);
+                modalInstance.hide();
+            });
+
+            document.getElementById('agreement-modal-link').addEventListener('click', function (e) {
+                e.preventDefault();
+                agreementModalEnd.scrollIntoView({behavior: 'smooth'});
+            });
+
+            document.getElementById('agreement-modal-accept-button').addEventListener('click', function () {
+                contactsCheckbox.checked = true;
+            });
+
+            document.getElementById('agreement-modal-decline-button').addEventListener('click', function () {
+                contactsCheckbox.checked = false;
+            });
+
         </script>
+
         <div class="footer" id="footer">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-8 rights-socials">
-                        <div class="rights">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 rights-socials">
+                        <div class="rights" id="rights">
                             <p>© 2022-2025 "Твердое право"<br>Метелица Артём Александрович<br>Адрес: Латышских Стрелков, д. 17, к. 1<br>ИНН: 100399120058</p>
                         </div>
-                        <div class="socials">
+
+                        <div class="socials" id="socials">
                             <a href="https://wa.me/+79027721472"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 width="100%" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
                            <path class='filler' fill="#FFFFFF" opacity="1.000000" stroke="none" 
@@ -793,6 +837,63 @@
                     </div>
                     <div class="col-lg-2"></div>
                 </div>  
+            </div>
+        </div>
+        <button type="button" class="contactModal-open-btn" data-bs-toggle="modal" data-bs-target="#contactModal">
+            <img class="contact-button-first-img" src="{% static 'main_page/img/contacts-button1.png' %}" alt="exit-button">
+            <img class="contact-button-second-img" src="{% static 'main_page/img/contacts-button2.png' %}" alt="exit-button">
+        </button>
+
+        <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h1 id="contactModalLabel">Контактные данные</h1>
+                        <hr style="border-width: 1px; color: #4d4e55;">
+                        <button type="button" class="contactModal-exit-button" id="contactModal-exit-button" style="position: fixed;">
+                            <img src="{% static 'main_page/img/exit.svg' %}" alt="exit-button">
+                        </button>
+                        <form id="3_page" method="POST">
+                            {% csrf_token %}
+                            {{ contact_form.name }}
+                            {{ contact_form.phone }}
+                            {{ contact_form.comment }}
+                            {% render_honeypot_field %}
+                            <button type="button" class="modal-btn agreement-modal-btn" id="show-agreement-modal-in-contact-modal" style="background-color: #0d195e;">
+                                <span><input type="checkbox" id="contact-modal-checkbox" required="true" style="pointer-events: none;"> Нажимая кнопку «Получить консультацию», я даю свое 
+                                    согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ 
+                                    «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
+                            </button>
+                            <button type="submit" class="btn contactModal-submit-btn">Отправить</button>
+                        </form>
+                        <script>
+                            contactModalCheckbox = document.getElementById('contact-modal-checkbox')
+
+                            document.addEventListener("DOMContentLoaded", function () {
+                                document.getElementById('agreement-modal-accept-button').addEventListener('click', function () {
+                                    contactModalCheckbox.checked = true;
+                                });
+
+                                document.getElementById('agreement-modal-decline-button').addEventListener('click', function () {
+                                    contactModalCheckbox.checked = false;
+                                });
+
+                                document.getElementById('contactModal-exit-button').addEventListener('click', function () {
+                                    contactModal = document.getElementById('contactModal');
+                                    modalInstance = bootstrap.Modal.getOrCreateInstance(contactModal);
+                                    modalInstance.hide();
+                                    console.log(modalInstance);
+                                });
+
+                                document.getElementById('show-agreement-modal-in-contact-modal').addEventListener('click', function(){
+                                    agreementModal = new bootstrap.Modal(document.getElementById('agreementModal'));
+                                    agreementModal.show();
+                                });
+                            });
+
+                        </script>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
