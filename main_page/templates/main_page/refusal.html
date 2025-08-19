@@ -444,11 +444,14 @@
                                     {% csrf_token %}
                                     {{ refusal_formset_page_3.management_form }}
                                     {% for form in refusal_formset_page_3 %}
+                                        {{ form.non_field_errors }}
+                                        {{ form.errors }}
                                         {{ form.creditor_name_or_tax_identification_number }}
                                         {{ form.credit_agreement_number }}
                                         {{ form.creditor_address }}
                                         {{ form.credit_agreement_date }}
                                     {% endfor %}
+                                    {{ refusal_formset_page_3.non_form_errors }}
                                     <div class="additional_creditor_option">
                                         <button type="button" class="btn additional_creditor_page_open_button" id="additional_creditor_page_open_button">Добавить дополнительного кредитора</button>
                                         <p>Стоимость добавления дополнительного кредитора - 200 руб.</p>
@@ -642,17 +645,31 @@
                                         $('#additional_creditor_page_open_button').on('click', function (e) {
                                             e.preventDefault();
 
-                                            // Select the form element explicitly
                                             const formData = $('#3_page').serialize();
 
                                             $.ajax({
                                                 type: 'POST',
                                                 url: '{% url "main_page:refusal" %}',
                                                 data: formData,
+                                                headers: {
+                                                    'X-Requested-With': 'XMLHttpRequest'  // Tells Django it's an AJAX call
+                                                },
                                                 success: function(response) {
                                                     console.log('Formset submitted');
-                                                    // Reset the form if you want
-                                                    document.getElementById('3_page').reset();
+                                                    
+                                                    if (response.status === 'ok') {
+                                                        alert('Данные успешно сохранены!');
+                                                        $('#3_page')[0].reset();
+
+                                                        // Optionally, show saved data list
+                                                        console.log('Saved Data:', response.saved_data);
+                                                    } else {
+                                                        alert('Ошибка при сохранении данных');
+                                                    }
+                                                },
+                                                error: function(xhr, errmsg, err) {
+                                                    console.error(xhr.responseText);
+                                                    alert('Ошибка при отправке формы.');
                                                 }
                                             });
                                         });

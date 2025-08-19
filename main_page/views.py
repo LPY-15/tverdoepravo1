@@ -9,10 +9,29 @@ import requests
 from honeypot.decorators import check_honeypot
 from django.contrib import messages
 from django.forms import formset_factory
+from django.forms import BaseFormSet, ValidationError
 
 
 sender = 'befordshir@mail.ru'
 recipient = ['befordshir@gmail.com']
+
+class RequiredFormsFormSet(BaseFormSet):
+        def clean(self):
+            super().clean()
+            if any(self.errors):
+                return
+
+            filled_forms = 0
+            for form in self.forms:
+                if form.has_changed():
+                    filled_forms += 1
+                    # Check required fields manually if needed, but normally form.is_valid() does this
+                    for name, field in form.fields.items():
+                        if field.required and not form.cleaned_data.get(name):
+                            raise ValidationError(f"Поле {field.label or name} обязательно для заполнения.")
+
+            if filled_forms == 0:
+                raise ValidationError("Пожалуйста, заполните хотя бы одну форму с данными.")
 
 
 def mainPage(request):
@@ -287,11 +306,12 @@ def refusal(request):
     refusal_form_page2 = RefusalFormPage2()
     refusal_form_page3 = RefusalFormPage3()
     refusal_form_page4 = RefusalFormPage4()
-    RefusalFormSetPage3 = formset_factory(RefusalFormPage3, extra=1)
+    RefusalFormSetPage3 = formset_factory(RefusalFormPage3, formset=RequiredFormsFormSet, extra=1)
     refusal_formset_page_3 = RefusalFormSetPage3()
 
-
     if request.method =='POST':
+
+        is_ajax = request.headers.get('x-requested-with') == 'XMLHttpRequest'
 
         contact_form = ContactForm(request.POST)
         refusal_form_page1 = RefusalFormPage1(request.POST)
@@ -346,38 +366,51 @@ def refusal(request):
             declarant_address = request.session.get('declarant_address')
 
 
-            refusal_contact_form_data_page1 = f'{refusal_form_name} {refusal_form_email} {refusal_form_phone}'
-            refusal_contact_form_data_page2 = f'{passport_series_and_number} {passport_issue_org} {passport_issue_date} {declarant_address}'
+            refusal_contact_form_data_page1 = f' ФИО: {refusal_form_name}, e-mail: {refusal_form_email}, телефон: {refusal_form_phone},'
+            refusal_contact_form_data_page2 = f' серия и номер паспорта: {passport_series_and_number}, кем выдан паспорт: {passport_issue_org}, дата выдачи паспорта: {passport_issue_date}, адрес проживания заявителя: {declarant_address}, '
 
 
             refusal_contact_form_data = f"{refusal_contact_form_data_page1} {refusal_contact_form_data_page2} "
 
-            page3_strings = []
-            i = 0
 
+            page3_data = []
             for form in refusal_formset_page_3.forms:
-                i += 1
-                creditor_name_or_tax_identification_number = form.cleaned_data['creditor_name_or_tax_identification_number']
-                credit_agreement_number = form.cleaned_data['credit_agreement_number']
-                creditor_address = form.cleaned_data['creditor_address']
-                credit_agreement_date = form.cleaned_data['credit_agreement_date']
+                cleaned = form.cleaned_data
+                creditor = {
+                    'Наименование кредитора или ИНН': cleaned['creditor_name_or_tax_identification_number'],
+                    'Номер кредитного договора': cleaned['credit_agreement_number'],
+                    'Адрес кредитора': cleaned['creditor_address'],
+                    'Дата кредитного договора': str(cleaned['credit_agreement_date'])
+                }
+                page3_data.append(creditor)
 
-                page3_strings.append(f"{i}. инн{creditor_name_or_tax_identification_number} договор{credit_agreement_number} адрес {creditor_address} дата {credit_agreement_date}")
+            # Save to session (or DB if needed)
+            session_data = request.session.get('creditors_list', [])
+            session_data.extend(page3_data)
+            request.session['creditors_list'] = session_data
 
-            refusal_contact_form_data += " ".join(page3_strings)
+            refusal_contact_form_data = f"{refusal_contact_form_data_page1} {refusal_contact_form_data_page2} {session_data}"
 
-            if request.POST.get('3_page_submit') == 'clicked':
-                print(request.POST)
+
+            if is_ajax:
+                return JsonResponse({'status': 'ok', 'saved_data': session_data})
+
+            if refusal_formset_page_3.is_valid() and request.POST.get('3_page_submit') == 'clicked':
+
+                request.session['creditors_list'] = []
 
                 try:
                     send_mail('refusalform', refusal_contact_form_data, sender, recipient)
                     messages.success(request, "Form submitted successfully!")
-                    print(refusal_formset_page_3.total_form_count())  # number of forms submitted
-                    print(refusal_formset_page_3.initial_form_count())  # number of initial forms
-                    print(refusal_formset_page_3.management_form.cleaned_data)
 
                 except BadHeaderError:
                     return HttpResponse('Invalid header found')
+            
+            else:
+                # Return errors if AJAX
+                if is_ajax:
+                    errors = refusal_formset_page_3.errors  # list of dicts per form
+                    return JsonResponse({'status': 'error', 'errors': errors})
 
     return render(request, 'main_page/refusal.html', {'contact_form': contact_form, 'refusal_form_page1': refusal_form_page1, 'refusal_form_page2': refusal_form_page2, 'refusal_formset_page_3': refusal_formset_page_3})
 
