@@ -416,7 +416,7 @@
                                 </form>
                                 <form id="2_page" method="POST" style="display: none;">
                                     <div class="page_number">
-                                        <img src="{% static 'main_page/img/cancellation_2_page.svg' %}" style="width: 50px; height: 50px; float: left; margin: 0% 0% 3% 0%;" alt="phone"><p>Страница 2</p>
+                                        <img src="{% static 'main_page/img/cancellation_2_page.svg' %}" alt="phone"><p>Страница 2</p>
                                     </div>
                                     {% csrf_token %}
                                     {{ cancellation_form_page2.court_type }}
@@ -430,7 +430,7 @@
                                 </form>
                                 <form id="3_page" method="POST" style="display: none;">
                                     <div class="page_number">
-                                        <img src="{% static 'main_page/img/cancellation_3_page.svg' %}" style="width: 50px; height: 50px; float: left; margin: 0% 0% 3% 0%;" alt="phone"><p>Страница 3</p>
+                                        <img src="{% static 'main_page/img/cancellation_3_page.svg' %}" alt="phone"><p>Страница 3</p>
                                     </div>
                                     {% csrf_token %}
                                     {{ cancellation_form_page3.collector_name }}

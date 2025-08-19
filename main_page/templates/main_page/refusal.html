@@ -416,7 +416,7 @@
                                 </button>
                                 <form id="1_page" method="POST">
                                     <div class="page_number">
-                                        <img src="{% static 'main_page/img/refusal_1_page.png' %}" alt="phone"><p>Страница 1</p>
+                                        <img src="{% static 'main_page/img/cancellation_1_page.svg' %}" alt="phone"><p>Страница 1</p>
                                     </div>
                                     {% csrf_token %}
                                     {{ refusal_form_page1.refusal_form_name }}
@@ -426,7 +426,7 @@
                                 </form>
                                 <form id="2_page" method="POST" style="display: none;">
                                     <div class="page_number">
-                                        <img src="{% static 'main_page/img/refusal_2_page.png' %}" style="width: 50px; height: 50px; float: left; margin: 0% 0% 3% 0%;" alt="phone"><p>Страница 2</p>
+                                        <img src="{% static 'main_page/img/cancellation_2_page.svg' %}" alt="phone"><p>Страница 2</p>
                                     </div>
                                     {% csrf_token %}
                                     {{ refusal_form_page2.passport_series_and_number }}
@@ -439,68 +439,26 @@
                                 </form>
                                 <form id="3_page" method="POST" style="display: none;">
                                     <div class="page_number">
-                                        <img src="{% static 'main_page/img/refusal_3_page.png' %}" style="width: 50px; height: 50px; float: left; margin: 0% 0% 3% 0%;" alt="phone"><p>Страница 3</p>
+                                        <img src="{% static 'main_page/img/cancellation_3_page.svg' %}" alt="phone"><p>Страница 3</p>
                                     </div>
                                     {% csrf_token %}
-                                    {{ refusal_formset_page_3.management_form }}
-                                    {% for form in refusal_formset_page_3 %}
-                                        {{ form.non_field_errors }}
-                                        {{ form.errors }}
-                                        {{ form.creditor_name_or_tax_identification_number }}
-                                        {{ form.credit_agreement_number }}
-                                        {{ form.creditor_address }}
-                                        {{ form.credit_agreement_date }}
-                                    {% endfor %}
-                                    {{ refusal_formset_page_3.non_form_errors }}
+                                        {{ refusal_form_page3.creditor_name_or_tax_identification_number }}
+                                        {{ refusal_form_page3.credit_agreement_number }}
+                                        {{ refusal_form_page3.creditor_address }}
+                                        {{ refusal_form_page3.credit_agreement_date }}
                                     <div class="additional_creditor_option">
                                         <button type="button" class="btn additional_creditor_page_open_button" id="additional_creditor_page_open_button">Добавить дополнительного кредитора</button>
                                         <p>Стоимость добавления дополнительного кредитора - 200 руб.</p>
                                     </div>
                                     <button type="button" class="modal-btn agreement-modal-btn" id="show-agreement-modal-in-refusal-modal" style="background-color: #0d195e;">
-                                        <span><input type="checkbox" id="refusal-checkbox" required="true" style="pointer-events: none;"> Нажимая кнопку «Получить консультацию», я даю свое 
+                                        <span><input type="checkbox" id="refusal-checkbox" required="true" style="pointer-events: none;"> Нажимая кнопку «Отправить», я даю свое 
                                             согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ 
                                             «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
                                     </button>
                                     <button class="btn cancellation_page_back" id="3_page_back">Назад</button>
                                     <button type="submit" class="btn cancellation_page_submit" id="3_page_submit" name="3_page_submit" value="clicked">Отправить</button>
                                 </form>
-                                <!--<form id="additional_creditor_page" method="POST" style="display: none;">
-                                    <h1>Добавление дополнительного кредитора</h1>
-                                    {% csrf_token %}
-                                    {{ refusal_form_page3.creditor_name_or_tax_identification_number }}
-                                    {{ refusal_form_page3.credit_agreement_number }}
-                                    {{ refusal_form_page3.creditor_address }}
-                                    {{ refusal_form_page3.credit_agreement_date }}
-                                    <p class="refusal-form-4-page-text">Стоимость добавления дополнительного кредитора - 200 руб.</p>
-                                    <button type="button" class="modal-btn agreement-modal-btn" id="show-agreement-modal-in-refusal-modal" style="background-color: #0d195e;">
-                                        <span><input type="checkbox" id="refusal-checkbox" required="true" style="pointer-events: none;"> Нажимая кнопку «Получить консультацию», я даю свое 
-                                            согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ 
-                                            «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
-                                    </button>
-                                    <button class="btn cancellation_page_back" id="additional_creditor_page_back">Назад</button>
-                                    <button type="submit" class="btn cancellation_page_submit" name="additional_creditor_page_submit">Отправить</button>
-                                </form>
-                                <form id="4_page" method="POST" style="display: none;">
-                                    <div class="page_number">
-                                        <img src="{% static 'main_page/img/refusal_4_page.png' %}" style="width: 50px; height: 50px; float: left; margin: 0% 0% 3% 0%;" alt="phone"><p>Страница 4</p>
-                                    </div>
-                                    {% csrf_token %}
-                                    {{ refusal_form_page4.refusal_form_comment }}
-                                    {% render_honeypot_field %}
-                                    <p class="refusal-form-4-page-text">Если вы хотите добавить еще одного кредитора, информацию о нем укажите в комментарии. 
-                                        Обязательная информация: Наименование или ИНН кредитора, номер кредитного договора, адрес кредитора, дата кредитного договора. 
-                                        Стоимость добавления каждого дополнительно кредитора 200 руб.
-                                    </p>
-                                    <button type="button" class="modal-btn agreement-modal-btn" id="show-agreement-modal-in-refusal-modal" style="background-color: #0d195e;">
-                                        <span><input type="checkbox" id="refusal-checkbox" required="true" style="pointer-events: none;"> Нажимая кнопку «Получить консультацию», я даю свое 
-                                            согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ 
-                                            «О персональных данных», на условиях и для целей, определенных в Согласии на обработку персональных данных</span>
-                                    </button>
-                                    
-                                    <button class="btn cancellation_page_back" id="4_page_back">Назад</button>
-                                    <button type="submit" class="btn cancellation_page_submit" name="4_page_submit">Отправить</button>
-                                </form>-->
-                                
+
                                 <script>
                                     first_page = document.getElementById('1_page')
                                     second_page = document.getElementById('2_page')
@@ -628,7 +586,7 @@
                                                 type: 'POST',
                                                 url: '{% url "main_page:refusal" %}',
                                                 data: {
-                                                    form_step: 'step3',
+                                                    form_step: 'step2',
                                                     passport_series_and_number: passportSeriesAndNumber,
                                                     passport_issue_org: passportIssueOrg,
                                                     passport_issue_date: passportIssueDate,
@@ -645,32 +603,30 @@
                                         $('#additional_creditor_page_open_button').on('click', function (e) {
                                             e.preventDefault();
 
-                                            const formData = $('#3_page').serialize();
+                                            const creditoNameOrTaxIdentificationNumber = $('#creditor_name_or_tax_identification_number').val()
+                                            const creditAgreementNumber = $('#credit_agreement_number').val()
+                                            const creditorAddress = $('#creditor_address').val()
+                                            const creditAgreementDate = $('#credit_agreement_date').val()
 
                                             $.ajax({
                                                 type: 'POST',
                                                 url: '{% url "main_page:refusal" %}',
-                                                data: formData,
-                                                headers: {
-                                                    'X-Requested-With': 'XMLHttpRequest'  // Tells Django it's an AJAX call
+                                                data: {
+                                                    form_step: 'step3',
+                                                    creditor_name_or_tax_identification_number: creditoNameOrTaxIdentificationNumber,
+                                                    credit_agreement_number: creditAgreementNumber,
+                                                    creditor_address: creditorAddress,
+                                                    credit_agreement_date: creditAgreementDate,
+                                                    csrfmiddlewaretoken: $('[name=csrfmiddlewaretoken]').val()
                                                 },
-                                                success: function(response) {
-                                                    console.log('Formset submitted');
-                                                    
-                                                    if (response.status === 'ok') {
-                                                        alert('Данные успешно сохранены!');
-                                                        $('#3_page')[0].reset();
-
-                                                        // Optionally, show saved data list
-                                                        console.log('Saved Data:', response.saved_data);
-                                                    } else {
-                                                        alert('Ошибка при сохранении данных');
-                                                    }
+                                                xhrFields: {
+                                                    withCredentials: true
                                                 },
-                                                error: function(xhr, errmsg, err) {
-                                                    console.error(xhr.responseText);
-                                                    alert('Ошибка при отправке формы.');
-                                                }
+                                                crossDomain: false,
+                                                success: function(response, data) {
+                                                    console.log('3 step completed')
+                                                    third_page.reset();
+                                                },
                                             });
                                         });
                                     });
@@ -789,11 +745,11 @@
                                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable agreement-modal-dialog" id="model-dialog" style="max-width: 600px;">
                                             <div class="modal-content" style="height: 90%;">
                                                 <div class="modal-body agreement-modal-body" id="agreement-modal-body">
-                                                    <p class="modal-title" id="agreementModalLabel">Согласие на обработку персональных<br id="agreement-modal-header-break-line"> данных</p>
-                                                    <hr style="opacity: 0.1;">
                                                     <button type="button" class="exit-button" id="exit-button">
                                                         <img src="{% static 'main_page/img/exit.png' %}" alt="exit-button">
                                                     </button>
+                                                    <p class="modal-title" id="agreementModalLabel">Согласие на обработку персональных<br id="agreement-modal-header-break-line"> данных</p>
+                                                    <hr style="opacity: 0.1;">
                                                     <p class="modal-text">
                                                         Настоящим в соответствии с Федеральным законом № 152-ФЗ «О персональных данных» от 27.07.2006 
                                                         года свободно, своей волей и в своем интересе выражаю свое безусловное согласие на обработку 

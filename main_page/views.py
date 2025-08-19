@@ -309,6 +309,9 @@ def refusal(request):
     RefusalFormSetPage3 = formset_factory(RefusalFormPage3, formset=RequiredFormsFormSet, extra=1)
     refusal_formset_page_3 = RefusalFormSetPage3()
 
+    print("Session key:", request.session.session_key)
+    print("Session data before:", request.session.items())
+
     if request.method =='POST':
 
         is_ajax = request.headers.get('x-requested-with') == 'XMLHttpRequest'
@@ -354,7 +357,8 @@ def refusal(request):
             
 
 
-        elif refusal_formset_page_3.is_valid():
+        elif refusal_form_page3.is_valid():
+            print(refusal_form_page3.errors)
 
             refusal_form_name = request.session.get('refusal_form_name')
             refusal_form_email = request.session.get('refusal_form_email')
@@ -365,54 +369,43 @@ def refusal(request):
             passport_issue_date = request.session.get('passport_issue_date')
             declarant_address = request.session.get('declarant_address')
 
-
             refusal_contact_form_data_page1 = f' ФИО: {refusal_form_name}, e-mail: {refusal_form_email}, телефон: {refusal_form_phone},'
             refusal_contact_form_data_page2 = f' серия и номер паспорта: {passport_series_and_number}, кем выдан паспорт: {passport_issue_org}, дата выдачи паспорта: {passport_issue_date}, адрес проживания заявителя: {declarant_address}, '
 
-
-            refusal_contact_form_data = f"{refusal_contact_form_data_page1} {refusal_contact_form_data_page2} "
-
-
-            page3_data = []
-            for form in refusal_formset_page_3.forms:
-                cleaned = form.cleaned_data
-                creditor = {
-                    'Наименование кредитора или ИНН': cleaned['creditor_name_or_tax_identification_number'],
-                    'Номер кредитного договора': cleaned['credit_agreement_number'],
-                    'Адрес кредитора': cleaned['creditor_address'],
-                    'Дата кредитного договора': str(cleaned['credit_agreement_date'])
-                }
-                page3_data.append(creditor)
-
-            # Save to session (or DB if needed)
+            # Get existing session list or empty list
             session_data = request.session.get('creditors_list', [])
-            session_data.extend(page3_data)
+
+            # Add current form data to the list
+            cleaned = refusal_form_page3.cleaned_data
+            creditor = {
+                'Наименование кредитора или ИНН': cleaned['creditor_name_or_tax_identification_number'],
+                'Номер кредитного договора': cleaned['credit_agreement_number'],
+                'Адрес кредитора': cleaned['creditor_address'],
+                'Дата кредитного договора': str(cleaned['credit_agreement_date'])
+            }
+            print("creditor", creditor, "session_data", session_data)
+            print("Before append, session_data:", session_data)
+            session_data.append(creditor)
             request.session['creditors_list'] = session_data
+            print("After append, session_data:", request.session['creditors_list'])
 
-            refusal_contact_form_data = f"{refusal_contact_form_data_page1} {refusal_contact_form_data_page2} {session_data}"
+            # If user clicked the submit button, send email with all saved creditors
+            if request.POST.get('3_page_submit') == 'clicked':
 
-
-            if is_ajax:
-                return JsonResponse({'status': 'ok', 'saved_data': session_data})
-
-            if refusal_formset_page_3.is_valid() and request.POST.get('3_page_submit') == 'clicked':
-
-                request.session['creditors_list'] = []
+                # Construct full message with all creditors info
+                creditors_info = '\n'.join(
+                    [f"{i+1}. Наименование кредитора или ИНН: {c['Наименование кредитора или ИНН']}, Номер кредитного договора: {c['Номер кредитного договора']}, Адрес кредитора: {c['Адрес кредитора']}, Дата кредитного договора: {c['Дата кредитного договора']}" for i, c in enumerate(session_data)]
+                )
+                refusal_contact_form_data = f"{refusal_contact_form_data_page1} {refusal_contact_form_data_page2}\n\nКредиторы:\n{creditors_info}"
 
                 try:
-                    send_mail('refusalform', refusal_contact_form_data, sender, recipient)
-                    messages.success(request, "Form submitted successfully!")
+                    send_mail('Заявление об отказе от взаимодействия с кредитором', refusal_contact_form_data, sender, recipient)
+                    request.session['creditors_list'] = []
 
                 except BadHeaderError:
                     return HttpResponse('Invalid header found')
-            
-            else:
-                # Return errors if AJAX
-                if is_ajax:
-                    errors = refusal_formset_page_3.errors  # list of dicts per form
-                    return JsonResponse({'status': 'error', 'errors': errors})
 
-    return render(request, 'main_page/refusal.html', {'contact_form': contact_form, 'refusal_form_page1': refusal_form_page1, 'refusal_form_page2': refusal_form_page2, 'refusal_formset_page_3': refusal_formset_page_3})
+    return render(request, 'main_page/refusal.html', {'contact_form': contact_form, 'refusal_form_page1': refusal_form_page1, 'refusal_form_page2': refusal_form_page2, 'refusal_form_page3': refusal_form_page3})
 
 
     '''elif refusal_form_page4.is_valid():
