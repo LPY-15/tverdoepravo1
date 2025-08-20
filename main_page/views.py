@@ -1,38 +1,16 @@
 from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.core.mail import send_mail, BadHeaderError
-from .forms import ContactForm, CancellationFormPage1, CancellationFormPage2, CancellationFormPage3, RefusalFormPage1, RefusalFormPage2, RefusalFormPage3, RefusalFormPage4
+from .forms import ContactForm, CancellationFormPage1, CancellationFormPage2, CancellationFormPage3, RefusalFormPage1, RefusalFormPage2, RefusalFormPage3
 from django.template.loader import render_to_string
 import logging
 logger = logging.getLogger(__name__)
 import requests
 from honeypot.decorators import check_honeypot
 from django.contrib import messages
-from django.forms import formset_factory
-from django.forms import BaseFormSet, ValidationError
-
 
 sender = 'befordshir@mail.ru'
-recipient = ['befordshir@gmail.com']
-
-class RequiredFormsFormSet(BaseFormSet):
-        def clean(self):
-            super().clean()
-            if any(self.errors):
-                return
-
-            filled_forms = 0
-            for form in self.forms:
-                if form.has_changed():
-                    filled_forms += 1
-                    # Check required fields manually if needed, but normally form.is_valid() does this
-                    for name, field in form.fields.items():
-                        if field.required and not form.cleaned_data.get(name):
-                            raise ValidationError(f"Поле {field.label or name} обязательно для заполнения.")
-
-            if filled_forms == 0:
-                raise ValidationError("Пожалуйста, заполните хотя бы одну форму с данными.")
-
+recipient = ['tverdoepravo@mail.ru']
 
 def mainPage(request):
     if request.method == 'POST':
@@ -42,11 +20,10 @@ def mainPage(request):
             name = contact_form.cleaned_data['name']
             phone = contact_form.cleaned_data['phone']
             comment = contact_form.cleaned_data['comment']
-            name_phone = f'{name} {phone}'
+            name_phone = f' Имя: {name}, телефон: {phone}, комментарий: {comment}'
 
             try:
-                send_mail(name_phone, comment, sender, recipient)
-                messages.success(request, "Form submitted successfully!")
+                send_mail('Форма обратной связи', name_phone, sender, recipient)
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
@@ -69,11 +46,10 @@ def flooding(request):
             name = contact_form.cleaned_data['name']
             phone = contact_form.cleaned_data['phone']
             comment = contact_form.cleaned_data['comment']
-            name_phone = f'{name} {phone}'
+            name_phone = f' Имя: {name}, телефон: {phone}, комментарий: {comment}'
 
             try:
-                send_mail(name_phone, comment, sender, recipient)
-                messages.success(request, "Form submitted successfully!")
+                send_mail('Форма обратной связи', name_phone, sender, recipient)
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
@@ -95,12 +71,10 @@ def expertise(request):
             name = contact_form.cleaned_data['name']
             phone = contact_form.cleaned_data['phone']
             comment = contact_form.cleaned_data['comment']
-            name_phone = f'{name} {phone}'
+            name_phone = f' Имя: {name}, телефон: {phone}, комментарий: {comment}'
 
             try:
-                send_mail(name_phone, comment, sender, recipient)
-                messages.success(request, "Form submitted successfully!")
-
+                send_mail('Форма обратной связи', name_phone, sender, recipient)
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
@@ -121,11 +95,10 @@ def example(request):
             name = contact_form.cleaned_data['name']
             phone = contact_form.cleaned_data['phone']
             comment = contact_form.cleaned_data['comment']
-            name_phone = f'{name} {phone}'
+            name_phone = f' Имя: {name}, телефон: {phone}, комментарий: {comment}'
 
             try:
-                send_mail(name_phone, comment, sender, recipient)
-                messages.success(request, "Form submitted successfully!")
+                send_mail('Форма обратной связи', name_phone, sender, recipient)
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
@@ -146,11 +119,10 @@ def pre_trial(request):
             name = contact_form.cleaned_data['name']
             phone = contact_form.cleaned_data['phone']
             comment = contact_form.cleaned_data['comment']
-            name_phone = f'{name} {phone}'
+            name_phone = f' Имя: {name}, телефон: {phone}, комментарий: {comment}'
 
             try:
-                send_mail(name_phone, comment, sender, recipient)
-                messages.success(request, "Form submitted successfully!")
+                send_mail('Форма обратной связи', name_phone, sender, recipient)
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
@@ -171,11 +143,10 @@ def making_documents(request):
             name = contact_form.cleaned_data['name']
             phone = contact_form.cleaned_data['phone']
             comment = contact_form.cleaned_data['comment']
-            name_phone = f'{name} {phone}'
+            name_phone = f' Имя: {name}, телефон: {phone}, комментарий: {comment}'
 
             try:
-                send_mail(name_phone, comment, sender, recipient)
-                messages.success(request, "Form submitted successfully!")
+                send_mail('Форма обратной связи', name_phone, sender, recipient)
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
@@ -197,11 +168,10 @@ def labor_disputes(request):
             phone = contact_form.cleaned_data['phone']
             comment = contact_form.cleaned_data['comment']
 
-            name_phone = f'{name} {phone}'
+            name_phone = f' Имя: {name}, телефон: {phone}, комментарий: {comment}'
 
             try:
-                send_mail(name_phone, comment, sender, recipient)
-                messages.success(request, "Form submitted successfully!")
+                send_mail('Форма обратной связи', name_phone, sender, recipient)
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
@@ -237,11 +207,10 @@ def cancellation(request):
             phone = contact_form.cleaned_data['phone']
             comment = contact_form.cleaned_data['comment']
 
-            name_phone = f'{name} {phone}'
+            name_phone = f' Имя: {name}, телефон: {phone}, комментарий: {comment}'
 
             try:
-                send_mail(name_phone, comment, sender, recipient)
-                messages.success(request, "Form submitted successfully!")
+                send_mail('Форма обратной связи', name_phone, sender, recipient)
 
             except BadHeaderError:
                 return HttpResponse('Invalid header found')
@@ -314,10 +283,6 @@ def refusal(request):
     refusal_form_page1 = RefusalFormPage1()
     refusal_form_page2 = RefusalFormPage2()
     refusal_form_page3 = RefusalFormPage3()
-    refusal_form_page4 = RefusalFormPage4()
-    RefusalFormSetPage3 = formset_factory(RefusalFormPage3, formset=RequiredFormsFormSet, extra=1)
-    refusal_formset_page_3 = RefusalFormSetPage3()
-
 
     if request.method =='POST':
 
@@ -325,8 +290,6 @@ def refusal(request):
         refusal_form_page1 = RefusalFormPage1(request.POST)
         refusal_form_page2 = RefusalFormPage2(request.POST)
         refusal_form_page3 = RefusalFormPage3(request.POST)
-        refusal_form_page4 = RefusalFormPage4(request.POST)
-        refusal_formset_page_3 = RefusalFormSetPage3(request.POST)
 
         if contact_form.is_valid():
 
@@ -334,11 +297,10 @@ def refusal(request):
             phone = contact_form.cleaned_data['phone']
             comment = contact_form.cleaned_data['comment']
 
-            name_phone = f'{name} {phone}'
+            name_phone = f' Имя: {name}, телефон: {phone}, комментарий: {comment}'
 
             try:
-                send_mail(name_phone, comment, sender, recipient)
-                messages.success(request, "Form submitted successfully!")
+                send_mail('Форма обратной связи', name_phone, sender, recipient)
 
             except BadHeaderError:
                 return HttpResponse('Invalid header found')
@@ -423,11 +385,10 @@ def trademark(request):
             phone = contact_form.cleaned_data['phone']
             comment = contact_form.cleaned_data['comment']
 
-            name_phone = f'{name} {phone}'
+            name_phone = f' Имя: {name}, телефон: {phone}, комментарий: {comment}'
 
             try:
-                send_mail(name_phone, comment, sender, recipient)
-                messages.success(request, "Form submitted successfully!")
+                send_mail('Форма обратной связи', name_phone, sender, recipient)
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
