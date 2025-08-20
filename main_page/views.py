@@ -253,9 +253,13 @@ def cancellation(request):
             request.session['debtor_name'] = cleaned['debtor_name']
             request.session['debtor_address'] = cleaned['debtor_address']
             request.session['debtor_email'] = cleaned['debtor_email']
-            request.session['debtor_phone'] = cleaned['debtor_phone']
+            request.session['debtor_phone'] = str(cleaned['debtor_phone'])
+            print('1')
+        else:
+            print(cancellation_form_page1.errors)
 
-        elif cancellation_form_page2.is_valid():
+
+        if cancellation_form_page2.is_valid():
 
             cleaned = cancellation_form_page2.cleaned_data
             
@@ -265,8 +269,12 @@ def cancellation(request):
             request.session['court_order_number'] = cleaned['court_order_number']
             request.session['order_issuing_date'] = str(cleaned['order_issuing_date'])
             request.session['order_receiving_date'] = str(cleaned['order_receiving_date'])
+            print('2')
             
-        elif cancellation_form_page3.is_valid():
+        if cancellation_form_page3.is_valid():
+
+            print('3')
+
             
             debtor_name = request.session.get('debtor_name')
             debtor_address = request.session.get('debtor_address')
@@ -284,14 +292,15 @@ def cancellation(request):
             collector_address = cancellation_form_page3.cleaned_data['collector_address']
             
             debtor_data = f'{debtor_name} {debtor_address} {debtor_email} {debtor_phone}'
-            court_data = f'{court_type} {court_name} {court_address} {court_order_number} {order_issuing_date} {order_receiving_date}'
+            court_data = f'{court_type} {court_name} {court_address} qwe{court_order_number} {order_issuing_date} {order_receiving_date}'
             collector_data = f'{collector_name} {collector_address}'
             cancellation_contact_form_data = f'{debtor_data} {court_data} {collector_data}'
 
             
             try:
-                send_mail('3step', cancellation_contact_form_data, sender, recipient)
+                send_mail('Заявление об отмене судебного приказа', cancellation_contact_form_data, sender, recipient)
                 messages.success(request, "Form submitted successfully!")
+                request.session.flush()
 
             except BadHeaderError:
                 return HttpResponse('Invalid header found')
@@ -309,12 +318,8 @@ def refusal(request):
     RefusalFormSetPage3 = formset_factory(RefusalFormPage3, formset=RequiredFormsFormSet, extra=1)
     refusal_formset_page_3 = RefusalFormSetPage3()
 
-    print("Session key:", request.session.session_key)
-    print("Session data before:", request.session.items())
 
     if request.method =='POST':
-
-        is_ajax = request.headers.get('x-requested-with') == 'XMLHttpRequest'
 
         contact_form = ContactForm(request.POST)
         refusal_form_page1 = RefusalFormPage1(request.POST)
@@ -347,7 +352,7 @@ def refusal(request):
             
 
 
-        elif refusal_form_page2.is_valid():
+        if refusal_form_page2.is_valid():
             
             cleaned = refusal_form_page2.cleaned_data
             request.session['passport_series_and_number'] = cleaned['passport_series_and_number']
@@ -357,7 +362,7 @@ def refusal(request):
             
 
 
-        elif refusal_form_page3.is_valid():
+        if refusal_form_page3.is_valid():
             print(refusal_form_page3.errors)
 
             refusal_form_name = request.session.get('refusal_form_name')
@@ -383,13 +388,12 @@ def refusal(request):
                 'Адрес кредитора': cleaned['creditor_address'],
                 'Дата кредитного договора': str(cleaned['credit_agreement_date'])
             }
-            print("creditor", creditor, "session_data", session_data)
-            print("Before append, session_data:", session_data)
+
             session_data.append(creditor)
             request.session['creditors_list'] = session_data
-            print("After append, session_data:", request.session['creditors_list'])
 
-            # If user clicked the submit button, send email with all saved creditors
+
+
             if request.POST.get('3_page_submit') == 'clicked':
 
                 # Construct full message with all creditors info
@@ -401,46 +405,14 @@ def refusal(request):
                 try:
                     send_mail('Заявление об отказе от взаимодействия с кредитором', refusal_contact_form_data, sender, recipient)
                     request.session['creditors_list'] = []
+                    request.session.flush()
+
 
                 except BadHeaderError:
                     return HttpResponse('Invalid header found')
 
     return render(request, 'main_page/refusal.html', {'contact_form': contact_form, 'refusal_form_page1': refusal_form_page1, 'refusal_form_page2': refusal_form_page2, 'refusal_form_page3': refusal_form_page3})
 
-
-    '''elif refusal_form_page4.is_valid():
-
-            refusal_form_name = request.session.get('refusal_form_name')
-            refusal_form_email = request.session.get('refusal_form_email')
-            refusal_form_phone = request.session.get('refusal_form_phone')
-
-            passport_series_and_number = request.session.get('passport_series_and_number')
-            passport_issue_org = request.session.get('passport_issue_org')
-            passport_issue_date = request.session.get('passport_issue_date')
-            declarant_address = request.session.get('declarant_address')
-
-            creditor_name_or_tax_identification_number = request.session.get('creditor_name_or_tax_identification_number')
-            credit_agreement_number = request.session.get('credit_agreement_number')
-            creditor_address = request.session.get('creditor_address')
-            credit_agreement_date = request.session.get('credit_agreement_date')
-
-            refusal_contact_form_comment = refusal_form_page4.cleaned_data['refusal_form_comment']
-            
-            refusal_contact_form_data_page1 = f'{refusal_form_name} {refusal_form_email} {refusal_form_phone}'
-            refusal_contact_form_data_page2 = f'{passport_series_and_number} {passport_issue_org} {passport_issue_date} {declarant_address}'
-            refusal_contact_form_data_page3 = f'{creditor_name_or_tax_identification_number} {credit_agreement_number} {creditor_address} {credit_agreement_date}'
-            refusal_contact_form_data_page4 = f'{refusal_contact_form_comment}'
-            refusal_contact_form_data = f'{refusal_contact_form_data_page1} {refusal_contact_form_data_page2} {refusal_contact_form_data_page3} {refusal_contact_form_data_page4}'
-            
-            try:
-                send_mail('4step', refusal_contact_form_data, sender, recipient)
-                messages.success(request, "Form submitted successfully!")
-
-            except BadHeaderError:
-                return HttpResponse('Invalid header found')
-
-    return render(request, 'main_page/refusal.html', {'contact_form': contact_form, 'refusal_form_page1': refusal_form_page1, 'refusal_form_page2': refusal_form_page2, 'refusal_form_page3': refusal_form_page3, 'refusal_form_page4': refusal_form_page4})
-'''
 
 
 def trademark(request):

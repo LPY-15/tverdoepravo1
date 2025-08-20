@@ -12,8 +12,8 @@ class HiddenPlaceholderSelect(forms.Select):
 
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Имя'}))
-    phone = forms.CharField(max_length=11, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Телефон'}))
-    comment = forms.CharField(max_length=100, widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Комментарий', 'id': 'comment'}))
+    phone = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control phone-form', 'placeholder': 'Телефон'}))
+    comment = forms.CharField(max_length=1000, widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Комментарий', 'id': 'comment'}))
 
 court_type_list = [
     ('', "Тип суда"),
@@ -25,7 +25,7 @@ class CancellationFormPage1(forms.Form):
     debtor_name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'ФИО должника (кому был выдан)', 'id': 'debtor_name'}))
     debtor_address = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Адрес должника (по прописке)', 'id': 'debtor_address'}))
     debtor_email = forms.CharField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'E-mail', 'id': 'debtor_email'}))
-    debtor_phone = forms.CharField(max_length=11, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Телефон', 'id': 'debtor_phone'}))
+    debtor_phone = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control phone-form', 'placeholder': 'Телефон', 'id': 'debtor_phone'}))
 
 
 class CancellationFormPage2(forms.Form):
@@ -33,8 +33,8 @@ class CancellationFormPage2(forms.Form):
     court_name = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Полное наименование судебного участка', 'id': 'court_name'}))
     court_address = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Полный адрес судебного участка', 'id': 'court_address'}))
     court_order_number = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Номер судебного приказа (судебного дела, производства)', 'id': 'court_order_number'}))
-    order_issuing_date = forms.DateField(required=True, widget=forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Дата получения судебного приказа', 'id': 'order_receiving_date'}))
-    order_receiving_date = forms.DateField(required=True, widget=forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Дата получения судебного приказа', 'id': 'order_receiving_date'}))
+    order_issuing_date = forms.DateField(required=True, widget=forms.DateInput(attrs={'class': 'form-control flatpickr_calendar', 'placeholder': 'Дата получения судебного приказа', 'id': 'order_issuing_date'}))
+    order_receiving_date = forms.DateField(required=True, widget=forms.DateInput(attrs={'class': 'form-control flatpickr_calendar', 'placeholder': 'Дата получения судебного приказа', 'id': 'order_receiving_date'}))
 
 
 class CancellationFormPage3(forms.Form):
@@ -44,10 +44,10 @@ class CancellationFormPage3(forms.Form):
 class RefusalFormPage1(forms.Form):
     refusal_form_name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'ФИО', 'id': 'refusal_form_name'}))
     refusal_form_email = forms.CharField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'E-mail', 'id': 'refusal_form_email'}))
-    refusal_form_phone = forms.CharField(max_length=11, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Телефон', 'id': 'refusal_form_phone'}))
+    refusal_form_phone = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control phone-form', 'placeholder': 'Телефон', 'id': 'refusal_form_phone'}))
 
 class RefusalFormPage2(forms.Form):
-    passport_series_and_number = forms.CharField(min_length=11, max_length=11, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Серия и номер паспорта', 'id': 'passport_series_and_number', 'minlength': '11'}))
+    passport_series_and_number = forms.CharField(min_length=11, required=True, widget=forms.TextInput(attrs={'class': 'form-control passport_series_and_number', 'placeholder': 'Серия и номер паспорта', 'id': 'passport_series_and_number'}))
     passport_issue_org = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Кем выдан паспорт', 'id': 'passport_issue_org'}))
     passport_issue_date = forms.DateField(required=True, widget=forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Дата выдачи паспорта', 'id': 'passport_issue_date', 'class': 'flatpickr_calendar'}))
     declarant_address = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Адрес проживания заявителя', 'id': 'declarant_address'}))

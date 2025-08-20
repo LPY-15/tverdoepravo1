@@ -852,6 +852,35 @@
                             contactModalCheckbox = document.getElementById('contact-modal-checkbox')
 
                             document.addEventListener("DOMContentLoaded", function () {
+
+                                let phoneForm = document.getElementsByClassName('phone-form');
+                                for (let i = 0; i < phoneForm.length; i++) {
+                                    phoneForm[i].addEventListener('input', function (e) {
+                                        let userInput = e.target.value.replace(/\D/g, '');
+                                        if (userInput.length > 11) userInput = userInput.slice(0, 11); 
+
+                                        let formattedString = '';
+                                        
+                                        if (userInput.length > 0) {
+                                            formattedString = '+7 (' + userInput.substring(1, 4); 
+                                        }
+                                        if (userInput.length > 4) {
+                                            formattedString += ') ' + userInput.substring(4, 7);
+                                        }
+                                        if (userInput.length > 7) {
+                                            formattedString += '-' + userInput.substring(7, 11);
+                                        }
+
+                                        e.target.value = formattedString;
+
+                                        if (userInput.length < 11) {
+                                            e.target.setCustomValidity('Должно быть 11 цифр');
+                                        } else {
+                                            e.target.setCustomValidity('');
+                                        }
+                                    });
+                                }
+
                                 document.getElementById('agreement-modal-accept-button').addEventListener('click', function () {
                                     contactModalCheckbox.checked = true;
                                 });

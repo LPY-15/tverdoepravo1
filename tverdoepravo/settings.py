@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'formtools',
     'honeypot',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [

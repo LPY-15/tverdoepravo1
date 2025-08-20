@@ -32,6 +32,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+
     <base href="http://127.0.0.1:8000/" />
 </head>
 <body>
@@ -468,7 +469,9 @@
                                     refusalCheckbox = document.getElementById('refusal-checkbox')
 
                                     document.addEventListener("DOMContentLoaded", function () {
+                                        
                                         flatpickr(".flatpickr_calendar", {
+                                            plugins: [customYearDropdownPlugin()],
                                             dateFormat: "Y-m-d", // Matches your form input format
                                             position: 'above',
                                             locale: "ru",        // Russian language for calendar
@@ -477,40 +480,103 @@
                                             altFormat: "d.m.Y",  // Display format for users
                                         });
 
-                                        const passportSeriesAndNumber = document.getElementById('passport_series_and_number');
+                                        function customYearDropdownPlugin() {
+                                            return function (fp) {
+                                                return {
+                                                onReady() {
+                                                    // Find the container for months & year
+                                                    const monthsContainer = fp.calendarContainer.querySelector('.flatpickr-months');
 
-                                        passportSeriesAndNumber.addEventListener('input', (e) => {
-                                            let currentCursorPosition = passportSeriesAndNumber.selectionStart;
-                                            let symbolsAmountBeforeLoop = e.target.value.replace(/\s+/g, '');
+                                                    // Hide the native year elements (arrows and year display)
+                                                    const yearElements = monthsContainer.querySelectorAll('.cur-year, .arrowUp, .arrowDown');
+                                                    yearElements.forEach(el => el.style.display = 'none');
 
-                                            
-                                            let symbolsAmountAfterLoop = '';
-                                            for (let i = 0; i < symbolsAmountBeforeLoop.length; i++) {
-                                                if (i > 0 && i % 4 === 0 && i < 6) symbolsAmountAfterLoop += ' ';
-                                                symbolsAmountAfterLoop += symbolsAmountBeforeLoop[i];
-                                            }
+                                                    // Create the year dropdown
+                                                    const yearSelect = document.createElement('select');
+                                                    yearSelect.classList.add('flatpickr-custom-year-dropdown');
 
-                                            // Calculate cursor position change
-                                            let cursorDifferenceBeforeAndAfter = symbolsAmountAfterLoop.length - e.target.value.length;
-                                            currentCursorPosition += cursorDifferenceBeforeAndAfter;
+                                                    // Populate years (example: 1990 to 2030)
+                                                    for (let year = 1990; year <= 2030; year++) {
+                                                    const option = document.createElement('option');
+                                                    option.value = year;
+                                                    option.textContent = year;
+                                                    yearSelect.appendChild(option);
+                                                    }
 
-                                            e.target.value = symbolsAmountAfterLoop;
-                                            passportSeriesAndNumber.setSelectionRange(currentCursorPosition, currentCursorPosition);
+                                                    // Set dropdown to current year
+                                                    yearSelect.value = fp.currentYear;
 
-                                        });
+                                                    // Insert dropdown into the months container
+                                                    monthsContainer.appendChild(yearSelect);
 
-                                        function isValidLength(value) {
-                                            const raw = value.replace(/\s+/g, '');
-                                            return raw.length === 10;
+                                                    // Change year when user selects from dropdown
+                                                    yearSelect.addEventListener('change', (e) => {
+                                                    fp.changeYear(parseInt(e.target.value, 10));
+                                                    fp.redraw();
+                                                    });
+
+                                                    // Also update dropdown if user navigates year via arrows
+                                                    fp.config.onYearChange.push(() => {
+                                                    yearSelect.value = fp.currentYear;
+                                                    });
+                                                }
+                                                };
+                                            };
                                         }
 
-                                        passportSeriesAndNumber.addEventListener('input', () => {
-                                        if (!isValidLength(passportSeriesAndNumber.value)) {
-                                            passportSeriesAndNumber.setCustomValidity('Должно быть 10 цифр');
-                                        } else {
-                                            passportSeriesAndNumber.setCustomValidity('');
+                                        const passportSeriesAndNumber = document.getElementsByClassName('passport_series_and_number');
+
+                                        for (let i = 0; i < passportSeriesAndNumber.length; i++) {
+                                            passportSeriesAndNumber[i].addEventListener('input', function (e) {
+                                                let userInput = e.target.value.replace(/\D/g, '');
+                                                if (userInput.length > 11) userInput = userInput.slice(0, 11); 
+
+                                                let formattedString = '';
+                                                
+                                                if (userInput.length > 0) {
+                                                    formattedString = '' + userInput.substring(0, 4); 
+                                                }
+                                                if (userInput.length > 4) {
+                                                    formattedString += ' ' + userInput.substring(4, 10);
+                                                }
+
+                                                e.target.value = formattedString;
+
+                                                if (userInput.length < 10) {
+                                                    e.target.setCustomValidity('Должно быть 10 цифр');
+                                                } else {
+                                                    e.target.setCustomValidity('');
+                                                }
+                                            });   
                                         }
-                                        });
+
+                                        let phoneForm = document.getElementsByClassName('phone-form');
+                                        for (let i = 0; i < phoneForm.length; i++) {
+                                            phoneForm[i].addEventListener('input', function (e) {
+                                                let userInput = e.target.value.replace(/\D/g, '');
+                                                if (userInput.length > 11) userInput = userInput.slice(0, 11); 
+
+                                                let formattedString = '';
+
+                                                if (userInput.length > 0) {
+                                                    formattedString += '+7 (' + userInput.substring(1, 4); 
+                                                }
+                                                if (userInput.length > 4) {
+                                                    formattedString += ') ' + userInput.substring(4, 7);
+                                                }
+                                                if (userInput.length > 7) {
+                                                    formattedString += '-' + userInput.substring(7, 11);
+                                                }
+
+                                                e.target.value = formattedString;
+
+                                                if (userInput.length < 11) {
+                                                    e.target.setCustomValidity('Должно быть 11 цифр');
+                                                } else {
+                                                    e.target.setCustomValidity('');
+                                                }
+                                            });
+                                        }
 
                                         document.getElementById('agreement-modal-accept-button').addEventListener('click', function () {
                                             refusalCheckbox.checked = true;

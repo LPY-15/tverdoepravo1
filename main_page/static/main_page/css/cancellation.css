@@ -568,6 +568,20 @@ body {
     padding: 2%;
 }
 
+.flatpickr-calendar .flatpickr-custom-year-dropdown {
+    background-color: rgba(255, 0, 0, 0);
+    border-width: 0px;
+    color: #ffffff;
+    position: relative;
+    width: 90px;
+    right: 15%;
+    text-align: center;
+}
+
+.flatpickr-calendar .flatpickr-custom-year-dropdown option {
+    background-color: #162264;
+}
+
 .flatpickr-calendar .flatpickr-current-month select {
     font-weight: 400;
     font-size: 17.248px;
