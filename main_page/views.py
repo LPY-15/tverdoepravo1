@@ -222,6 +222,7 @@ def cancellation(request):
             request.session['debtor_address'] = cleaned['debtor_address']
             request.session['debtor_email'] = cleaned['debtor_email']
             request.session['debtor_phone'] = str(cleaned['debtor_phone'])
+            '123'
             
 
         if cancellation_form_page2.is_valid():
