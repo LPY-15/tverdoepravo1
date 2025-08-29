@@ -191,7 +191,6 @@ def cancellation(request):
     cancellation_form_page1 = CancellationFormPage1()
     cancellation_form_page2 = CancellationFormPage2()
     cancellation_form_page3 = CancellationFormPage3()
-    submit_success_message = f'123'
 
 
     if request.method =='POST':
@@ -223,10 +222,6 @@ def cancellation(request):
             request.session['debtor_address'] = cleaned['debtor_address']
             request.session['debtor_email'] = cleaned['debtor_email']
             request.session['debtor_phone'] = str(cleaned['debtor_phone'])
-            print('1')
-        else:
-            print(cancellation_form_page1.errors)
-
 
         if cancellation_form_page2.is_valid():
 
@@ -238,12 +233,8 @@ def cancellation(request):
             request.session['court_order_number'] = cleaned['court_order_number']
             request.session['order_issuing_date'] = str(cleaned['order_issuing_date'])
             request.session['order_receiving_date'] = str(cleaned['order_receiving_date'])
-            print('2')
             
         if cancellation_form_page3.is_valid():
-
-            print('3')
-
             
             debtor_name = request.session.get('debtor_name')
             debtor_address = request.session.get('debtor_address')
@@ -268,7 +259,6 @@ def cancellation(request):
             
             try:
                 send_mail('Заявление об отмене судебного приказа', cancellation_contact_form_data, sender, recipient)
-                messages.success(request, "Form submitted successfully!")
                 request.session.flush()
 
             except BadHeaderError:
@@ -339,10 +329,8 @@ def refusal(request):
             refusal_contact_form_data_page1 = f' ФИО: {refusal_form_name}, e-mail: {refusal_form_email}, телефон: {refusal_form_phone},'
             refusal_contact_form_data_page2 = f' серия и номер паспорта: {passport_series_and_number}, кем выдан паспорт: {passport_issue_org}, дата выдачи паспорта: {passport_issue_date}, адрес проживания заявителя: {declarant_address}, '
 
-            # Get existing session list or empty list
             session_data = request.session.get('creditors_list', [])
 
-            # Add current form data to the list
             cleaned = refusal_form_page3.cleaned_data
             creditor = {
                 'Наименование кредитора или ИНН': cleaned['creditor_name_or_tax_identification_number'],
@@ -358,7 +346,6 @@ def refusal(request):
 
             if request.POST.get('3_page_submit') == 'clicked':
 
-                # Construct full message with all creditors info
                 creditors_info = '\n'.join(
                     [f"{i+1}. Наименование кредитора или ИНН: {c['Наименование кредитора или ИНН']}, Номер кредитного договора: {c['Номер кредитного договора']}, Адрес кредитора: {c['Адрес кредитора']}, Дата кредитного договора: {c['Дата кредитного договора']}" for i, c in enumerate(session_data)]
                 )
