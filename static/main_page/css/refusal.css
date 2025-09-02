@@ -16,69 +16,115 @@ body {
     margin-right: 0px;
 }
 
+.success-alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    position: fixed;
+    z-index: 4000;
+    top: 20%;
+    left: 38%;
+    animation-name: fadeOutOpacity;
+    animation-timing-function: ease-out;
+    animation-delay: 3000ms;
+    animation-duration: 5s;
+    opacity: 1;
+}
+
+@keyframes fadeOutOpacity {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 .top-bar {
     color: #202F83;
     font-family: "Open Sans", serif;
 }
 
-.top-bar .top-bar-img img {
-    width: 50%;
-    height: auto;
-    float: inline-end;
+.top-bar .top-bar-img a {
+    display: flex;
+    float: right;
 }
 
-@media (max-width:1000px) {
-    .top-bar .top-bar-img img {
-        display: block;
-        margin: auto;
-        width: 100%;
-        padding-left: 15px;
-        float: none;
+.top-bar .top-bar-img img {
+    width: 80%;
+    height: auto;
+    padding-top: 5%;
+    margin: auto;
+}
+
+@media (min-width: 1000px) and (max-height: 768px) {
+    .top-bar .top-bar-img a img {
+        width: 30vh;
     }
 }
 
-@media (max-width:1000px) {
+.top-bar .phone-and-email {
+    margin-top: 10px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    color: #202F83;
+}
+
+@media (max-width: 900px) {
     .top-bar .phone-and-email {
-        text-align: center;
+        justify-content: center;
     }
 }
 
 .top-bar .phone-and-email img {
     width: 20px;
-    margin-left: 10px;
 }
 
-@media (max-width:1100px) {
+@media (max-width: 900px) {
     .top-bar .phone-and-email img {
-        display:none;
+        display: none;
     }
 }
 
-.top-bar .phone-and-email .text {
-    color: #202F83;
-    margin-left: 10px;
-}
-
-.top-bar .email {
-    margin-top: 10px;
-}
-
-.top-bar .phone {
-    margin-top: 10px;
+@media (min-width: 900px) {
+    .top-bar .phone-and-email .mail {
+        justify-content: baseline;
+        text-align: left;
+    }
 }
 
 .top-bar .phone-and-email a {
     text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    color: #202F83;
+}
+
+@media (min-width: 900px) {
+    .top-bar .phone-and-email a {
+        align-items: baseline;
+    }
+}
+
+@media (max-width: 900px) {
+    .top-bar .phone-and-email a {
+        display: inline-block;
+        text-align: center;
+    }
+}
+
+.top-bar .phone-and-email a p {
+    margin: 0%;
 }
 
 .top-bar .phone-and-email .link {
-    color: #202F83;
-    text-decoration: none;
     font-size: 18px;
     font-weight: 700;
-    position: relative;
     letter-spacing: 0.5px;
-    margin-left: 10px;
 }
 
 .top-bar .phone-and-email .link:hover {
@@ -86,15 +132,19 @@ body {
     text-decoration:underline;
 }
 
+@media (max-width: 767px) or (min-width: 900px) {
+    .top-bar .phone-and-email .link br {
+        display: none;
+    }
+}
+
 .top-bar .email {
     border-left: solid;
     border-left-width: 1px;
-    border-right: solid;
-    border-right-width: 1px;
-    border-right-color: #eeeeee;
+    border-left-color: #9AA1C7;
 }
 
-@media (max-width:1000px) {
+@media (max-width: 900px) {
     .top-bar .email {
         border-left-width: 0px;
         border-right-width: 0px;
@@ -282,7 +332,7 @@ body {
     font-size: 22px;
     line-height: 26px;
     font-weight: 400;
-    margin: 5%;
+    margin: 1%;
 }
 
 .blue-line .btn {
@@ -294,7 +344,337 @@ body {
     text-transform: uppercase;
     padding: 13px 30px;
     border-width: 0px;
-    margin: 5%;
+    margin: 1%;
+}
+
+#cancellationModal {
+    z-index: 1200;
+}
+
+.modal-backdrop {
+    z-index: 1190;
+}
+
+#cancellationModal .modal-dialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    width: 100%; /* or whatever width you need */
+    height: 100vh;
+    margin: 0;
+}
+
+
+@media (max-width: 700px) {
+    #cancellationModal .modal-dialog {
+        height: fit-content;
+    }
+}
+
+#cancellationModal .modal-content {
+    height: 100%;
+    border-radius: 0;
+    background-color: #0d195e;
+    color: #ffffff;
+}
+
+@media (max-width: 700px) {
+    #cancellationModal .modal-content {
+        border-radius: 2%;
+        padding: 5% 0%;
+    }
+}
+
+#cancellationModal .cancellation-exit-button {
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    background-color: #ffffff;
+    border-width: 0px;
+    border-radius: 50%;
+    right: 4%;
+    top: 0%;
+    background-color: #0d195e;
+}
+
+
+@media (min-width:600px) and (max-width: 1100px) {
+    #cancellationModal .cancellation-exit-button {
+        right: 7%;
+    }
+}
+
+@media (max-width: 550px) {
+    #cancellationModal .cancellation-exit-button {
+        right: 17%;
+    }
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.5;
+	}
+}
+
+#cancellationModal .cancellation-exit-button img {
+    width: 60px;
+    left: 90%;
+    border-radius: 50%;
+    animation-name: fadeInOpacity;
+	animation-timing-function: ease-in;
+	animation-duration: 1.5s;
+    opacity: 0.6;
+}
+
+@media (max-width: 1100px) {
+    #cancellationModal .cancellation-exit-button img {
+        width: 70px;
+    }
+}
+
+#cancellationModal .cancellation-exit-button img:hover {
+    opacity: 1;
+    transition: 0.5s;
+}
+
+#cancellationModal .modal-body {
+    padding: 0% 5%;
+}
+
+#cancellationModal .modal-body .page_number img {
+    width: 50px; 
+    height: 50px; 
+    float: left; 
+    margin: 0% 0% 3% 0%;
+}
+
+#cancellationModal .modal-body .page_number p {
+    font-size: 18px;
+    font-weight: 600;
+    float: left;
+    margin: 2% 0% 0% 3%;
+}
+
+#cancellationModalLabel {
+    line-height: 33px;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: 'Open Sans', serif;
+    margin-top: 4%;
+}
+
+
+#cancellationModal .form-control {
+    background-color: #162264;
+    border-color: #2b3672;
+    border-width: 1px;
+    color: #ffffff;
+}
+
+#cancellationModal .form-control:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #a60000 inset !important;
+    box-shadow: 0 0 0px 1000px #162264 inset !important;
+    -webkit-text-fill-color: #ffffff !important; /* Optional: text color */
+}
+
+#cancellationModal .form-control {
+    transition: background-color ease-in-out 0s;
+}
+
+#cancellationModal .form-control:focus {
+    box-shadow: none;
+}
+
+#cancellationModal .form-control::placeholder {
+    color: #8b91b2;
+}
+
+#cancellationModal .cancellation_page_submit {
+    text-transform: none;
+    font-size: 15px;
+    border-width: 0px;
+    width: 49%;
+    margin: 0%;
+    float: right;
+}
+
+#cancellationModal .cancellation_page_back {
+    text-transform: none;
+    font-size: 15px;
+    width: 100%;
+    background-color: #0d195e;
+    color: #ffffff;
+    border-width: 1px;
+    border-color: #000000;
+    margin: 0%;
+    width: 49%;
+    float: left;
+}
+
+#cancellationModal .first_page_submit {
+    width: 100%;
+}
+
+#cancellationModal .refusal-form-4-page-text {
+    font-size: 13px;
+    text-align: left;
+}
+
+#cancellationModal #refusal_form_comment {
+    min-height: 100px;
+}
+
+#cancellationModal select.placeholder-selected {
+    color: #999 !important; /* Light gray like a placeholder */
+  }
+
+#cancellationModal select option {
+    color: white;
+}
+
+#cancellationModal .additional_creditor_option {
+    display: flex;
+    flex-direction: column;
+}
+
+#cancellationModal .additional_creditor_page_open_button {
+    text-transform: none;
+    font-size: 15px;
+    border-width: 0px;
+}
+
+#cancellationModal .additional_creditor_option p {
+    font-size: 14px;
+    margin-top: 2%;
+}
+
+.flatpickr-calendar {
+    background-color: #0d195e;
+    border-width: 0px;
+    box-shadow: 1px 1px 20px black;
+    font-family: 'Open Sans', serif;
+    font-size: 17.248px;
+    color: #ffffff;
+    font-weight: 400;
+    border-radius: 2%;
+}
+
+.flatpickr-months {
+    font-weight: 400;
+    font-size: 14.014px;
+    background-color: #162264;
+    border-radius: 4%;
+    color: #ffffff;
+    padding: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.flatpickr-calendar .flatpickr-custom-year-dropdown {
+    background-color: rgba(255, 0, 0, 0);
+    border-width: 0px;
+    color: #ffffff;
+    position: relative;
+    width: 90px;
+    right: 15%;
+    text-align: center;
+}
+
+.flatpickr-calendar .flatpickr-custom-year-dropdown option {
+    background-color: #162264;
+}
+
+.flatpickr-calendar .flatpickr-current-month select {
+    font-weight: 400;
+    font-size: 17.248px;
+}
+
+.flatpickr-calendar .flatpickr-current-month input {
+    font-weight: 400;
+    font-size: 17.248px;
+}
+
+.flatpickr-current-month .cur-year:hover {
+    background-color: #162264;
+}
+
+.flatpickr-current-month .cur-year:hover {
+    background-color: #162264;
+}
+
+.flatpickr-weekdays {
+    background-color: #162264;
+    color: #ffffff;
+    padding: 5% 0%;
+}
+
+.flatpickr-calendar span {
+    font-size: 14.014px;
+    font-weight: 400;
+    color: white;
+}
+
+.flatpickr-calendar .flatpickr-day:hover {
+    color: #0d195e;
+}
+
+.flatpickr-day.selected {
+    color: #0d195e;
+    background-color: #ffffff;
+    border-width: 0px;
+}
+
+.flatpickr-day.today {
+    border-width: 0px;
+}
+
+.flatpickr-day.today:hover {
+    background-color: #ffffff;
+    color: #0D195E;
+}
+
+.flatpickr-calendar .nextMonthDay {
+    color: #848aad;
+}
+
+.flatpickr-calendar .nextMonthDay:hover {
+    background-color: #848aad;
+    border-width: 0px;
+}
+
+.flatpickr-calendar .prevMonthDay {
+    color: #848aad;
+}
+
+.flatpickr-calendar .prevMonthDay:hover {
+    background-color: #848aad;
+    border-width: 0px;
+}
+
+.flatpickr-prev-month svg, .flatpickr-next-month svg {
+    fill: #ffffff;
+}
+
+.flatpickr-prev-month:hover svg, .flatpickr-next-month:hover svg {
+    fill: #ffffff !important;
+}
+
+.flatpickr-calendar div {
+    font-size: 17.248px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.flatpickr-calendar .flatpickr-monthDropdown-months,
+.flatpickr-calendar .flatpickr-monthDropdown-months:hover {
+    background-color: #162264;
 }
 
 .faq {
@@ -412,6 +792,22 @@ body {
     margin-bottom: 12%;
 }
 
+.contacts .links .link br {
+    display: none;
+}
+
+@media (min-width: 800px) and (max-height: 450px) {
+    .contacts .links .link br {
+        display: block;
+    }
+}
+
+@media (min-width: 767px) and (min-height: 1000px) {
+    .contacts .links .link br {
+        display: block;
+    }
+}
+
 .contacts a img {
     width: 50px;
     margin: 5%;
@@ -483,7 +879,23 @@ body {
     display: flex;
 }
 
-.contacts .modal-btn {
+.contacts #agreementModal {
+    z-index: 1300;
+}
+
+@media (max-width: 1200px) {
+    .contacts #agreementModal {
+        max-height: 80vh;
+    }
+}
+
+@media (max-width: 950px) and (max-height: 700px) {
+    .contacts #agreementModal {
+        max-height: 100vh;
+    }
+}
+
+.agreement-modal-btn {
     background-color: #ffffff;
     border-width: 0px;
     font-family: "Open Sans", serif;
@@ -495,33 +907,39 @@ body {
     text-align: left;
 }
 
-.contacts .modal-dialog p {
+.contacts .agreement-modal-dialog p {
     color: #0D195E;
     font-size: 14px;
     line-height: 19px;
     text-align: left;
 }
 
-.contacts .modal-header button {
+.contacts .agreement-modal-header button {
     background-color: #202F83;
     opacity: 0.4;
     border-radius: 50%;
     color: #FFFFFF;
 }
 
-.contacts .modal-body {
+.contacts .agreement-modal-body {
     scroll-behavior: smooth;
 }
 
-.contacts .modal-body .exit-button {
-    position: fixed ;
-    right: 35%;
-    top: 9%;
+.contacts .agreement-modal-body .modal-title {
+    font-size: 16px;
+    margin-bottom: 5%;
+}
+
+.contacts .agreement-modal-body .exit-button {
+    position: sticky;
+    left: 90%;
+    top: 0%;
     width: 1px;
     height: 1px;
-    background-color: #ffffff;
+    background-color: rgba(255, 0, 0, 0);
     border-width: 0px;
     border-radius: 50%;
+    margin: -100%;
 }
 
 @keyframes fadeInOpacity {
@@ -533,32 +951,39 @@ body {
 	}
 }
 
-.contacts .modal-body .exit-button img {
-    width: 60px;
+.contacts #agreementModal .agreement-modal-body p #agreement-modal-header-break-line {
+    display: none;
+    position: relative;
+}
+
+@media (max-width: 450px) {
+    .contacts #agreementModal .agreement-modal-body p #agreement-modal-header-break-line {
+        display: block;
+    }
+}
+
+.contacts .agreement-modal-body .exit-button img {
+    width: 35px;
     border-radius: 50%;
     animation-name: fadeInOpacity;
 	animation-timing-function: ease-in;
 	animation-duration: 1.5s;
     opacity: 0.6;
+    position: absolute;
+    top: 0%;
+    left: 0%;
 }
 
-@media (max-width: 1100px) {
-    .contacts .modal-body .exit-button {
-        right: 20%;
-
-    }
-}
-
-.contacts .modal-body .exit-button img:hover {
+.contacts .agreement-modal-body .exit-button img:hover {
     opacity: 1;
     transition: 0.5s;
 }
 
-.contacts .modal-footer {
+.contacts .agreement-modal-footer {
     height: 100px;
 }
 
-.contacts .modal-link {
+.contacts .agreement-modal-link {
     width: 100%; 
     height: 100%;
     display: flex; 
@@ -566,11 +991,11 @@ body {
     text-decoration: none;
 }
 
-.contacts .modal-footer {
+.contacts .agreement-modal-footer {
     display: flex;
 }
 
-.contacts .modal-footer .footer_not_scrolled_down {
+.contacts .agreement-modal-footer .footer_not_scrolled_down {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -578,7 +1003,7 @@ body {
     height: 100%;
 }
 
-.contacts .modal-footer .footer_not_scrolled_down .modal-link {
+.contacts .agreement-modal-footer .footer_not_scrolled_down .agreement-modal-link {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -587,7 +1012,7 @@ body {
     height: 100%;
 }
 
-.contacts .modal-footer .footer_not_scrolled_down p {
+.contacts .agreement-modal-footer .footer_not_scrolled_down p {
     color: #202F83;
     font-family: "Open Sans", serif;
     font-size: 15px;
@@ -596,7 +1021,7 @@ body {
     margin-bottom: 0%;
 }
 
-.contacts .modal-footer .footer_not_scrolled_down img {
+.contacts .agreement-modal-footer .footer_not_scrolled_down img {
     width: fit-content;
     height: 30px;
     margin-top: 3%;
@@ -608,15 +1033,15 @@ body {
     to { opacity: 1; }
 }
 
-.contacts .modal-footer .footer_not_scrolled_down img {
+.contacts .agreement-modal-footer .footer_not_scrolled_down img {
     animation: fadein 0.8s ease-in alternate infinite;
 }
 
-.contacts .modal-footer .footer_scrolled_down {
+.contacts .agreement-modal-footer .footer_scrolled_down {
     width: 100%;
 }
 
-.contacts .modal-footer .footer_scrolled_down .btn {
+.contacts .agreement-modal-footer .footer_scrolled_down .btn {
     width: 47%;
     padding: 3%;
     font-size: 15px;
@@ -625,12 +1050,12 @@ body {
     margin: 1%;
 }
 
-.contacts .modal-footer .footer_scrolled_down .accept-button {
+.contacts .agreement-modal-footer .footer_scrolled_down .agreement-modal-accept-button {
     background-color: #202F83;
     color: #ffffff;
 }
 
-.contacts .modal-footer .footer_scrolled_down .decline-button {
+.contacts .agreement-modal-footer .footer_scrolled_down .agreement-modal-decline-button {
     color: #202F83;
     border-width: 1px;
     border-color: #202F83;
@@ -656,7 +1081,7 @@ body {
     flex-direction: row;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 700px) {
     .footer .rights-socials {
         flex-direction: column;
     }
@@ -701,10 +1126,230 @@ body {
     fill: #000000;
 }
 
-@media (max-width:1000px) {
+@media (max-width: 700px) {
     .footer .socials {
         margin: auto;
         margin-top: -50px;
         margin-bottom: 40px;
     }
+}
+
+.contactModal-open-btn {
+    position: fixed;
+    bottom: 7%;
+    right: 4%;
+    border-width: 0px;
+    background-color: rgba(255, 0, 0, 0);
+}
+
+.contactModal-open-btn img {
+    border-radius: 50%;
+    width: 50px;
+}
+
+.contactModal-open-btn .contact-button-first-img {
+    position: relative;
+    display: inline-block;
+}
+  
+.contactModal-open-btn .contact-button-second-img {
+    position: absolute;
+    top: 1%;
+    left: 9%;
+}
+
+@keyframes imageFade {
+    0% { opacity: 1; background-image: url('../img/contacts-button1.png'); }
+    40% { opacity: 1; }
+    50% { opacity: 0; } /* Instant swap */
+    100% { opacity: 0; }
+}
+
+.contactModal-open-btn .contact-button-second-img {
+    animation: imageFade 4s infinite alternate; /* 10s duration, infinite loop, alternate direction */
+}
+
+#contactModal,
+#cancellationModal {
+    z-index: 1200;
+}
+
+.modal-backdrop {
+    z-index: 1190;
+}
+#contactModal .modal-dialog,
+#cancellationModal .modal-dialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    width: 100%; /* or whatever width you need */
+    height: 100vh;
+    margin: 0;
+}
+
+
+@media (max-width: 700px) {
+    #contactModal .modal-dialog,
+    #cancellationModal .modal-dialog {
+        height: fit-content;
+    }
+}
+#contactModal .modal-content,
+#cancellationModal .modal-content {
+    height: 100%;
+    border-radius: 0;
+    background-color: #0d195e;
+    color: #ffffff;
+}
+
+@media (max-width: 700px) {
+    #contactModal .modal-content,
+    #cancellationModal .modal-content {
+        border-radius: 2%;
+        padding: 5% 0%;
+    }
+}
+#contactModal .contactModal-exit-button,
+#cancellationModal .cancellation-exit-button {
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    background-color: #ffffff;
+    border-width: 0px;
+    border-radius: 50%;
+    right: 4%;
+    top: 0%;
+    background-color: #0d195e;
+}
+
+
+@media (min-width:600px) and (max-width: 1100px) {
+    #contactModal .contactModal-exit-button,
+    #cancellationModal .cancellation-exit-button {
+        right: 7%;
+    }
+}
+
+@media (max-width: 550px) {
+    #contactModal .contactModal-exit-button,
+    #cancellationModal .cancellation-exit-button {
+        right: 17%;
+    }
+}
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+#contactModal .contactModal-exit-button img,
+#cancellationModal .cancellation-exit-button img {
+    width: 60px;
+    left: 90%;
+    border-radius: 50%;
+    animation-name: fadeInOpacity;
+    animation-timing-function: ease-in;
+    animation-duration: 1.5s;
+    opacity: 0.6;
+}
+
+@media (max-width: 1100px) {
+    #contactModal .contactModal-exit-button img,
+    #cancellationModal .cancellation-exit-button img {
+        width: 70px;
+    }
+}
+
+#contactModal .contactModal-exit-button img:hover,
+#cancellationModal .cancellation-exit-button img:hover {
+    opacity: 1;
+    transition: 0.5s;
+}
+
+#contactModal .modal-body,
+#cancellationModal .modal-body {
+    padding: 0% 5%;
+    height: 90vh;
+}
+
+#cancellationModal .modal-body .page_number img {
+    width: 50px; 
+    height: 50px; 
+    float: left; 
+    margin: 0% 0% 3% 0%;
+}
+
+#cancellationModal .modal-body .page_number p {
+    font-size: 18px;
+    font-weight: 600;
+    float: left;
+    margin: 2% 0% 0% 3%;
+}
+
+#contactModalLabel,
+#cancellationModalLabel {
+    line-height: 33px;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: 'Open Sans', serif;
+    margin-top: 4%;
+}
+
+#contactModal .form-control,
+#cancellationModal .form-control {
+    background-color: #162264;
+    border-color: #2b3672;
+    border-width: 1px;
+    color: #ffffff;
+}
+
+#contactModal .form-control:-webkit-autofill,
+#cancellationModal .form-control:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #a60000 inset !important;
+    box-shadow: 0 0 0px 1000px #162264 inset !important;
+    -webkit-text-fill-color: #ffffff !important; /* Optional: text color */
+}
+
+#contactModal .form-control,
+#cancellationModal .form-control {
+    transition: background-color ease-in-out 0s;
+}
+
+#contactModal .form-control:focus,
+#cancellationModal .form-control:focus {
+    box-shadow: none;
+}
+
+#contactModal .form-control::placeholder,
+#cancellationModal .form-control::placeholder {
+    color: #8b91b2;
+}
+
+#contactModal .contactModal-submit-btn {
+    background-color: #ffffff;
+    width: 100%;
+    font-family: "Open Sans", serif;
+    font-size: 15px;
+    line-height: 35px;
+    font-weight: 600;
+    color: #0D195E;
+    margin: 0%;
+}
+
+#contactModalLabel {
+    line-height: 33px;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: 'Open Sans', serif;
+    margin-top: 4%;
+    text-align: center;
+}
+
+#contactModal form #comment {
+    min-height: 100px;
 }

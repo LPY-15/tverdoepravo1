@@ -1,20 +1,17 @@
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="148.000000pt" height="87.000000pt" viewBox="0 0 148.000000 87.000000"
- preserveAspectRatio="xMidYMid meet">
+<svg id="e8Dg4HfFEBj1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" project-id="239bd5cdc5ae4a7384207aa1d83075d2" export-id="ab0de4573e544463a5485629ae3ca2a8" cached="false">
+<line x1="-33.981778" y1="-13.297218" x2="35.299293" y2="13.297217" transform="matrix(1.010377 0 0 1 100.135435 85.431914)" fill="none" stroke="#7f7f7f" stroke-width="3"/>
+<animate attributeName="fill" values="blue;red;blue" dur="2s" repeatCount="indefinite" />
+<line x1="-33.981778" y1="-13.297218" x2="35.299293" y2="13.297217" transform="matrix(1.010377 0.000054-.000053 1 100.135435 105.431914)" fill="red" stroke="#7f7f7f" stroke-width="3"/>
+<line x1="-33.981778" y1="-13.297218" x2="35.299293" y2="13.297217" transform="matrix(1.010377 0.000054-.000053 1 100.135435 125.431914)" fill="red" stroke="#7f7f7f" stroke-width="3"/>
+<line x1="-34.351145" y1="13.297217" x2="26.916178" y2="-13.297218" transform="matrix(1.142534 0 0 0.999999 173.847898 85.431927)" fill="none" stroke="#7f7f7f" stroke-width="3"/>
+<line x1="-34.351145" y1="13.297217" x2="26.916178" y2="-13.297218" transform="matrix(1.142534 0.000061-.000053 0.999999 173.847898 105.432152)" fill="none" stroke="#7f7f7f" stroke-width="3"/>
+<line x1="-34.351145" y1="13.297217" x2="26.916178" y2="-13.297218" transform="matrix(1.142534 0.000061-.000053 0.999999 173.847898 125.432152)" fill="none" stroke="#7f7f7f" stroke-width="3">
+<animate
+ attributeName="fill"
+ attributeType="XML"
+ keyTimes="0; 0.5; 1"
+ begin="0s" dur="5s" values="#00ff00;#ff00ff;#ff0000"
+ calcMode="discrete"
+ repeatCount="indefinite"/></line>
 
-<g transform="translate(0.000000,87.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
-<path d="M56 731 c11 -11 668 -261 686 -261 12 0 677 249 687 257 2 2 1 6 -2
-9 -4 4 -156 -50 -340 -120 -183 -69 -338 -126 -345 -126 -7 0 -161 56 -342
-125 -315 119 -366 137 -344 116z"/>
-<path d="M56 531 c11 -11 669 -261 686 -261 12 0 677 249 687 257 2 1 1 6 -2
-9 -4 4 -156 -50 -340 -120 -183 -69 -338 -126 -345 -126 -7 0 -161 56 -342
-125 -315 119 -366 137 -344 116z"/>
-<path d="M56 331 c11 -11 669 -261 686 -261 12 0 677 249 687 257 2 1 1 6 -2
-9 -4 4 -156 -50 -340 -120 -183 -69 -338 -126 -345 -126 -7 0 -161 56 -342
-125 -315 119 -366 137 -344 116z"/>
-</g>
 </svg>
