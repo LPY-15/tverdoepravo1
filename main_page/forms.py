@@ -49,14 +49,14 @@ class RefusalFormPage1(forms.Form):
 class RefusalFormPage2(forms.Form):
     passport_series_and_number = forms.CharField(min_length=11, required=True, widget=forms.TextInput(attrs={'class': 'form-control passport_series_and_number', 'placeholder': 'Серия и номер паспорта', 'id': 'passport_series_and_number'}))
     passport_issue_org = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Кем выдан паспорт', 'id': 'passport_issue_org'}))
-    passport_issue_date = forms.DateField(required=True, widget=forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Дата выдачи паспорта', 'id': 'passport_issue_date', 'class': 'flatpickr_calendar'}))
+    passport_issue_date = forms.DateField(required=True, widget=forms.DateInput(attrs={'class': 'form-control flatpickr_calendar', 'placeholder': 'Дата выдачи паспорта', 'id': 'passport_issue_date'}))
     declarant_address = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Адрес проживания заявителя', 'id': 'declarant_address'}))
 
 class RefusalFormPage3(forms.Form):
     creditor_name_or_tax_identification_number = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Наименование кредитора или ИНН', 'id': 'creditor_name_or_tax_identification_number'}))
     credit_agreement_number = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Номер кредитного договора', 'id': 'credit_agreement_number'}))
     creditor_address = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Адрес кредитора', 'id': 'creditor_address'}))
-    credit_agreement_date = forms.DateField(required=True, widget=forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Дата кредитного договора  ', 'id': 'credit_agreement_date', 'class': 'flatpickr_calendar'}))
+    credit_agreement_date = forms.DateField(required=True, widget=forms.DateInput(attrs={'class': 'form-control flatpickr_calendar', 'placeholder': 'Дата кредитного договора  ', 'id': 'credit_agreement_date'}))
 
 class RefusalFormPage4(forms.Form):
     refusal_form_comment = forms.CharField(max_length=500, required=True, widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Комментарий', 'id': 'refusal_form_comment'}))
