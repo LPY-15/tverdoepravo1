@@ -12,6 +12,7 @@ from django.contrib import messages
 sender = 'befordshir@mail.ru'
 recipient = ['befordshir@gmail.com']
 
+
 def mainPage(request):
     if request.method == 'POST':
         contact_form = ContactForm(request.POST)
@@ -222,7 +223,6 @@ def cancellation(request):
             request.session['debtor_address'] = cleaned['debtor_address']
             request.session['debtor_email'] = cleaned['debtor_email']
             request.session['debtor_phone'] = str(cleaned['debtor_phone'])
-            '123'
             
 
         if cancellation_form_page2.is_valid():
