@@ -511,6 +511,12 @@ body {
     }
 }
 
+@media (orientation: landscape) {
+    .contacts .links .link br {
+        display: block;
+    }
+}
+
 .contacts a img {
     width: 50px;
     margin: 5%;
