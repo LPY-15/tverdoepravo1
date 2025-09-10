@@ -25,6 +25,7 @@ def mainPage(request):
 
             try:
                 send_mail('Форма обратной связи', name_phone, sender, recipient)
+                messages.success(request, '123')
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
@@ -51,10 +52,11 @@ def flooding(request):
 
             try:
                 send_mail('Форма обратной связи', name_phone, sender, recipient)
+                messages.success(request, '123')
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
-            
+
             return render(request, 'main_page/flooding.html', {'contact_form':contact_form})
         
     else:
@@ -76,10 +78,11 @@ def expertise(request):
 
             try:
                 send_mail('Форма обратной связи', name_phone, sender, recipient)
+                messages.success(request, '123')
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
-            
+
             return render(request, 'main_page/expertise.html', {'contact_form': contact_form})
             
     else:
@@ -100,10 +103,11 @@ def example(request):
 
             try:
                 send_mail('Форма обратной связи', name_phone, sender, recipient)
+                messages.success(request, '123')
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
-            
+
             return render(request, 'main_page/example.html', {'contact_form': contact_form})
         
     else:
@@ -124,11 +128,12 @@ def pre_trial(request):
 
             try:
                 send_mail('Форма обратной связи', name_phone, sender, recipient)
+                messages.success(request, '123')
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
             
-        return render(request, 'main_page/pre-trial.html', {'contact_form': contact_form})
+            return render(request, 'main_page/pre-trial.html', {'contact_form': contact_form})
     
     else:
         contact_form = ContactForm()
@@ -148,11 +153,12 @@ def making_documents(request):
 
             try:
                 send_mail('Форма обратной связи', name_phone, sender, recipient)
+                messages.success(request, '123')
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
             
-        return render(request, 'main_page/making_documents.html', {'contact_form': contact_form})
+            return render(request, 'main_page/making_documents.html', {'contact_form': contact_form})
     
     else:
         contact_form = ContactForm()
@@ -173,11 +179,12 @@ def labor_disputes(request):
 
             try:
                 send_mail('Форма обратной связи', name_phone, sender, recipient)
+                messages.success(request, '123')
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
-            
-        return render(request, 'main_page/labor_disputes.html', {'contact_form': contact_form})
+
+            return render(request, 'main_page/labor_disputes.html', {'contact_form': contact_form})
     
     else:
         contact_form = ContactForm()
@@ -211,6 +218,7 @@ def cancellation(request):
 
             try:
                 send_mail('Форма обратной связи', name_phone, sender, recipient)
+                messages.success(request, '123')
 
             except BadHeaderError:
                 return HttpResponse('Invalid header found')
@@ -262,6 +270,7 @@ def cancellation(request):
             try:
                 send_mail('Заявление об отмене судебного приказа', cancellation_contact_form_data, sender, recipient)
                 request.session.flush()
+                messages.success(request, '123')
 
             except BadHeaderError:
                 return HttpResponse('Invalid header found')
@@ -293,6 +302,7 @@ def refusal(request):
 
             try:
                 send_mail('Форма обратной связи', name_phone, sender, recipient)
+                messages.success(request, '123')
 
             except BadHeaderError:
                 return HttpResponse('Invalid header found')
@@ -357,6 +367,7 @@ def refusal(request):
                     send_mail('Заявление об отказе от взаимодействия с кредитором', refusal_contact_form_data, sender, recipient)
                     request.session['creditors_list'] = []
                     request.session.flush()
+                    messages.success(request, '123')
 
 
                 except BadHeaderError:
@@ -378,6 +389,7 @@ def trademark(request):
 
             try:
                 send_mail('Форма обратной связи', name_phone, sender, recipient)
+                messages.success(request, '123')
 
             except BadHeaderError:
                 return HttpRequest('Invalid header found')
