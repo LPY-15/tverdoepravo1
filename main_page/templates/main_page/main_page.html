@@ -1093,7 +1093,7 @@
                 </div>  
             </div>
         </div>
-        <button type="button" class="contactModal-open-btn" data-bs-toggle="modal" data-bs-target="#contactModal">
+        <button type="button" class="contactModal-open-btn" id="modal-open-btn" data-bs-toggle="modal" data-bs-target="#contactModal">
             <img class="contact-button-first-img" src="{% static 'main_page/img/contacts-button1.png' %}" alt="exit-button">
             <img class="contact-button-second-img" src="{% static 'main_page/img/contacts-button2.png' %}" alt="exit-button">
         </button>
@@ -1161,16 +1161,22 @@
                                     contactModalCheckbox.checked = false;
                                 });
 
+                                document.getElementById('show-agreement-modal-in-contact-modal').addEventListener('click', function(){
+                                    agreementModal = new bootstrap.Modal(document.getElementById('agreementModal'));
+                                    agreementModal.show();
+                                });
+
+                                const bodyElement = document.body
+
+                                document.getElementById('modal-open-btn').addEventListener('click', function(){
+                                    bodyElement.classList.add('no-scroll');
+                                });
+
                                 document.getElementById('contactModal-exit-button').addEventListener('click', function () {
                                     contactModal = document.getElementById('contactModal');
                                     modalInstance = bootstrap.Modal.getOrCreateInstance(contactModal);
                                     modalInstance.hide();
-                                    console.log(modalInstance);
-                                });
-
-                                document.getElementById('show-agreement-modal-in-contact-modal').addEventListener('click', function(){
-                                    agreementModal = new bootstrap.Modal(document.getElementById('agreementModal'));
-                                    agreementModal.show();
+                                    bodyElement.classList.remove('no-scroll');
                                 });
                             });
 

@@ -1242,3 +1242,7 @@ body {
 #contactModal form #comment {
     min-height: 100px;
 }
+
+.no-scroll {
+    overflow-y: hidden !important;
+}
