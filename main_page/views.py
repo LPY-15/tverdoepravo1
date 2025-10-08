@@ -10,7 +10,7 @@ from honeypot.decorators import check_honeypot
 from django.contrib import messages
 
 sender = 'befordshir@mail.ru'
-recipient = ['befordshir@gmail.com']
+recipient = ['tverdoepravo@mail.ru']
 
 
 def mainPage(request):
