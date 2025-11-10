@@ -38,8 +38,8 @@ class CancellationFormPage2(forms.Form):
 
 
 class CancellationFormPage3(forms.Form):
-    collector_name = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Наименование взыскателя', 'id': 'collector_name'}))
-    collector_address = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Адрес взыскателя', 'id': 'collector_address'}))
+    collector_name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Наименование взыскателя', 'id': 'collector_name'}))
+    collector_address = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Адрес взыскателя', 'id': 'collector_address'}))
 
 class RefusalFormPage1(forms.Form):
     refusal_form_name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'ФИО', 'id': 'refusal_form_name'}))

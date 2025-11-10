@@ -243,6 +243,8 @@ def cancellation(request):
             request.session['court_order_number'] = cleaned['court_order_number']
             request.session['order_issuing_date'] = str(cleaned['order_issuing_date'])
             request.session['order_receiving_date'] = str(cleaned['order_receiving_date'])
+
+
             
         if cancellation_form_page3.is_valid():
             
@@ -250,8 +252,10 @@ def cancellation(request):
             debtor_address = request.session.get('debtor_address')
             debtor_email = request.session.get('debtor_email')
             debtor_phone = request.session.get('debtor_phone')
+            
 
             court_type = request.session.get('court_type')
+            court_type_label = dict(cancellation_form_page2.fields['court_type'].choices).get(court_type, court_type)
             court_name = request.session.get('court_name')
             court_address = request.session.get('court_address')
             court_order_number = request.session.get('court_order_number')
@@ -262,13 +266,13 @@ def cancellation(request):
             collector_address = cancellation_form_page3.cleaned_data['collector_address']
             
             debtor_data = f'{debtor_name} {debtor_address} {debtor_email} {debtor_phone}'
-            court_data = f'{court_type} {court_name} {court_address} qwe{court_order_number} {order_issuing_date} {order_receiving_date}'
+            court_data = f'{court_type_label} {court_name} {court_address} {court_order_number} {order_issuing_date} {order_receiving_date}'
             collector_data = f'{collector_name} {collector_address}'
             cancellation_contact_form_data = f'{debtor_data} {court_data} {collector_data}'
 
             
             try:
-                send_mail('Заявление об отмене судебного приказа', cancellation_contact_form_data, sender, recipient)
+                send_mail('Заявление об отмене судебного приказа', cancellation_contact_form_data, sender, ['befordshir@gmail.com'])
                 request.session.flush()
                 messages.success(request, '123')
 
