@@ -272,7 +272,7 @@ def cancellation(request):
 
             
             try:
-                send_mail('Заявление об отмене судебного приказа', cancellation_contact_form_data, sender, ['befordshir@gmail.com'])
+                send_mail('Заявление об отмене судебного приказа', cancellation_contact_form_data, sender, recipient)
                 request.session.flush()
                 messages.success(request, '123')
 
