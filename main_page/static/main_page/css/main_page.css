@@ -1078,7 +1078,7 @@ body {
     right: 0;
     bottom: 0;
     left: auto;
-    width: 100%; /* or whatever width you need */
+    width: 100%;
     height: 100vh;
     margin: 0;
 }
