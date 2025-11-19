@@ -511,6 +511,12 @@ body {
     }
 }
 
+@media (orientation: landscape) {
+    .contacts .links .link br {
+        display: block;
+    }
+}
+
 .contacts a img {
     width: 50px;
     margin: 5%;
@@ -630,19 +636,18 @@ body {
 
 .contacts .agreement-modal-body .modal-title {
     font-size: 16px;
-    margin-bottom: 5%;
+    margin-bottom: 0%;
 }
 
 .contacts .agreement-modal-body .exit-button {
     position: sticky;
     left: 90%;
-    top: 0%;
+    top: 3%;
     width: 1px;
     height: 1px;
     background-color: rgba(255, 0, 0, 0);
     border-width: 0px;
     border-radius: 50%;
-    margin: -100%;
 }
 
 @keyframes fadeInOpacity {
@@ -884,7 +889,7 @@ body {
     bottom: 0;
     left: auto;
     width: 100%; /* or whatever width you need */
-    height: 100vh;
+    height: 100dvh;
     margin: 0;
 }
 

@@ -370,7 +370,7 @@ body {
     bottom: 0;
     left: auto;
     width: 100%; /* or whatever width you need */
-    height: 100vh;
+    height: 100dvh;
     margin: 0;
 }
 
@@ -459,7 +459,7 @@ body {
 #contactModal .modal-body,
 #cancellationModal .modal-body {
     padding: 0% 5%;
-    height: 90vh;
+    height: 90dvh;
 }
 
 #cancellationModal .modal-body .page_number img {
@@ -801,7 +801,11 @@ body {
     }
 }
 
-
+@media (orientation: landscape) {
+    .contacts .links .link br {
+        display: block;
+    }
+}
 
 .contacts a img {
     width: 50px;
@@ -880,13 +884,13 @@ body {
 
 @media (max-width: 1200px) {
     .contacts #agreementModal {
-        max-height: 80vh;
+        max-height: 80dvh;
     }
 }
 
 @media (max-width: 950px) and (max-height: 700px) {
     .contacts #agreementModal {
-        max-height: 100vh;
+        max-height: 100dvh;
     }
 }
 
@@ -922,19 +926,18 @@ body {
 
 .contacts .agreement-modal-body .modal-title {
     font-size: 16px;
-    margin-bottom: 5%;
+    margin-bottom: 0%;
 }
 
 .contacts .agreement-modal-body .exit-button {
     position: sticky;
     left: 90%;
-    top: 0%;
+    top: 3%;
     width: 1px;
     height: 1px;
     background-color: rgba(255, 0, 0, 0);
     border-width: 0px;
     border-radius: 50%;
-    margin: -100%;
 }
 
 @keyframes fadeInOpacity {
