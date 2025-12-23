@@ -30,7 +30,7 @@ def handle_form_submission(request):
     delta = submit_time - start_time
     delta_in_seconds = delta.total_seconds()
 
-    if delta_in_seconds < 40:
+    if delta_in_seconds < 10:
         send_mail('Сколько секунд', str(delta_in_seconds), sender, ['befordshir@gmail.com'])
         return HttpResponseBadRequest("Подозрительная активность!")
 
