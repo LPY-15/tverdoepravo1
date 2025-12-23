@@ -8,13 +8,47 @@ logger = logging.getLogger(__name__)
 import requests
 from honeypot.decorators import check_honeypot
 from django.contrib import messages
+from django.utils import timezone
+from datetime import timedelta
+from django.core.exceptions import SuspiciousOperation
+from django.http import HttpResponseBadRequest
+from django.utils.timezone import now
+from datetime import datetime
 
 sender = 'befordshir@mail.ru'
 recipient = ['tverdoepravo@mail.ru']
 
+def handle_form_submission(request):
+    start_time_string = request.session.pop('form_start_time', None)
+    if start_time_string is None:
+        raise SuspiciousOperation("Invalid form submission")
+
+    # Парсим строку в объект datetime
+    start_time = datetime.fromisoformat(start_time_string)
+
+    submit_time = now()
+    delta = submit_time - start_time
+    delta_in_seconds = delta.total_seconds()
+
+    if delta_in_seconds < 40:
+        send_mail('Сколько секунд', str(delta_in_seconds), sender, ['befordshir@gmail.com'])
+        return HttpResponseBadRequest("Подозрительная активность!")
+
 
 def mainPage(request):
-    if request.method == 'POST':
+
+    if request.method == 'GET':  # Обратите внимание на условие GET
+        # Эта строка запускается, когда страница с формой отображается пользователю
+        request.session['form_start_time'] = now().isoformat()  # Преобразуем в строку
+        contact_form = ContactForm()
+        return render(request, 'main_page/main_page.html', {'contact_form': contact_form})
+    
+    elif request.method == 'POST':
+
+        result = handle_form_submission(request)
+        if isinstance(result, HttpResponseBadRequest):
+            return result  # Возвращаем ошибку, если обнаружена подозрительная активность
+        
         contact_form = ContactForm(request.POST)
 
         if contact_form.is_valid():
@@ -41,7 +75,19 @@ def mainPage(request):
 
 
 def flooding(request):
-    if request.method == 'POST':
+
+    if request.method == 'GET':
+
+        request.session['form_start_time'] = now().isoformat()
+        contact_form = ContactForm()
+        return render(request, 'main_page/flooding.html', {'contact_form': contact_form})
+    
+    elif request.method == 'POST':
+
+        result = handle_form_submission(request)
+        if isinstance(result, HttpResponseBadRequest):
+            return result
+        
         contact_form = ContactForm(request.POST)
 
         if contact_form.is_valid():
@@ -68,7 +114,18 @@ def flooding(request):
 
 
 def expertise(request):
-    if request.method == 'POST':
+
+    if request.method == 'GET':
+        request.session['form_start_time'] = now().isoformat()
+        contact_form = ContactForm()
+        return render(request, 'main_page/expertise.html', {'contact_form': contact_form})
+    
+    elif request.method == 'POST':
+
+        result = handle_form_submission(request)
+        if isinstance(result, HttpResponseBadRequest):
+            return result
+        
         contact_form = ContactForm(request.POST)
         if contact_form.is_valid():
             name = contact_form.cleaned_data['name']
@@ -118,7 +175,18 @@ def example(request):
 
 
 def pre_trial(request):
-    if request.method == 'POST':
+
+    if request.method == 'GET':
+        request.session['form_start_time'] = now().isoformat()
+        contact_form = ContactForm()
+        return render(request, 'main_page/pre-trial.html', {'contact_form': contact_form})
+    
+    elif request.method == 'POST':
+
+        result = handle_form_submission(request)
+        if isinstance(result, HttpResponseBadRequest):
+            return result
+        
         contact_form = ContactForm(request.POST)
         if contact_form.is_valid():
             name = contact_form.cleaned_data['name']
@@ -143,7 +211,19 @@ def pre_trial(request):
 
 
 def making_documents(request):
-    if request.method == 'POST':
+
+    if request.method == 'GET':
+
+        request.session['form_start_time'] = now().isoformat()
+        contact_form = ContactForm()
+        return render(request, 'main_page/making_documents.html', {'contact_form': contact_form})
+    
+    elif request.method == 'POST':
+
+        result = handle_form_submission(request)
+        if isinstance(result, HttpResponseBadRequest):
+            return result
+        
         contact_form = ContactForm(request.POST)
         if contact_form.is_valid():
             name = contact_form.cleaned_data['name']
@@ -168,7 +248,19 @@ def making_documents(request):
 
 
 def labor_disputes(request):
-    if request.method == 'POST':
+
+    if request.method == 'GET':
+
+        request.session['form_start_time'] = now().isoformat()
+        contact_form = ContactForm()
+        return render(request, 'main_page/labor_disputes.html', {'contact_form': contact_form})
+    
+    elif request.method == 'POST':
+
+        result = handle_form_submission(request)
+        if isinstance(result, HttpResponseBadRequest):
+            return result
+        
         contact_form = ContactForm(request.POST)
         if contact_form.is_valid():
             name = contact_form.cleaned_data['name']
@@ -200,8 +292,17 @@ def cancellation(request):
     cancellation_form_page2 = CancellationFormPage2()
     cancellation_form_page3 = CancellationFormPage3()
 
+    if request.method == 'GET':
 
-    if request.method =='POST':
+        request.session['form_start_time'] = now().isoformat()
+        return render(request, 'main_page/cancellation.html', {'contact_form': contact_form})
+
+
+    elif request.method =='POST':
+
+        result = handle_form_submission(request)
+        if isinstance(result, HttpResponseBadRequest):
+            return result
 
         contact_form = ContactForm(request.POST)
         cancellation_form_page1 = CancellationFormPage1(request.POST)
@@ -289,7 +390,16 @@ def refusal(request):
     refusal_form_page2 = RefusalFormPage2()
     refusal_form_page3 = RefusalFormPage3()
 
-    if request.method =='POST':
+    if request.method == 'GET':
+
+        request.session['form_start_time'] = now().isoformat()
+        return render(request, 'main_page/refusal.html', {'contact_form': contact_form})
+
+    elif request.method =='POST':
+
+        result = handle_form_submission(request)
+        if isinstance(result, HttpResponseBadRequest):
+            return result
 
         contact_form = ContactForm(request.POST)
         refusal_form_page1 = RefusalFormPage1(request.POST)
@@ -382,7 +492,19 @@ def refusal(request):
 
 
 def trademark(request):
-    if request.method =='POST':
+
+    if request.method == 'GET':
+
+        request.session['form_start_time'] = now().isoformat()
+        contact_form = ContactForm()
+        return render(request, 'main_page/trademark.html', {'contact_form': contact_form})
+    
+    elif request.method =='POST':
+
+        result = handle_form_submission(request)
+        if isinstance(result, HttpResponseBadRequest):
+            return result
+        
         contact_form = ContactForm(request.POST)
         if contact_form.is_valid():
             name = contact_form.cleaned_data['name']
