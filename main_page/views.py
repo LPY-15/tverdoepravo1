@@ -295,14 +295,10 @@ def cancellation(request):
     if request.method == 'GET':
 
         request.session['form_start_time'] = now().isoformat()
-        return render(request, 'main_page/cancellation.html', {'contact_form': contact_form})
+        return render(request, 'main_page/cancellation.html', {'contact_form': contact_form, 'cancellation_form_page1': cancellation_form_page1, 'cancellation_form_page2': cancellation_form_page2, 'cancellation_form_page3': cancellation_form_page3})
 
 
     elif request.method =='POST':
-
-        result = handle_form_submission(request)
-        if isinstance(result, HttpResponseBadRequest):
-            return result
 
         contact_form = ContactForm(request.POST)
         cancellation_form_page1 = CancellationFormPage1(request.POST)
@@ -366,9 +362,9 @@ def cancellation(request):
             collector_name = cancellation_form_page3.cleaned_data['collector_name']
             collector_address = cancellation_form_page3.cleaned_data['collector_address']
             
-            debtor_data = f'{debtor_name} {debtor_address} {debtor_email} {debtor_phone}'
-            court_data = f'{court_type_label} {court_name} {court_address} {court_order_number} {order_issuing_date} {order_receiving_date}'
-            collector_data = f'{collector_name} {collector_address}'
+            debtor_data = f' Имя: {debtor_name};\n адрес: {debtor_address};\n e-mail: {debtor_email};\n телефон: {debtor_phone};\n'
+            court_data = f'{court_type_label};\n наименование судебного участка: {court_name};\n адрес судебного участка: {court_address};\n номер судебного приказа: {court_order_number};\n дата судебного приказа: {order_issuing_date};\n дата получения судебного приказа: {order_receiving_date};\n'
+            collector_data = f'наименование взыскателя: {collector_name};\n адрес взыскателя: {collector_address}.'
             cancellation_contact_form_data = f'{debtor_data} {court_data} {collector_data}'
 
             
@@ -393,13 +389,10 @@ def refusal(request):
     if request.method == 'GET':
 
         request.session['form_start_time'] = now().isoformat()
-        return render(request, 'main_page/refusal.html', {'contact_form': contact_form})
+        return render(request, 'main_page/refusal.html', {'contact_form': contact_form, 'refusal_form_page1': refusal_form_page1, 'refusal_form_page2': refusal_form_page2, 'refusal_form_page3': refusal_form_page3})
+
 
     elif request.method =='POST':
-
-        result = handle_form_submission(request)
-        if isinstance(result, HttpResponseBadRequest):
-            return result
 
         contact_form = ContactForm(request.POST)
         refusal_form_page1 = RefusalFormPage1(request.POST)
@@ -452,8 +445,8 @@ def refusal(request):
             passport_issue_date = request.session.get('passport_issue_date')
             declarant_address = request.session.get('declarant_address')
 
-            refusal_contact_form_data_page1 = f' ФИО: {refusal_form_name}, e-mail: {refusal_form_email}, телефон: {refusal_form_phone},'
-            refusal_contact_form_data_page2 = f' серия и номер паспорта: {passport_series_and_number}, кем выдан паспорт: {passport_issue_org}, дата выдачи паспорта: {passport_issue_date}, адрес проживания заявителя: {declarant_address}, '
+            refusal_contact_form_data_page1 = f' ФИО: {refusal_form_name};\n e-mail: {refusal_form_email};\n телефон: {refusal_form_phone};\n'
+            refusal_contact_form_data_page2 = f'серия и номер паспорта: {passport_series_and_number};\n кем выдан паспорт: {passport_issue_org};\n дата выдачи паспорта: {passport_issue_date};\n адрес проживания заявителя: {declarant_address}. '
 
             session_data = request.session.get('creditors_list', [])
 
@@ -473,7 +466,7 @@ def refusal(request):
             if request.POST.get('3_page_submit') == 'clicked':
 
                 creditors_info = '\n'.join(
-                    [f"{i+1}. Наименование кредитора или ИНН: {c['Наименование кредитора или ИНН']}, Номер кредитного договора: {c['Номер кредитного договора']}, Адрес кредитора: {c['Адрес кредитора']}, Дата кредитного договора: {c['Дата кредитного договора']}" for i, c in enumerate(session_data)]
+                    [f"{i+1}. Наименование кредитора или ИНН: {c['Наименование кредитора или ИНН']};\n    номер кредитного договора: {c['Номер кредитного договора']};\n    адрес кредитора: {c['Адрес кредитора']};\n    дата кредитного договора: {c['Дата кредитного договора']}." for i, c in enumerate(session_data)]
                 )
                 refusal_contact_form_data = f"{refusal_contact_form_data_page1} {refusal_contact_form_data_page2}\n\nКредиторы:\n{creditors_info}"
 
