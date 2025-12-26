@@ -1167,17 +1167,10 @@
                                     agreementModal.show();
                                 });
 
-                                const bodyElement = document.body
-
-                                document.getElementById('modal-open-btn').addEventListener('click', function(){
-                                    bodyElement.classList.add('no-scroll');
-                                });
-
                                 document.getElementById('contactModal-exit-button').addEventListener('click', function () {
                                     contactModal = document.getElementById('contactModal');
                                     modalInstance = bootstrap.Modal.getOrCreateInstance(contactModal);
                                     modalInstance.hide();
-                                    bodyElement.classList.remove('no-scroll');
                                 });
                             });
 
