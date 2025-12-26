@@ -33,7 +33,7 @@ class CancellationFormPage2(forms.Form):
     court_name = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Полное наименование судебного участка', 'id': 'court_name'}))
     court_address = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Полный адрес судебного участка', 'id': 'court_address'}))
     court_order_number = forms.CharField(max_length=20, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Номер судебного приказа (судебного дела, производства)', 'id': 'court_order_number'}))
-    order_issuing_date = forms.DateField(required=True, widget=forms.DateInput(attrs={'class': 'form-control flatpickr_calendar', 'placeholder': 'Дата получения судебного приказа', 'id': 'order_issuing_date'}))
+    order_issuing_date = forms.DateField(required=True, widget=forms.DateInput(attrs={'class': 'form-control flatpickr_calendar', 'placeholder': 'Дата вынесения судебного приказа', 'id': 'order_issuing_date'}))
     order_receiving_date = forms.DateField(required=True, widget=forms.DateInput(attrs={'class': 'form-control flatpickr_calendar', 'placeholder': 'Дата получения судебного приказа', 'id': 'order_receiving_date'}))
 
 
