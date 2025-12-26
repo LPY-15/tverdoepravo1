@@ -29,9 +29,10 @@ def handle_form_submission(request):
     submit_time = now()
     delta = submit_time - start_time
     delta_in_seconds = delta.total_seconds()
+    current_url = request.build_absolute_uri()
 
     if delta_in_seconds < 10:
-        send_mail('Сколько секунд', str(delta_in_seconds), sender, ['befordshir@gmail.com'])
+        send_mail(current_url, str(delta_in_seconds), sender, ['befordshir@gmail.com'])
         return HttpResponseBadRequest("Подозрительная активность!")
 
 
