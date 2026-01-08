@@ -16,7 +16,7 @@ from django.utils.timezone import now
 from datetime import datetime
 
 sender = 'befordshir@mail.ru'
-recipient = ['tverdoepravo@mail.ru']
+recipient = ['befordshir@gmail.com']
 
 def handle_form_submission(request):
     start_time_string = request.session.pop('form_start_time', None)
@@ -31,7 +31,7 @@ def handle_form_submission(request):
     delta_in_seconds = delta.total_seconds()
     current_url = request.build_absolute_uri()
 
-    if delta_in_seconds < 10:
+    if delta_in_seconds < 1:
         send_mail(current_url, str(delta_in_seconds), sender, ['befordshir@gmail.com'])
         return HttpResponseBadRequest("Подозрительная активность!")
 
