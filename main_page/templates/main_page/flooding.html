@@ -24,43 +24,33 @@
 <body>
     <div class="wrapper">
 
-        {% for message in messages %}
-            <div class="alert alert-warning success-alert" id="success-alert" role="alert">
-                <strong>Спасибо, ваши данные отправлены</strong>
-            </div>
-        {% endfor %}
-        <script> 
-            function hideDiv() { 
-                const targetDiv = document.getElementById('success-alert'); // Trigger fade-out by adding the "fading-out" class 
-                setTimeout(() => { 
-                    targetDiv.style.display = 'none'; 
-                }, 7500); 
-            } 
-            hideDiv()
-        </script>
 
-        <!--Top Bar Start-->
-        <div class="top-bar">
+
+        <!-- topbar start -->
+
+
+
+        <div class="topbar">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-3 top-bar-img">
-                        <a href="/" ><img class="img" src="{% static 'main_page/img/tplogo.png' %}" alt="tplogo"></a>
+                    <div class="col-md-3 logo">
+                        <a href="/" ><img class="img" src="{% static 'main_page/img/topbar-logo.png' %}" alt="logo"></a>
                     </div>
                     <div class="col-md-3 phone-and-email">
                         <a href="tel:+79027721472">
-                            <img src="{% static 'main_page/img/smartphone.svg' %}" alt="smartphone">
+                            <img src="{% static 'main_page/img/topbar-smartphone.svg' %}" alt="phone">
                             <p>ТЕЛЕФОН</p>
                             <p class="link">+7(902)772-</br>14-72</p>
                         </a>
                     </div>
                     <div class="col-md-3 phone-and-email email">
                         <a href="mailto:tverdoepravo@mail.ru">
-                            <img src="{% static 'main_page/img/top-mail.svg' %}" alt="mail">
+                            <img src="{% static 'main_page/img/topbar-email.svg' %}" alt="mail">
                             <p class="mail">EMAIL</p>
                             <p class="link">tverdoepravo</br>@mail.ru</p>
                         </a>
                     </div>
-                    <div class="col-md-3 align-self-center socials1">
+                    <div class="col-md-3 align-self-center">
                         <div class="socials">
                             <a href="https://wa.me/+79027721472"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 width="100%" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
@@ -280,8 +270,13 @@
                 </div>
             </div>
         </div>
-        <!-- Top Bar End -->
+
+
+
+        <!-- topbar end -->
          
+
+        
         <!--navbar start-->
         <div class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid navbar-custom d-lg-flex align-self-flex-end">
@@ -888,6 +883,21 @@
                 </div>
             </div>
         </div>
+        {% for message in messages %}
+            <div class="alert alert-warning success-alert" id="success-alert" role="alert">
+                <strong>Спасибо, ваши данные отправлены</strong>
+            </div>
+        {% endfor %}
+
+        <script> 
+            function hideDiv() { 
+                const targetDiv = document.getElementById('success-alert'); // Trigger fade-out by adding the "fading-out" class 
+                setTimeout(() => { 
+                    targetDiv.style.display = 'none'; 
+                }, 7500); 
+            } 
+            hideDiv()
+        </script>
     </div>
 </body>
 </html>
