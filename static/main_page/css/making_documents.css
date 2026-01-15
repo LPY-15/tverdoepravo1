@@ -248,21 +248,26 @@ body {
 
 
 
-.pic-line {
-    background-image: url('../img/making_documents_main.png');
+/* headline start */
+
+
+
+.headline {
+    background-image: url('../img/making_documents-headline.png');
     background-size: cover;
     background-repeat: no-repeat;
     padding: 2% 0% 2%;
 }
 
-.pic-line .text {
+.headline-text {
     font-family: 'Open Sans', serif;
     border-left: solid;
     border-left-color: #242E81;
     border-left-width: 6px;
+    color: white;
 }
 
-.pic-line .text h2 {
+.headline-text h2 {
     font-size: 32px;
     line-height: 32px;
     font-weight: 700;
@@ -270,7 +275,7 @@ body {
     margin: 5%;
 }
 
-.pic-line .text h4 {
+.headline-text h4 {
     font-size: 18px;
     line-height: 18px;
     font-weight: 700;
@@ -278,11 +283,17 @@ body {
     margin: 5%;
 }
 
-.pic-line .text p {
+.headline-text p {
     font-size: 14px;
     line-height: 22.4px;
     margin: 5%;
 }
+
+
+
+/* headline end */
+
+
 
 .services .service {
     text-align: center;

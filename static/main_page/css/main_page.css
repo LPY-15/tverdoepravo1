@@ -254,68 +254,66 @@ body {
 
 
 
-.LadyJustice .lady1 {
-    background-image: url('../img/main_main2.1.png');
+/* headline start */
+
+
+
+.headline {
+    background-image: url('../img/main_page-headline.png');
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-.LadyJustice-text {
-    color: aliceblue;
-    font-weight: 100;
+    display: flex;
+    flex-direction: column;
+    color: white;
     text-rendering: optimizeLegibility;
+    font-family: "Open Sans", serif;
 }
 
-.LadyJustice-text h1 {
+.headline h1 {
     font-size: 50px;
     line-height: 55px;
     font-weight: 400;
     text-align: left;
-    font-family: "Open Sans", serif;
     margin-top: 40px;
     margin-left: 10px;
+    text-transform: uppercase;
 }
 
 @media (max-width: 1000px) {
-    .LadyJustice-text h1 {
+    .headline h1 {
         font-size: 40px;
     }
 }
 
-.LadyJustice .LadyJustice-border {
-    border-top: solid;
-    border-top-width: 2px;
+.headline hr {
+    border-color: white;
+    border-width: 2px;
+    opacity: 1;
 }
 
-.LadyJustice-text p {
+.headline p {
     font-size: 36px;
     line-height: 40px;
     margin-top: 40px;
     margin-left: 10px;
     font-weight: 300;
-    font-family: "Open Sans", serif;
     padding-top: 20px;
 }
 
-.LadyJustice .LadyJustice-text button.btn:hover {
-    color: #121518;
-    background: #aa9166;
-}
-
-.LadyJustice .LadyJustice-text .buttons {
+.headline .contact-buttons {
     text-align: end;
-    font-family: "Open Sans", serif;
     margin-bottom: 15%;
+    text-transform: uppercase;
 }
 
 @media (max-width: 1000px) {
-    .LadyJustice .LadyJustice-text .buttons {
+    .headline .contact-buttons {
         text-align: center;
         margin-bottom: 75px;
     }
 }
 
-.LadyJustice .LadyJustice-text .buttons a {
+.headline .contact-buttons a {
     background-color: #3949A0;
     color: #FFFFFF;
     font-size: 15px;
@@ -326,24 +324,16 @@ body {
     border-width: 0px;
 }
 
-.LadyJustice .LadyJustice-text .buttons a:hover {
+.headline .contact-buttons a:hover {
     background-color: #7481C8;
     color: #121518;
 }
 
-.LadyJustice .LadyJustice-text .buttons button {
-    background-color: #242e81;
-    color: #FFFFFF;
-    font-size: 15px;
-    line-height: 21px;
-    font-weight: 600;
-    margin: 0px 10px 10px 0px;
-    padding: 8px 20px;
-}
 
-.LadyJustice .LadyJustice-text .buttons button:hover {
-    background-color: #37469e;
-}
+
+/* headline end */
+
+
 
 .about-us {
     font-family: "Open Sans", serif;

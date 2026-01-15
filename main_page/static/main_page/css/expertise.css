@@ -248,23 +248,28 @@ body {
 
 
 
-.pic-line {
-    background-image: url('../img/expertise-main.png');
+/* headline start */
+
+
+
+.headline {
+    background-image: url('../img/expertise-headline.png');
     background-size: cover;
     background-repeat: no-repeat;
     padding-top: 40px;
     padding-bottom: 40px;
 }
 
-.pic-line .pic-line-text {
+.headline-text {
     padding-left: 30px;
     border-left: solid;
     border-left-width: 6px;
     border-left-color: #242E81;
     padding-bottom: 10px;
+    color: white;
 }
 
-.pic-line h3 {
+.headline-text h3 {
     font-family: "Open Sans", serif;
     font-size: 32px;
     line-height: 32px;
@@ -273,13 +278,19 @@ body {
     text-transform: uppercase;
 }
 
-.pic-line p {
+.headline-text p {
     font-family: "Open Sans", serif;
     font-size: 14px;
     line-height: 22.4px;
     margin: 0px 0px 14px;
     font-weight: 400;
 }
+
+
+
+/* headline end */
+
+
 
 .text {
     font-family: "Open Sans", serif;
