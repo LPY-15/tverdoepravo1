@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <link type="text/css" href="{% static 'main_page/css/expertise.css' %}" rel="stylesheet">
+    <script src="{% static 'main_page/js/main.js' %}"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -277,55 +278,38 @@
 
 
 
-        <!--navbar start-->
-        <div class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid navbar-custom d-lg-flex align-self-flex-end">
+        <!-- navbar start -->
+
+
+
+        <div class="navbar navbar-expand-lg">
+            <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 </button>
-                <div class="collapse navbar-collapse d-lg-flex justify-content-center" id="navbarSupportedContent">
-                    <ul class="navbar-nav mb-2 mb-lg-0">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" id="nav-bar-about-us" href="/">О НАС</a>
+                            <a class="nav-link js-redirect-and-scroll" data-scroll-target="about-us">О НАС</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="nav-bar-lawyer-services" href="/">НАШИ УСЛУГИ</a>
+                            <a class="nav-link js-redirect-and-scroll" data-scroll-target="lawyer-services">НАШИ УСЛУГИ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="nav-bar-pricing" href="/">СТОИМОСТЬ УСЛУГ</a>
+                            <a class="nav-link js-redirect-and-scroll" data-scroll-target="pricing">СТОИМОСТЬ УСЛУГ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="nav-bar-contacts">КОНТАКТЫ</a>
+                            <a class="nav-link js-scroll" data-scroll-target="contacts">КОНТАКТЫ</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <script> 
+        
 
-            document.getElementById('nav-bar-about-us').addEventListener('click', function(element) { // Assuming the target element ID is known 
-                const targetId = 'about-us';
-                localStorage.setItem('targetElement', targetId); 
-                window.location.href = element.href; 
-            });
 
-            document.getElementById('nav-bar-lawyer-services').addEventListener('click', function(element) { // Assuming the target element ID is known 
-                const targetId = 'lawyer-services';
-                localStorage.setItem('targetElement', targetId); 
-                window.location.href = element.href; 
-            });
+        <!-- navbar end -->
 
-            document.getElementById('nav-bar-pricing').addEventListener('click', function(element) { // Assuming the target element ID is known 
-                const targetId = 'pricing';
-                localStorage.setItem('targetElement', targetId); 
-                window.location.href = element.href; 
-            });
-
-            document.getElementById('nav-bar-contacts').addEventListener('click', function(e) {
-                document.getElementById('contacts').scrollIntoView()
-            });
-
-        </script>
-        <!--navbar end-->
+        
 
         <!--pic-line start-->
         <div class="pic-line">
@@ -517,8 +501,8 @@
                                                 </div>
                                                 <div class="modal-footer agreement-modal-footer" id="modal-footer" style="display: flex; justify-content: center;">
                                                     <div class="footer_scrolled_down" id="footer_scrolled_down" style="display: none;">
-                                                        <button type="button" class="btn agreement-modal-accept-button" id="agreement-modal-accept-button" data-bs-dismiss="modal" onclick='check()'>Принимаю</button>
-                                                        <button type="button" class="btn agreement-modal-decline-button" id="agreement-modal-decline-button" data-bs-dismiss="modal" onclick='uncheck()'>Не принимаю</button> 
+                                                        <button type="button" class="btn agreement-modal-accept-button" id="agreement-modal-accept-button" data-bs-dismiss="modal">Принимаю</button>
+                                                        <button type="button" class="btn agreement-modal-decline-button" id="agreement-modal-decline-button" data-bs-dismiss="modal">Не принимаю</button> 
                                                     </div>
                                                         <div class="footer_not_scrolled_down" id="footer_not_scrolled_down">
                                                             <a class="agreement-modal-link" id="agreement-modal-link">

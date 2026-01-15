@@ -187,7 +187,9 @@ body {
 
 
 
-/*nav-bar start*/
+/* navbar start */
+
+
 
 .navbar {
     background-color: #242e81 !important;
@@ -196,7 +198,7 @@ body {
 }
 
 @media (max-width:1000px) {
-    .navbar-nav{
+    .navbar-nav {
         display: inline;
     }
 }
@@ -227,7 +229,7 @@ body {
     }
 }
 
-.navbar .navbar-custom .navbar-toggler {
+.navbar .navbar-toggler {
     border-width: 0px;
     color: #ffffff;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
@@ -238,8 +240,17 @@ body {
     box-shadow: none;
 }
 
-/* navbar end */
+.nav-link {
+    cursor: pointer;
+}
 
+.nav-link:hover {
+    color: white;
+}
+
+
+
+/* navbar end */
 
 
 
