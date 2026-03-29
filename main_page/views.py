@@ -6,7 +6,6 @@ from django.template.loader import render_to_string
 import logging
 logger = logging.getLogger(__name__)
 import requests
-from honeypot.decorators import check_honeypot
 from django.contrib import messages
 from django.utils import timezone
 from datetime import timedelta
@@ -14,6 +13,7 @@ from django.core.exceptions import SuspiciousOperation
 from django.http import HttpResponseBadRequest
 from django.utils.timezone import now
 from datetime import datetime
+
 
 sender = 'befordshir@mail.ru'
 recipient = ['tverdoepravo@mail.ru']
@@ -31,7 +31,7 @@ def handle_form_submission(request):
     delta_in_seconds = delta.total_seconds()
     current_url = request.build_absolute_uri()
 
-    if delta_in_seconds < 10:
+    if delta_in_seconds < 5:
         send_mail(current_url, str(delta_in_seconds), sender, ['befordshir@gmail.com'])
         return HttpResponseBadRequest("Подозрительная активность!")
 
@@ -464,7 +464,7 @@ def refusal(request):
 
 
 
-            if request.POST.get('3_page_submit') == 'clicked':
+            if request.POST.get('django_view_3_page_submit') == 'clicked':
 
                 creditors_info = '\n'.join(
                     [f"{i+1}. Наименование кредитора или ИНН: {c['Наименование кредитора или ИНН']};\n    номер кредитного договора: {c['Номер кредитного договора']};\n    адрес кредитора: {c['Адрес кредитора']};\n    дата кредитного договора: {c['Дата кредитного договора']}." for i, c in enumerate(session_data)]
