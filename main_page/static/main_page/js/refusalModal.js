@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let formattedString = '';
             
             if (userInput.length > 0) {
-                formattedString = '' + userInput.substring(0, 4); 
+                formattedString = '' + userInput.substring(0, 4);
             }
             if (userInput.length > 4) {
                 formattedString += ' ' + userInput.substring(4, 10);
